@@ -56,9 +56,23 @@ struct EventListView: View {
     }
 }
 
-#Preview {
+#Preview("Loaded Events") {
     EventListView(
         viewModel: EventListViewModel(eventService: MockEventService())
     )
     .environmentObject(AppSettings())
+}
+
+#Preview("Empty State") {
+    let viewModel = EventListViewModel(eventService: EmptyEventService())
+    viewModel.loadEvents()
+    return EventListView(viewModel: viewModel)
+        .environmentObject(AppSettings())
+}
+
+#Preview("Error State") {
+    let viewModel = EventListViewModel(eventService: ErrorEventService())
+    viewModel.loadEvents()
+    return EventListView(viewModel: viewModel)
+        .environmentObject(AppSettings())
 }

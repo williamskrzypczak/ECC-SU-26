@@ -14,7 +14,11 @@ final class EventListViewModel: ObservableObject {
     func loadEvents() {
         isLoading = true
         errorMessage = nil
-        events = eventService.fetchEvents()
+        let results = eventService.fetchEvents()
+        events = results
+        if results.isEmpty {
+            errorMessage = "No events available right now."
+        }
         isLoading = false
     }
 }
