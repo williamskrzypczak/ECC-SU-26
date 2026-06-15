@@ -1,65 +1,81 @@
 import SwiftUI
 
-struct ContentView: View {
-    @State private var searchText = ""
-    @FocusState private var isSearchFocused: Bool
-
-    let sections = ["C", "D", "E", "F", "G"]
-
-    var filteredClubs: [Club] {
-        if searchText.isEmpty {
-            return campusClubs
+struct SchedulePreview: View {
+    var body: some View {
+        Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
+            GridRow {
+                Text("Course")
+                    .fontWeight(.bold)
+                Text("Room")
+                    .fontWeight(.bold)
+            }
+            GridRow {
+                Text("SwiftUI I")
+                Text("204")
+            }
+            GridRow {
+                Text("SwiftUI II")
+                Text("210")
+            }
         }
-        return campusClubs.filter {
-            $0.name.localizedCaseInsensitiveContains(searchText)
-        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
     }
+}
+
+struct ContentView: View {
+    @State private var selectedCourseID: UUID?
 
     var body: some View {
         NavigationStack {
-            ScrollViewReader { proxy in
-                VStack(spacing: 8) {
-                    HStack {
-                        TextField("Search clubs", text: $searchText)
-                            .textFieldStyle(.roundedBorder)
-                            .focused($isSearchFocused)
+            VStack(spacing: 16) {
+                SchedulePreview()
+                    .padding(.horizontal)
 
-                        Button("Done") {
-                            isSearchFocused = false
+                Text("Featured Courses")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+
+                ScrollView(.horizontal, showsIndicators: false) {
+                    LazyHGrid(rows: featuredRows, spacing: 12) {
+                        ForEach(courses.filter { $0.isFeatured }) { course in
+                            VStack {
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.orange)
+                                Text(course.code)
+                                    .font(.caption)
+                            }
+                            .frame(width: 100, height: 100)
+                            .background(Color(.systemGray6))
+                            .cornerRadius(10)
                         }
                     }
                     .padding(.horizontal)
+                }
 
-                    HStack {
-                        ForEach(sections, id: \.self) { section in
-                            Button(section) {
-                                withAnimation {
-                                    proxy.scrollTo(section, anchor: .top)
-                                }
-                            }
-                            .buttonStyle(.bordered)
-                        }
-                    }
+                Text("All Courses")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal)
 
-                    ScrollView {
-                        LazyVStack(alignment: .leading, spacing: 16) {
-                            ForEach(sections, id: \.self) { section in
-                                Text(section)
-                                    .font(.title2)
-                                    .fontWeight(.bold)
-                                    .id(section)
-
-                                ForEach(filteredClubs.filter { $0.section == section }) { club in
-                                    ClubRow(club: club)
-                                }
+                ScrollView {
+                    LazyVGrid(columns: adaptiveColumns, spacing: 12) {
+                        ForEach(courses) { course in
+                            CourseCard(
+                                course: course,
+                                isSelected: selectedCourseID == course.id
+                            )
+                            .onTapGesture {
+                                selectedCourseID = course.id
                             }
                         }
-                        .padding()
                     }
+                    .padding()
                 }
             }
-            .navigationTitle("Campus Clubs")
+            .navigationTitle("Course Catalog")
         }
     }
 }
