@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2 Lab: Basic UI Elements and Layouts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main id="main-content">
+        <h1>Chapter 2 Lab: Basic UI Elements and Layouts</h1>
+
+        <h2>Introduction</h2>
+        <p>This lab reinforces Chapter 2 of <em>An iOS Developer's Guide to SwiftUI</em> by Michele Fadda. You will build a campus event card using stacks, spacing tools, and reusable view components.</p>
+        <p>Think of layout like arranging furniture in a room. Stacks place items in rows or columns. Spacers push items apart. Reusable views are like LEGO bricks you build once and use again.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Refactor a large view into smaller, reusable subviews</li>
+            <li>Arrange UI elements with <code>VStack</code>, <code>HStack</code>, and <code>ZStack</code></li>
+            <li>Control spacing with <code>padding</code>, <code>Spacer</code>, and <code>Divider</code></li>
+            <li>Set size and position with <code>frame</code> and alignment</li>
+            <li>Read screen dimensions with <code>GeometryReader</code></li>
+            <li>Explain when to use each stack type in a layout</li>
+        </ul>
+
+        <h2>Key Ideas from Chapter 2</h2>
+        <div class="analogy-box">
+            <p><strong>Reusable views</strong> are LEGO bricks. Build a header once, then snap it into many screens.</p>
+            <p><strong>Stacks</strong> organize your layout. <code>VStack</code> stacks items like books on a shelf. <code>HStack</code> lines them up like photos on a wall. <code>ZStack</code> layers them like a sandwich.</p>
+        </div>
+
+        <table>
+            <caption>Chapter 2 layout concepts and simple analogies</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Reusable subview</th>
+                    <td>A small view extracted into its own struct</td>
+                    <td>A LEGO brick used in many builds</td>
+                </tr>
+                <tr>
+                    <th scope="row">VStack</th>
+                    <td>Arranges views vertically, top to bottom</td>
+                    <td>Books stacked on a shelf</td>
+                </tr>
+                <tr>
+                    <th scope="row">HStack</th>
+                    <td>Arranges views horizontally, left to right</td>
+                    <td>Photos in a row on a wall</td>
+                </tr>
+                <tr>
+                    <th scope="row">ZStack</th>
+                    <td>Layers views on top of each other</td>
+                    <td>Layers in a sandwich</td>
+                </tr>
+                <tr>
+                    <th scope="row">Spacer</th>
+                    <td>Pushes views apart to fill extra space</td>
+                    <td>A spring that stretches between items</td>
+                </tr>
+                <tr>
+                    <th scope="row">Divider</th>
+                    <td>Draws a line between sections</td>
+                    <td>A ruler line between notebook sections</td>
+                </tr>
+                <tr>
+                    <th scope="row">padding</th>
+                    <td>Adds space around a view</td>
+                    <td>The mat around a picture in a frame</td>
+                </tr>
+                <tr>
+                    <th scope="row">frame</th>
+                    <td>Sets width, height, and alignment</td>
+                    <td>A fixed-size picture frame</td>
+                </tr>
+                <tr>
+                    <th scope="row">GeometryReader</th>
+                    <td>Reads the size of the available space</td>
+                    <td>A measuring tape for the screen</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>Complete the Chapter 1 lab first, or open any existing SwiftUI project. You need a Mac with Xcode 15 or later. Read Chapter 2 before starting.</p>
+
+        <h2>Lab Scenario: Campus Event Card</h2>
+        <p>You are designing a card for an upcoming campus event. The card shows the event name, date, location, and a featured badge. You will practice the layout skills from Chapter 2.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Start with Your Project</h3>
+        <p class="chapter-map">Covers Chapter 2: Technical requirements and Reusing views code.</p>
+        <p>Open your <code>CampusWelcome</code> project from Chapter 1. You may also create a new Multiplatform SwiftUI app named <code>CampusEvents</code>. Open <code>ContentView.swift</code> and clear the old welcome screen code.</p>
+
+        <h3>Part 2: Extract a Reusable Header View</h3>
+        <p class="chapter-map">Covers Chapter 2: Reusing views code and More about Text.</p>
+        <p>Chapter 2 teaches you to break big views into smaller pieces. Create a separate struct called <code>EventHeader</code>. Move the title and subtitle into it.</p>
+        <pre><code class="language-swift">import SwiftUI
+
+struct EventHeader: View {
+    let title: String
+    let subtitle: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundColor(.blue)
+            Text(subtitle)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(.secondary)
+        }
+    }
+}</code></pre>
+        <p>Answer this question: Why is it helpful to extract <code>EventHeader</code> into its own struct? Write one or two sentences in your submission.</p>
+
+        <h3>Part 3: Build the Event Card with Stacks</h3>
+        <p class="chapter-map">Covers Chapter 2: Managing space in SwiftUI, padding, frame, and Digging deeper into stacks.</p>
+        <p>Build your main card in <code>ContentView</code>. Use a <code>VStack</code> for the card body. Use an <code>HStack</code> for the date and location row.</p>
+        <pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            EventHeader(
+                title: "SwiftUI Study Night",
+                subtitle: "MCC Student Center"
+            )
+
+            Divider()
+
+            HStack {
+                Image(systemName: "calendar")
+                Text("Friday, 6:00 PM")
+                Spacer()
+                Image(systemName: "mappin.and.ellipse")
+                Text("Room 204")
+            }
+            .font(.subheadline)
+
+            Text("Join us for a hands-on SwiftUI review session before the midterm.")
+                .font(.body)
+                .foregroundColor(.primary)
+        }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+}
+
+#Preview {
+    ContentView()
+}</code></pre>
+        <p>Build and preview your card. Confirm the title, divider, and detail row all appear correctly.</p>
+
+        <h3>Part 4: Use Spacer and Divider for Layout Control</h3>
+        <p class="chapter-map">Covers Chapter 2: The Spacer and The Divider.</p>
+        <p>Add a <code>Spacer</code> inside your <code>HStack</code> to push the date and location to opposite sides. Add a second <code>Divider</code> below the description text.</p>
+        <pre><code class="language-swift">HStack {
+    Label("Friday, 6:00 PM", systemImage: "calendar")
+    Spacer()
+    Label("Room 204", systemImage: "mappin.and.ellipse")
+}
+.font(.subheadline)
+
+Divider()
+
+Text("Free pizza for the first 20 students.")
+    .font(.caption)
+    .foregroundColor(.secondary)</code></pre>
+        <p>Notice how <code>Spacer</code> eats up empty space between items. The <code>Divider</code> creates a visual break between sections.</p>
+
+        <h3>Part 5: Layer Content with ZStack</h3>
+        <p class="chapter-map">Covers Chapter 2: ZStack and Overview of stacks.</p>
+        <p>Wrap your card in a <code>ZStack</code> to add a featured badge in the top-right corner. The badge sits on top of the card like the top slice of bread on a sandwich.</p>
+        <pre><code class="language-swift">struct ContentView: View {
+    var body: some View {
+        ZStack(alignment: .topTrailing) {
+            // Card background layer
+            VStack(alignment: .leading, spacing: 16) {
+                EventHeader(
+                    title: "SwiftUI Study Night",
+                    subtitle: "MCC Student Center"
+                )
+                Divider()
+                HStack {
+                    Label("Friday, 6:00 PM", systemImage: "calendar")
+                    Spacer()
+                    Label("Room 204", systemImage: "mappin.and.ellipse")
+                }
+                .font(.subheadline)
+                Divider()
+                Text("Join us for a hands-on SwiftUI review session.")
+                    .font(.body)
+            }
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+
+            // Badge layer on top
+            Text("Featured")
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding(.horizontal, 8)
+                .padding(.vertical, 4)
+                .background(Color.orange)
+                .cornerRadius(6)
+                .padding(12)
+        }
+        .padding()
+    }
+}</code></pre>
+
+        <h4>Task 5.1: Stack Comparison (Reflection)</h4>
+        <p>Answer these three short questions in your submission:</p>
+        <ol>
+            <li>When would you choose a <code>VStack</code> over an <code>HStack</code>?</li>
+            <li>What is one good use case for a <code>ZStack</code>?</li>
+            <li>What does a <code>Spacer</code> do inside a stack?</li>
+        </ol>
+
+        <h3>Part 6: Explore Frame, Alignment, and GeometryReader</h3>
+        <p class="chapter-map">Covers Chapter 2: The .frame modifier, The .alignment modifier, and Using GeometryReader.</p>
+
+        <h4>Task 6.1: Alignment with frame</h4>
+        <p>Add a row that shows how alignment changes text position inside a fixed frame. Use three boxes with leading, center, and trailing alignment.</p>
+        <pre><code class="language-swift">struct AlignmentDemo: View {
+    var body: some View {
+        VStack(spacing: 12) {
+            Text("Leading")
+                .frame(width: 280, height: 40, alignment: .leading)
+                .background(Color.blue.opacity(0.3))
+            Text("Center")
+                .frame(width: 280, height: 40, alignment: .center)
+                .background(Color.green.opacity(0.3))
+            Text("Trailing")
+                .frame(width: 280, height: 40, alignment: .trailing)
+                .background(Color.orange.opacity(0.3))
+        }
+    }
+}</code></pre>
+        <p>Add <code>AlignmentDemo()</code> below your event card in <code>ContentView</code> for preview testing. Remove it before final submission if you prefer a cleaner card.</p>
+
+        <h4>Task 6.2: GeometryReader stretch task</h4>
+        <p>Use <code>GeometryReader</code> to display the width of the card. This is like using a measuring tape on the screen.</p>
+        <pre><code class="language-swift">GeometryReader { geometry in
+    Text("Card width: \(Int(geometry.size.width)) points")
+        .font(.caption)
+        .foregroundColor(.secondary)
+        .frame(maxWidth: .infinity, alignment: .center)
+}</code></pre>
+        <p>Place this below your card. Resize the preview to different device sizes. Note how the width value changes.</p>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following through Canvas:</p>
+        <ul>
+            <li>Screenshot 1: Preview of your event card with the Featured badge</li>
+            <li>Screenshot 2: Preview showing Spacer pushing date and location apart</li>
+            <li>Screenshot 3: Alignment demo or GeometryReader width display</li>
+            <li>Screenshot 4: App running in the iOS simulator</li>
+            <li>Your final <code>ContentView.swift</code> and <code>EventHeader</code> code pasted as text</li>
+            <li>Written answers: reusable view question (Part 2), stack comparison (Part 5), and one sentence on what GeometryReader measures</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Reusable EventHeader subview extracted</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Card uses VStack, HStack, Divider, and Spacer correctly</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">ZStack featured badge layered on the card</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Frame, alignment, or GeometryReader demonstrated</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Screenshots, code, and reflection answers submitted</th>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Views Overlap in ZStack</h3>
+        <p>Check your <code>ZStack</code> alignment parameter. Use <code>.topTrailing</code> for a top-right badge. Add <code>.padding()</code> to the badge so it does not touch the screen edge.</p>
+
+        <h3>Spacer Has No Effect</h3>
+        <p>A <code>Spacer</code> only works inside a stack with extra room. Make sure the parent <code>HStack</code> or <code>VStack</code> is wide or tall enough to expand.</p>
+
+        <h3>GeometryReader Collapses</h3>
+        <p><code>GeometryReader</code> expands to fill all available space. Wrap it in a <code>frame(height:)</code> if it pushes other views off screen. Try <code>.frame(height: 30)</code> on the reader.</p>
+
+        <h3>Card Looks Cramped on Small Screens</h3>
+        <p>Add outer <code>.padding()</code> to <code>ContentView</code>. Use <code>.frame(maxWidth: .infinity)</code> so the card stretches to the screen width.</p>
+
+        <h2>Reference</h2>
+        <p>Fadda, M. (2024). <em>An iOS Developer's Guide to SwiftUI</em>. Packt Publishing. Chapter 2: Adding Basic UI Elements and Designing Layouts.</p>
+        <p>Book code samples: <a href="https://github.com/PacktPublishing/An-iOS-Developer-s-Guide-to-SwiftUI/tree/main/CH2" rel="noopener noreferrer" aria-label="Chapter 2 code samples on GitHub (opens in new tab)">github.com/PacktPublishing/An-iOS-Developer-s-Guide-to-SwiftUI (CH2)</a></p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
