@@ -262,8 +262,8 @@
         </table>
 
         <h2 id="lab-solutions">Lab Solutions</h2>
-        <p>Reference solutions show what a finished lab looks like. Each folder contains Swift source files and a README with Xcode setup steps. Try the lab first, then compare your work.</p>
-        <p><a href="./Solutions/README.md">View the Solutions overview</a></p>
+        <p>Reference solutions show what a finished lab looks like. Each chapter has a <code>solution.html</code> page with setup steps and complete Swift code. Try the lab first, then compare your work.</p>
+        <p><a href="./Solutions/index.html">View the Solutions overview</a></p>
 
         <table>
             <caption>SwiftUI lab solutions for MAD 157</caption>
@@ -279,7 +279,7 @@
                 <noscript>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter01_campus_welcome/README.md">Chapter 1: SwiftUI Development Environment</a>
+                            <a href="./Solutions/chapter01_campus_welcome/solution.html">Chapter 1: SwiftUI Development Environment</a>
                         </th>
                         <td>Solutions/chapter01_campus_welcome/</td>
                         <td>CampusWelcome</td>
@@ -287,7 +287,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter02_campus_events_layout/README.md">Chapter 2: Basic UI Elements and Layouts</a>
+                            <a href="./Solutions/chapter02_campus_events_layout/solution.html">Chapter 2: Basic UI Elements and Layouts</a>
                         </th>
                         <td>Solutions/chapter02_campus_events_layout/</td>
                         <td>CampusEvents</td>
@@ -295,7 +295,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter03_campus_events_interactivity/README.md">Chapter 3: Adding Interactivity to a SwiftUI View</a>
+                            <a href="./Solutions/chapter03_campus_events_interactivity/solution.html">Chapter 3: Adding Interactivity to a SwiftUI View</a>
                         </th>
                         <td>Solutions/chapter03_campus_events_interactivity/</td>
                         <td>CampusEvents</td>
@@ -303,7 +303,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter04_campus_club_directory/README.md">Chapter 4: Scrollable Views and Lists</a>
+                            <a href="./Solutions/chapter04_campus_club_directory/solution.html">Chapter 4: Scrollable Views and Lists</a>
                         </th>
                         <td>Solutions/chapter04_campus_club_directory/</td>
                         <td>CampusEvents</td>
@@ -311,7 +311,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter05_campus_course_catalog/README.md">Chapter 5: The Art of Displaying Grids</a>
+                            <a href="./Solutions/chapter05_campus_course_catalog/solution.html">Chapter 5: The Art of Displaying Grids</a>
                         </th>
                         <td>Solutions/chapter05_campus_course_catalog/</td>
                         <td>CampusCatalog</td>
@@ -319,7 +319,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter06_campus_hub/README.md">Chapter 6: Tab Bars and Modal View Presentation</a>
+                            <a href="./Solutions/chapter06_campus_hub/solution.html">Chapter 6: Tab Bars and Modal View Presentation</a>
                         </th>
                         <td>Solutions/chapter06_campus_hub/</td>
                         <td>CampusHub</td>
@@ -327,7 +327,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter07_campus_navigator/README.md">Chapter 7: All About Navigation</a>
+                            <a href="./Solutions/chapter07_campus_navigator/solution.html">Chapter 7: All About Navigation</a>
                         </th>
                         <td>Solutions/chapter07_campus_navigator/</td>
                         <td>CampusNavigator</td>
@@ -335,7 +335,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter10_campus_events_architect/README.md">Chapter 10: App Architecture and SwiftUI Part I</a>
+                            <a href="./Solutions/chapter10_campus_events_architect/solution.html">Chapter 10: App Architecture and SwiftUI Part I</a>
                         </th>
                         <td>Solutions/chapter10_campus_events_architect/</td>
                         <td>CampusEventsArchitect</td>
@@ -343,7 +343,7 @@
                     </tr>
                     <tr>
                         <th scope="row">
-                            <a href="./Solutions/chapter11_campus_events_architect_theory/README.md">Chapter 11: App Architecture and SwiftUI Part II</a>
+                            <a href="./Solutions/chapter11_campus_events_architect_theory/solution.html">Chapter 11: App Architecture and SwiftUI Part II</a>
                         </th>
                         <td>Solutions/chapter11_campus_events_architect_theory/</td>
                         <td>CampusEventsArchitect</td>
@@ -364,6 +364,7 @@
     <script>
         (function () {
             var LAB_PATTERN = /lab\.html$/i;
+            var SOLUTION_PATTERN = /Solutions\/chapter\d+[^/]*\/solution\.html$/i;
 
             function getMetaContent(name) {
                 var meta = document.querySelector('meta[name="' + name + '"]');
@@ -636,55 +637,55 @@
                     {
                         title: 'Chapter 1: SwiftUI Development Environment',
                         folder: 'Solutions/chapter01_campus_welcome/',
-                        readme: 'Solutions/chapter01_campus_welcome/README.md',
+                        page: 'Solutions/chapter01_campus_welcome/solution.html',
                         project: 'CampusWelcome'
                     },
                     {
                         title: 'Chapter 2: Basic UI Elements and Layouts',
                         folder: 'Solutions/chapter02_campus_events_layout/',
-                        readme: 'Solutions/chapter02_campus_events_layout/README.md',
+                        page: 'Solutions/chapter02_campus_events_layout/solution.html',
                         project: 'CampusEvents'
                     },
                     {
                         title: 'Chapter 3: Adding Interactivity to a SwiftUI View',
                         folder: 'Solutions/chapter03_campus_events_interactivity/',
-                        readme: 'Solutions/chapter03_campus_events_interactivity/README.md',
+                        page: 'Solutions/chapter03_campus_events_interactivity/solution.html',
                         project: 'CampusEvents'
                     },
                     {
                         title: 'Chapter 4: Scrollable Views and Lists',
                         folder: 'Solutions/chapter04_campus_club_directory/',
-                        readme: 'Solutions/chapter04_campus_club_directory/README.md',
+                        page: 'Solutions/chapter04_campus_club_directory/solution.html',
                         project: 'CampusEvents'
                     },
                     {
                         title: 'Chapter 5: The Art of Displaying Grids',
                         folder: 'Solutions/chapter05_campus_course_catalog/',
-                        readme: 'Solutions/chapter05_campus_course_catalog/README.md',
+                        page: 'Solutions/chapter05_campus_course_catalog/solution.html',
                         project: 'CampusCatalog'
                     },
                     {
                         title: 'Chapter 6: Tab Bars and Modal View Presentation',
                         folder: 'Solutions/chapter06_campus_hub/',
-                        readme: 'Solutions/chapter06_campus_hub/README.md',
+                        page: 'Solutions/chapter06_campus_hub/solution.html',
                         project: 'CampusHub'
                     },
                     {
                         title: 'Chapter 7: All About Navigation',
                         folder: 'Solutions/chapter07_campus_navigator/',
-                        readme: 'Solutions/chapter07_campus_navigator/README.md',
+                        page: 'Solutions/chapter07_campus_navigator/solution.html',
                         project: 'CampusNavigator'
                     },
                     {
                         title: 'Chapter 10: App Architecture and SwiftUI Part I',
                         folder: 'Solutions/chapter10_campus_events_architect/',
-                        readme: 'Solutions/chapter10_campus_events_architect/README.md',
+                        page: 'Solutions/chapter10_campus_events_architect/solution.html',
                         project: 'CampusEventsArchitect'
                     },
                     {
                         title: 'Chapter 11: App Architecture and SwiftUI Part II',
                         folder: 'Solutions/chapter11_campus_events_architect_theory/',
-                        readme: 'Solutions/chapter11_campus_events_architect_theory/README.md',
+                        page: 'Solutions/chapter11_campus_events_architect_theory/solution.html',
                         project: 'CampusEventsArchitect'
                     }
                 ];
@@ -700,7 +701,7 @@
                     var folderPath = solution.folder.replace(/\/$/, '');
 
                     titleCell.setAttribute('scope', 'row');
-                    readmeLink.href = buildPageLink(solution.readme, repoConfig);
+                    readmeLink.href = buildPageLink(solution.page, repoConfig);
                     readmeLink.textContent = solution.title;
                     titleCell.appendChild(readmeLink);
 
@@ -727,7 +728,6 @@
 
             function fetchSolutions(repoConfig) {
                 var apiUrl = 'https://api.github.com/repos/' + repoConfig.owner + '/' + repoConfig.repo + '/git/trees/' + repoConfig.branch + '?recursive=1';
-                var solutionPattern = /^Solutions\/chapter\d+[^/]*\/README\.md$/i;
 
                 return fetch(apiUrl)
                     .then(function (response) {
@@ -743,10 +743,10 @@
 
                         return data.tree
                             .filter(function (item) {
-                                return item.type === 'blob' && solutionPattern.test(item.path);
+                                return item.type === 'blob' && SOLUTION_PATTERN.test(item.path);
                             })
                             .map(function (item) {
-                                var folder = item.path.replace(/README\.md$/i, '');
+                                var folder = item.path.replace(/solution\.html$/i, '');
                                 var chapterMatch = folder.match(/chapter(\d+)/i);
                                 var projectNames = {
                                     '01': 'CampusWelcome',
@@ -764,8 +764,8 @@
                                 return {
                                     title: getSolutionTitle(folder),
                                     folder: folder,
-                                    readme: item.path,
-                                    project: projectNames[chapterKey] || 'See README'
+                                    page: item.path,
+                                    project: projectNames[chapterKey] || 'See solution page'
                                 };
                             });
                     });
@@ -790,7 +790,7 @@
                     var folderPath = solution.folder.replace(/\/$/, '');
 
                     titleCell.setAttribute('scope', 'row');
-                    readmeLink.href = buildPageLink(solution.readme, repoConfig);
+                    readmeLink.href = buildPageLink(solution.page, repoConfig);
                     readmeLink.textContent = solution.title;
                     titleCell.appendChild(readmeLink);
 
