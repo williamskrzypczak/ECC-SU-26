@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="github-repo" content="">
     <meta name="github-branch" content="main">
+    <meta name="github-base-path" content="">
     <title>MAD 157 Lab Exercises</title>
     <style>
         * {
@@ -195,9 +196,16 @@
                 <noscript>
                     <tr>
                         <th scope="row">
-                            <a href="Labs/chapter1_swiftui_environment_lab.html">Chapter 1: SwiftUI Development Environment</a>
+                            <a href="./Labs/chapter1_swiftui_environment_lab.html">Chapter 1: SwiftUI Development Environment</a>
                         </th>
                         <td>Labs/chapter1_swiftui_environment_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter2_swiftui_layouts_lab.html">Chapter 2: Basic UI Elements and Layouts</a>
+                        </th>
+                        <td>Labs/chapter2_swiftui_layouts_lab.html</td>
                         <td>Enable JavaScript to load links from GitHub.</td>
                     </tr>
                 </noscript>
@@ -280,8 +288,46 @@
                 });
             }
 
-            function buildPageLink(path) {
-                return path;
+            function encodeRepoPath(path) {
+                return path.split('/').map(function (segment) {
+                    return encodeURIComponent(segment);
+                }).join('/');
+            }
+
+            function getDirectoryBase() {
+                var url = new URL(window.location.href);
+                var path = url.pathname;
+
+                if (path.endsWith('/') || path === '') {
+                    return url.origin + path;
+                }
+
+                if (/\.html?$/i.test(path)) {
+                    return url.origin + path.substring(0, path.lastIndexOf('/') + 1);
+                }
+
+                return url.origin + path + '/';
+            }
+
+            function buildPageLink(path, repoConfig) {
+                var encodedPath = encodeRepoPath(path);
+                var basePath = getMetaContent('github-base-path');
+
+                if (basePath) {
+                    if (!basePath.endsWith('/')) {
+                        basePath += '/';
+                    }
+                    if (basePath.charAt(0) !== '/') {
+                        basePath = '/' + basePath;
+                    }
+                    return window.location.origin + basePath + encodedPath;
+                }
+
+                if (window.location.hostname.indexOf('.github.io') !== -1 && repoConfig) {
+                    return 'https://' + window.location.hostname + '/' + repoConfig.repo + '/' + encodedPath;
+                }
+
+                return new URL(encodedPath, getDirectoryBase()).href;
             }
 
             function buildGitHubLink(owner, repo, branch, path) {
@@ -313,7 +359,7 @@
                     var githubLink = document.createElement('a');
 
                     titleCell.setAttribute('scope', 'row');
-                    pageLink.href = buildPageLink(lab.path);
+                    pageLink.href = buildPageLink(lab.path, repoConfig);
                     pageLink.textContent = formatLabTitle(lab.path);
                     titleCell.appendChild(pageLink);
 
@@ -361,7 +407,7 @@
                     });
             }
 
-            function renderFallbackLabs() {
+            function renderFallbackLabs(repoConfig) {
                 var tbody = document.getElementById('lab-list');
                 tbody.innerHTML = '';
 
@@ -369,6 +415,10 @@
                     {
                         title: 'Chapter 1: SwiftUI Development Environment',
                         path: 'Labs/chapter1_swiftui_environment_lab.html'
+                    },
+                    {
+                        title: 'Chapter 2: Swiftui Layouts',
+                        path: 'Labs/chapter2_swiftui_layouts_lab.html'
                     }
                 ];
 
@@ -380,7 +430,7 @@
                     var pageLink = document.createElement('a');
 
                     titleCell.setAttribute('scope', 'row');
-                    pageLink.href = lab.path;
+                    pageLink.href = buildPageLink(lab.path, repoConfig);
                     pageLink.textContent = lab.title;
                     titleCell.appendChild(pageLink);
                     fileCell.textContent = lab.path;
@@ -396,7 +446,7 @@
             var repoConfig = getRepoConfig();
 
             if (!repoConfig) {
-                renderFallbackLabs();
+                renderFallbackLabs(null);
                 setStatus('Could not detect a GitHub repo. Add content to the github-repo meta tag, for example owner/repo-name.', true);
                 return;
             }
@@ -404,7 +454,7 @@
             fetchLabs(repoConfig)
                 .then(function (labs) {
                     if (labs.length === 0) {
-                        renderFallbackLabs();
+                        renderFallbackLabs(repoConfig);
                         setStatus('No lab.html files were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.', true);
                         return;
                     }
@@ -412,7 +462,7 @@
                     renderLabs(labs, repoConfig);
                 })
                 .catch(function (error) {
-                    renderFallbackLabs();
+                    renderFallbackLabs(repoConfig);
                     setStatus('Unable to load labs from GitHub (' + error.message + '). Showing local fallback links.', true);
                 });
         })();
