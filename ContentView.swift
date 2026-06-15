@@ -1,61 +1,58 @@
 import SwiftUI
 
-struct EventHeader: View {
-    let title: String
-    let subtitle: String
-
-    var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
-            Text(title)
-                .font(.largeTitle)
-                .fontWeight(.heavy)
-                .foregroundColor(.blue)
-
-            Text(subtitle)
-                .font(.headline)
-                .fontWeight(.bold)
-                .foregroundColor(.secondary)
-        }
-    }
-}
-
 struct ContentView: View {
+    @State private var rsvpCount = 0
+    @State private var isGoing = false
+    @State private var wantsReminder = false
+    @State private var studentName = ""
+    @State private var selectedSession = "6:00 PM"
+
+    let sessions = ["5:00 PM", "6:00 PM", "7:00 PM"]
+
     var body: some View {
-        ZStack(alignment: .topTrailing) {
-            VStack(alignment: .leading, spacing: 16) {
-                EventHeader(
-                    title: "SwiftUI Study Night",
-                    subtitle: "MCC Student Center"
-                )
+        VStack(spacing: 20) {
+            EventCard(
+                eventTitle: "SwiftUI Study Night",
+                location: "MCC Student Center, Room 204"
+            )
 
-                Divider()
+            Text("RSVPs so far: \(rsvpCount)")
+                .font(.headline)
 
-                HStack {
-                    Label("Friday, 6:00 PM", systemImage: "calendar")
-                    Spacer()
-                    Label("Room 204", systemImage: "mappin.and.ellipse")
-                }
-                .font(.subheadline)
-
-                Divider()
-
-                Text("Join us for a hands-on SwiftUI review session.")
-                    .font(.body)
+            if isGoing {
+                Text("You are signed up!")
+                    .foregroundColor(.green)
+                    .fontWeight(.semibold)
+            } else {
+                Text("Tap the button to RSVP.")
+                    .foregroundColor(.secondary)
             }
-            .padding()
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(Color(.systemGray6))
-            .cornerRadius(12)
 
-            Text("Featured")
+            RSVPButton(isGoing: $isGoing, rsvpCount: $rsvpCount)
+
+            Divider()
+
+            Toggle("Send me a reminder", isOn: $wantsReminder)
+
+            TextField("Enter your name", text: $studentName)
+                .textFieldStyle(.roundedBorder)
+
+            if !studentName.isEmpty {
+                Text("Hello, \(studentName)!")
+                    .font(.callout)
+                    .foregroundColor(.blue)
+            }
+
+            Picker("Choose a session", selection: $selectedSession) {
+                ForEach(sessions, id: \.self) { session in
+                    Text(session).tag(session)
+                }
+            }
+            .pickerStyle(.segmented)
+
+            Text("You chose the \(selectedSession) session.")
                 .font(.caption)
-                .fontWeight(.bold)
-                .foregroundColor(.white)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.orange)
-                .cornerRadius(6)
-                .padding(12)
+                .foregroundColor(.secondary)
         }
         .padding()
     }
