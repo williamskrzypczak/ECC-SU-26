@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5 Lab: The Art of Displaying Grids</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 5 Lab: The Art of Displaying Grids</h1>
+
+        <h2>Introduction</h2>
+        <p>You will build a campus course catalog displayed in grid layouts that scroll vertically and horizontally.</p>
+        <p>Lists work well for rows of text. Grids work better when you want a bulletin board or photo wall look. This chapter teaches you how to arrange items in rows and columns.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Build a simple static <code>Grid</code> with <code>GridRow</code></li>
+            <li>Create a scrollable <code>LazyVGrid</code> for vertical grid layouts</li>
+            <li>Configure columns with <code>GridItem</code> (.fixed, .flexible, .adaptive)</li>
+            <li>Build a horizontal <code>LazyHGrid</code> inside a horizontal <code>ScrollView</code></li>
+            <li>Apply conditional formatting to highlight selected grid items</li>
+            <li>Explain how adaptive grids respond to different screen sizes</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>Grid</strong> is like a small spreadsheet with labeled cells. It is great for simple, fixed layouts.</p>
+            <p><strong>LazyVGrid</strong> is like a vending machine that only loads the snacks you can see. <strong>GridItem</strong> sets the shelf rules: fixed width, flexible sharing, or adaptive fitting.</p>
+        </div>
+
+        <table>
+            <caption>grid concepts and simple analogies</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Grid + GridRow</th>
+                    <td>Static rows and columns for small layouts</td>
+                    <td>A spreadsheet with a few labeled cells</td>
+                </tr>
+                <tr>
+                    <th scope="row">LazyVGrid</th>
+                    <td>Vertical grid that loads cells as they appear</td>
+                    <td>A vending machine stocking rows top to bottom</td>
+                </tr>
+                <tr>
+                    <th scope="row">LazyHGrid</th>
+                    <td>Horizontal grid for side-scrolling content</td>
+                    <td>A film strip you pull left and right</td>
+                </tr>
+                <tr>
+                    <th scope="row">GridItem(.fixed)</th>
+                    <td>Column or row with an exact size</td>
+                    <td>A locker with one fixed width</td>
+                </tr>
+                <tr>
+                    <th scope="row">GridItem(.flexible)</th>
+                    <td>Column or row that shares leftover space</td>
+                    <td>Stretchy shelves that expand to fill a wall</td>
+                </tr>
+                <tr>
+                    <th scope="row">GridItem(.adaptive)</th>
+                    <td>Fits as many items as possible per row</td>
+                    <td>Water filling a tray and taking whatever space fits</td>
+                </tr>
+                <tr>
+                    <th scope="row">Conditional formatting</th>
+                    <td>Changes style based on state or data</td>
+                    <td>Highlighting a chosen card on a bulletin board</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>Complete Chapters 1 through 4 first. Open your SwiftUI project or create a new app named <code>CampusCatalog</code>.</p>
+
+        <h2>Lab Scenario: Campus Course Catalog Grid</h2>
+        <p>You will display campus courses in grid layouts. Students browse courses in a vertical grid, swipe through featured courses horizontally, and tap to highlight a favorite.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Build a Simple Static Grid</h3>
+        <p class="chapter-map">Topics: The Grid view and Creating a simple static grid.</p>
+        <p>Start with a small <code>Grid</code> for a fixed schedule preview. This is not scrollable. It works well for a few rows.</p>
+        <pre><code class="language-swift">import SwiftUI
+
+struct SchedulePreview: View {
+    var body: some View {
+        Grid(alignment: .leading, horizontalSpacing: 16, verticalSpacing: 8) {
+            GridRow {
+                Text("Course")
+                    .fontWeight(.bold)
+                Text("Room")
+                    .fontWeight(.bold)
+            }
+            GridRow {
+                Text("SwiftUI I")
+                Text("204")
+            }
+            GridRow {
+                Text("SwiftUI II")
+                Text("210")
+            }
+        }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(10)
+    }
+}</code></pre>
+
+        <h3>Part 2: Create Course Data and a Card View</h3>
+        <p class="chapter-map">Topics: Displaying grids in iOS.</p>
+        <p>Define course data and a card view you will reuse in lazy grids.</p>
+        <pre><code class="language-swift">struct Course: Identifiable {
+    let id = UUID()
+    let code: String
+    let title: String
+    let isFeatured: Bool
+}
+
+let courses: [Course] = [
+    Course(code: "MAD 157", title: "SwiftUI Basics", isFeatured: true),
+    Course(code: "MAD 158", title: "iOS Data", isFeatured: true),
+    Course(code: "MAD 159", title: "App Design", isFeatured: false),
+    Course(code: "MAD 160", title: "Core Data", isFeatured: false),
+    Course(code: "MAD 161", title: "Networking", isFeatured: true),
+    Course(code: "MAD 162", title: "Animations", isFeatured: false),
+    Course(code: "MAD 163", title: "Testing", isFeatured: false),
+    Course(code: "MAD 164", title: "App Store", isFeatured: false)
+]
+
+struct CourseCard: View {
+    let course: Course
+    let isSelected: Bool
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(course.code)
+                .font(.caption)
+                .fontWeight(.bold)
+            Text(course.title)
+                .font(.subheadline)
+                .lineLimit(2)
+        }
+        .frame(maxWidth: .infinity, minHeight: 80, alignment: .leading)
+        .padding()
+        .background(isSelected ? Color.blue.opacity(0.2) : Color(.systemGray6))
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(isSelected ? Color.blue : Color.clear, lineWidth: 2)
+        )
+        .cornerRadius(10)
+    }
+}</code></pre>
+
+        <h3>Part 3: Build a LazyVGrid with GridItem</h3>
+        <p class="chapter-map">Topics: Lazy grids and Using GridItem to control layout.</p>
+        <p>Use three flexible columns for a balanced vertical grid. Wrap it in a <code>ScrollView</code> so users can scroll through many courses.</p>
+        <pre><code class="language-swift">let threeColumns = [
+    GridItem(.flexible()),
+    GridItem(.flexible()),
+    GridItem(.flexible())
+]
+
+ScrollView {
+    LazyVGrid(columns: threeColumns, spacing: 12) {
+        ForEach(courses) { course in
+            CourseCard(course: course, isSelected: false)
+        }
+    }
+    .padding()
+}</code></pre>
+        <p>Try changing one column to <code>GridItem(.fixed(120))</code>. Notice how the first column stays the same width while others flex.</p>
+
+        <h3>Part 4: Use an Adaptive GridItem</h3>
+        <p class="chapter-map">Topics: Scrolling horizontally and sizing the grid automatically, and Reacting to device rotation.</p>
+        <p>Replace your column array with an adaptive layout. SwiftUI fits as many cards per row as the screen allows.</p>
+        <pre><code class="language-swift">let adaptiveColumns = [
+    GridItem(.adaptive(minimum: 140), spacing: 12)
+]</code></pre>
+        <p>Preview on iPhone and iPad sizes. Rotate the simulator. The number of columns should change automatically. This is how grids react to device size.</p>
+
+        <h3>Part 5: Horizontal Featured Courses with LazyHGrid</h3>
+        <p class="chapter-map">Topics: Lazy grids and horizontal scrolling.</p>
+        <p>Show featured courses in a horizontal film strip above the main grid.</p>
+        <pre><code class="language-swift">let featuredRows = [GridItem(.fixed(100))]
+
+ScrollView(.horizontal, showsIndicators: false) {
+    LazyHGrid(rows: featuredRows, spacing: 12) {
+        ForEach(courses.filter { $0.isFeatured }) { course in
+            VStack {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.orange)
+                Text(course.code)
+                    .font(.caption)
+            }
+            .frame(width: 100, height: 100)
+            .background(Color(.systemGray6))
+            .cornerRadius(10)
+        }
+    }
+    .padding(.horizontal)
+}</code></pre>
+
+        <h3>Part 6: Conditional Formatting with Selection</h3>
+        <p class="chapter-map">Topics: Conditional formatting of a view.</p>
+        <p>Let students tap a course card to highlight it. Use <code>@State</code> to track the selected course.</p>
+        <pre><code class="language-swift">struct ContentView: View {
+    @State private var selectedCourseID: UUID?
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 16) {
+                Text("Featured Courses")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+
+                // Horizontal featured strip from Part 5 goes here
+
+                Text("All Courses")
+                    .font(.headline)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal)
+
+                ScrollView {
+                    LazyVGrid(columns: adaptiveColumns, spacing: 12) {
+                        ForEach(courses) { course in
+                            CourseCard(
+                                course: course,
+                                isSelected: selectedCourseID == course.id
+                            )
+                            .onTapGesture {
+                                selectedCourseID = course.id
+                            }
+                        }
+                    }
+                    .padding()
+                }
+            }
+            .navigationTitle("Course Catalog")
+        }
+    }
+}</code></pre>
+        <p>The card border and background change when selected. This is conditional formatting based on state.</p>
+
+        <h4>Task 6.1: Reflection Questions</h4>
+        <p>Answer these in your submission:</p>
+        <ol>
+            <li>When would you use a static <code>Grid</code> instead of a <code>LazyVGrid</code>?</li>
+            <li>What is the difference between <code>GridItem(.flexible())</code> and <code>GridItem(.adaptive(minimum:))</code>?</li>
+            <li>Why does a lazy grid belong inside a <code>ScrollView</code>?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following through Canvas:</p>
+        <ul>
+            <li>Screenshot 1: Static <code>Grid</code> schedule preview</li>
+            <li>Screenshot 2: Vertical <code>LazyVGrid</code> with adaptive columns on iPhone</li>
+            <li>Screenshot 3: Same grid on a wider device or after rotation showing more columns</li>
+            <li>Screenshot 4: Horizontal featured strip and one selected course card</li>
+            <li>Pasted code for <code>ContentView</code>, <code>CourseCard</code>, and the <code>Course</code> model</li>
+            <li>Written answers for the Part 6 reflection questions</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Static Grid with GridRow displays schedule data</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">LazyVGrid uses GridItem with flexible or adaptive sizing</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">LazyHGrid horizontal featured strip works</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tap selection applies conditional formatting</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Screenshots, code, and reflection answers submitted</th>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Grid Items Stack in One Column</h3>
+        <p>Check your <code>GridItem</code> array. Each item defines one column in a <code>LazyVGrid</code>. Use <code>.adaptive(minimum:)</code> with one GridItem to auto-fit many columns.</p>
+
+        <h3>LazyVGrid Does Not Scroll</h3>
+        <p>Wrap the grid in a <code>ScrollView</code>. The grid arranges items but does not scroll by itself.</p>
+
+        <h3>LazyHGrid Shows One Long Row Off Screen</h3>
+        <p>Put <code>LazyHGrid</code> inside <code>ScrollView(.horizontal)</code>. Define rows with <code>GridItem</code>, not columns.</p>
+
+        <h3>Selection Highlight Does Not Appear</h3>
+        <p>Confirm <code>selectedCourseID == course.id</code> is passed to <code>CourseCard</code>. Tap handlers must update <code>selectedCourseID</code> inside the <code>onTapGesture</code> closure.</p>
+
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
