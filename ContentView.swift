@@ -1,60 +1,66 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var rsvpCount = 0
-    @State private var isGoing = false
-    @State private var wantsReminder = false
-    @State private var studentName = ""
-    @State private var selectedSession = "6:00 PM"
+    @State private var searchText = ""
+    @FocusState private var isSearchFocused: Bool
 
-    let sessions = ["5:00 PM", "6:00 PM", "7:00 PM"]
+    let sections = ["C", "D", "E", "F", "G"]
+
+    var filteredClubs: [Club] {
+        if searchText.isEmpty {
+            return campusClubs
+        }
+        return campusClubs.filter {
+            $0.name.localizedCaseInsensitiveContains(searchText)
+        }
+    }
 
     var body: some View {
-        VStack(spacing: 20) {
-            EventCard(
-                eventTitle: "SwiftUI Study Night",
-                location: "MCC Student Center, Room 204"
-            )
+        NavigationStack {
+            ScrollViewReader { proxy in
+                VStack(spacing: 8) {
+                    HStack {
+                        TextField("Search clubs", text: $searchText)
+                            .textFieldStyle(.roundedBorder)
+                            .focused($isSearchFocused)
 
-            Text("RSVPs so far: \(rsvpCount)")
-                .font(.headline)
+                        Button("Done") {
+                            isSearchFocused = false
+                        }
+                    }
+                    .padding(.horizontal)
 
-            if isGoing {
-                Text("You are signed up!")
-                    .foregroundColor(.green)
-                    .fontWeight(.semibold)
-            } else {
-                Text("Tap the button to RSVP.")
-                    .foregroundColor(.secondary)
-            }
+                    HStack {
+                        ForEach(sections, id: \.self) { section in
+                            Button(section) {
+                                withAnimation {
+                                    proxy.scrollTo(section, anchor: .top)
+                                }
+                            }
+                            .buttonStyle(.bordered)
+                        }
+                    }
+                    .padding(.horizontal)
 
-            RSVPButton(isGoing: $isGoing, rsvpCount: $rsvpCount)
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: 16) {
+                            ForEach(sections, id: \.self) { section in
+                                Text(section)
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                                    .id(section)
 
-            Divider()
-
-            Toggle("Send me a reminder", isOn: $wantsReminder)
-
-            TextField("Enter your name", text: $studentName)
-                .textFieldStyle(.roundedBorder)
-
-            if !studentName.isEmpty {
-                Text("Hello, \(studentName)!")
-                    .font(.callout)
-                    .foregroundColor(.blue)
-            }
-
-            Picker("Choose a session", selection: $selectedSession) {
-                ForEach(sessions, id: \.self) { session in
-                    Text(session).tag(session)
+                                ForEach(filteredClubs.filter { $0.section == section }) { club in
+                                    ClubRow(club: club)
+                                }
+                            }
+                        }
+                        .padding()
+                    }
                 }
             }
-            .pickerStyle(.segmented)
-
-            Text("You chose the \(selectedSession) session.")
-                .font(.caption)
-                .foregroundColor(.secondary)
+            .navigationTitle("Campus Clubs")
         }
-        .padding()
     }
 }
 
