@@ -1,18 +1,17 @@
-# Chapter 1 Solution: Campus Welcome
+# Chapter 2 Solution: Campus Event Card
 
 ## Setup
 
-1. Create a new Multiplatform App in Xcode named `CampusWelcome`.
-2. Replace the default app and content files with the Swift files in this folder.
-3. Run the preview and the iOS simulator.
+1. Open your Chapter 1 project or create `CampusEvents`.
+2. Replace `ContentView.swift` with the solution file.
+3. `EventHeader` lives in the same file as `ContentView`.
 
 ## What You Should See
 
-- A blue "Campus Welcome" title
-- A gray border around the padded content
-- Your name in the subtitle (replace "Your Name")
+- Event card with title, location, date, and room
+- Orange "Featured" badge in the top-right corner
+- `Spacer()` pushing date and location to opposite sides
 
-## Files
+## Optional Stretch
 
-- `CampusWelcomeApp.swift` — app entry point with `@main`
-- `ContentView.swift` — welcome screen
+Add `AlignmentDemo` or `GeometryReader` from the lab if you completed Part 6.
