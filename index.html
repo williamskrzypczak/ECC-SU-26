@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="github-repo" content="">
+    <meta name="github-branch" content="main">
+    <meta name="github-base-path" content="">
+    <title>MAD 157 Lab Exercises</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a {
+            color: #005fcc;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .status-message {
+            max-width: 50rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #005fcc;
+            background-color: #f8f9fa;
+        }
+
+        .status-message.error {
+            border-left-color: #b00020;
+            background-color: #ffebee;
+        }
+
+        .repo-info {
+            font-size: 0.9rem;
+            color: #555;
+            max-width: 50rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2 {
+                color: #000;
+            }
+
+            th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <main id="main-content">
+        <h1>MAD 157 Lab Exercises</h1>
+
+        <p>Welcome to the lab hub for MAD 157. This page links to hands-on SwiftUI exercises for each course chapter. Each lab reinforces key concepts through guided practice in Xcode.</p>
+        <p>Select a lab below to open the full instructions. Submit your work through Canvas unless your instructor says otherwise.</p>
+
+        <h2>Available Labs</h2>
+        <p id="lab-status" class="status-message" role="status" aria-live="polite">Loading labs from GitHub...</p>
+        <p id="repo-info" class="repo-info" hidden></p>
+
+        <table>
+            <caption>SwiftUI lab exercises for MAD 157</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Lab</th>
+                    <th scope="col">File</th>
+                    <th scope="col">GitHub</th>
+                </tr>
+            </thead>
+            <tbody id="lab-list">
+                <noscript>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter1_swiftui_environment_lab.html">Chapter 1: SwiftUI Development Environment</a>
+                        </th>
+                        <td>Labs/chapter1_swiftui_environment_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter2_swiftui_layouts_lab.html">Chapter 2: Basic UI Elements and Layouts</a>
+                        </th>
+                        <td>Labs/chapter2_swiftui_layouts_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter3_swiftui_interactivity_lab.html">Chapter 3: Adding Interactivity to a SwiftUI View</a>
+                        </th>
+                        <td>Labs/chapter3_swiftui_interactivity_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter4_swiftui_scrollable_views_lab.html">Chapter 4: Scrollable Views and Lists</a>
+                        </th>
+                        <td>Labs/chapter4_swiftui_scrollable_views_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter5_swiftui_grids_lab.html">Chapter 5: The Art of Displaying Grids</a>
+                        </th>
+                        <td>Labs/chapter5_swiftui_grids_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter6_swiftui_tabs_modals_lab.html">Chapter 6: Tab Bars and Modal View Presentation</a>
+                        </th>
+                        <td>Labs/chapter6_swiftui_tabs_modals_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter7_swiftui_navigation_lab.html">Chapter 7: All About Navigation</a>
+                        </th>
+                        <td>Labs/chapter7_swiftui_navigation_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter14_swiftui_swiftdata_lab.html">Chapter 14: An Introduction to SwiftData</a>
+                        </th>
+                        <td>Labs/chapter14_swiftui_swiftdata_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter15_swiftui_rest_services_lab.html">Chapter 15: Consuming REST Services in SwiftUI</a>
+                        </th>
+                        <td>Labs/chapter15_swiftui_rest_services_lab.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                </noscript>
+            </tbody>
+        </table>
+
+        <h2 id="lab-solutions">Lab Solutions</h2>
+        <p>Reference solutions show what a finished lab looks like. Each chapter has a <code>solution.html</code> page with setup steps and complete Swift code. Try the lab first, then compare your work.</p>
+        <p><a href="./Solutions/index.html">View the Solutions overview</a></p>
+        <p id="solution-status" class="status-message" role="status" aria-live="polite">Loading solutions from GitHub...</p>
+
+        <table>
+            <caption>SwiftUI lab solutions for MAD 157</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Solution</th>
+                    <th scope="col">Folder</th>
+                    <th scope="col">Xcode Project</th>
+                    <th scope="col">GitHub</th>
+                </tr>
+            </thead>
+            <tbody id="solution-list">
+                <noscript>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter01_campus_welcome/solution.html">Chapter 1: SwiftUI Development Environment</a>
+                        </th>
+                        <td>Solutions/chapter01_campus_welcome/</td>
+                        <td>CampusWelcome</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter02_campus_events_layout/solution.html">Chapter 2: Basic UI Elements and Layouts</a>
+                        </th>
+                        <td>Solutions/chapter02_campus_events_layout/</td>
+                        <td>CampusEvents</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter03_campus_events_interactivity/solution.html">Chapter 3: Adding Interactivity to a SwiftUI View</a>
+                        </th>
+                        <td>Solutions/chapter03_campus_events_interactivity/</td>
+                        <td>CampusEvents</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter04_campus_club_directory/solution.html">Chapter 4: Scrollable Views and Lists</a>
+                        </th>
+                        <td>Solutions/chapter04_campus_club_directory/</td>
+                        <td>CampusEvents</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter05_campus_course_catalog/solution.html">Chapter 5: The Art of Displaying Grids</a>
+                        </th>
+                        <td>Solutions/chapter05_campus_course_catalog/</td>
+                        <td>CampusCatalog</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter06_campus_hub/solution.html">Chapter 6: Tab Bars and Modal View Presentation</a>
+                        </th>
+                        <td>Solutions/chapter06_campus_hub/</td>
+                        <td>CampusHub</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter07_campus_navigator/solution.html">Chapter 7: All About Navigation</a>
+                        </th>
+                        <td>Solutions/chapter07_campus_navigator/</td>
+                        <td>CampusNavigator</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter14_campus_notes/solution.html">Chapter 14: An Introduction to SwiftData</a>
+                        </th>
+                        <td>Solutions/chapter14_campus_notes/</td>
+                        <td>CampusNotes</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter15_campus_feed/solution.html">Chapter 15: Consuming REST Services in SwiftUI</a>
+                        </th>
+                        <td>Solutions/chapter15_campus_feed/</td>
+                        <td>CampusFeed</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                </noscript>
+            </tbody>
+        </table>
+
+        <h2>Before You Start</h2>
+        <p>You need a Mac with Xcode 15 or later installed. Download Xcode free from the Mac App Store. Review the matching course chapter before each lab. A paid Apple Developer account is not required for these exercises.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            var LAB_PATTERN = /lab\.html$/i;
+            var SOLUTION_PATTERN = /Solutions\/chapter\d+[^/]*\/solution\.html$/i;
+            var REMOVED_CHAPTER_PATTERN = /chapter(10|11)[_/]/i;
+
+            function isRemovedChapter(path) {
+                return REMOVED_CHAPTER_PATTERN.test(path);
+            }
+
+            function getMetaContent(name) {
+                var meta = document.querySelector('meta[name="' + name + '"]');
+                return meta ? meta.getAttribute('content').trim() : '';
+            }
+
+            function detectRepoFromHost() {
+                var hostMatch = window.location.hostname.match(/^([^.]+)\.github\.io$/);
+                if (!hostMatch) {
+                    return null;
+                }
+
+                var segments = window.location.pathname.split('/').filter(Boolean);
+                if (segments.length === 0) {
+                    return null;
+                }
+
+                return {
+                    owner: hostMatch[1],
+                    repo: segments[0],
+                    branch: getMetaContent('github-branch') || 'main'
+                };
+            }
+
+            function getRepoConfig() {
+                var configured = getMetaContent('github-repo');
+                if (configured && configured.indexOf('/') !== -1) {
+                    var parts = configured.split('/');
+                    return {
+                        owner: parts[0],
+                        repo: parts[1],
+                        branch: getMetaContent('github-branch') || 'main'
+                    };
+                }
+
+                return detectRepoFromHost();
+            }
+
+            function formatLabTitle(path) {
+                var fileName = path.split('/').pop().replace(/\.html$/i, '');
+                var chapterMatch = fileName.match(/chapter\s*(\d+)/i);
+
+                if (chapterMatch) {
+                    var remainder = fileName
+                        .replace(/chapter\d+[_-]?/i, '')
+                        .replace(/[_-]+/g, ' ')
+                        .replace(/\blab\b/gi, '')
+                        .trim();
+
+                    if (remainder) {
+                        return 'Chapter ' + chapterMatch[1] + ': ' + titleCase(remainder);
+                    }
+
+                    return 'Chapter ' + chapterMatch[1] + ' Lab';
+                }
+
+                return titleCase(fileName.replace(/[_-]+/g, ' '));
+            }
+
+            function titleCase(value) {
+                return value.replace(/\w\S*/g, function (word) {
+                    return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+                });
+            }
+
+            function encodeRepoPath(path) {
+                return path.split('/').map(function (segment) {
+                    return encodeURIComponent(segment);
+                }).join('/');
+            }
+
+            function getDirectoryBase() {
+                var url = new URL(window.location.href);
+                var path = url.pathname;
+
+                if (path.endsWith('/') || path === '') {
+                    return url.origin + path;
+                }
+
+                if (/\.html?$/i.test(path)) {
+                    return url.origin + path.substring(0, path.lastIndexOf('/') + 1);
+                }
+
+                return url.origin + path + '/';
+            }
+
+            function buildPageLink(path, repoConfig) {
+                var encodedPath = encodeRepoPath(path);
+                var basePath = getMetaContent('github-base-path');
+
+                if (basePath) {
+                    if (!basePath.endsWith('/')) {
+                        basePath += '/';
+                    }
+                    if (basePath.charAt(0) !== '/') {
+                        basePath = '/' + basePath;
+                    }
+                    return window.location.origin + basePath + encodedPath;
+                }
+
+                if (window.location.hostname.indexOf('.github.io') !== -1 && repoConfig) {
+                    return 'https://' + window.location.hostname + '/' + repoConfig.repo + '/' + encodedPath;
+                }
+
+                return new URL(encodedPath, getDirectoryBase()).href;
+            }
+
+            function buildGitHubLink(owner, repo, branch, path) {
+                return 'https://github.com/' + owner + '/' + repo + '/blob/' + branch + '/' + path;
+            }
+
+            function setStatus(message, isError) {
+                var status = document.getElementById('lab-status');
+                status.textContent = message;
+                status.className = 'status-message' + (isError ? ' error' : '');
+            }
+
+            function setSolutionStatus(message, isError) {
+                var status = document.getElementById('solution-status');
+                if (!status) {
+                    return;
+                }
+                status.textContent = message;
+                status.className = 'status-message' + (isError ? ' error' : '');
+            }
+
+            function renderLabs(labs, repoConfig) {
+                var tbody = document.getElementById('lab-list');
+                var repoInfo = document.getElementById('repo-info');
+
+                tbody.innerHTML = '';
+
+                labs.sort(function (a, b) {
+                    return a.path.localeCompare(b.path, undefined, { numeric: true, sensitivity: 'base' });
+                });
+
+                labs.forEach(function (lab) {
+                    var row = document.createElement('tr');
+                    var titleCell = document.createElement('th');
+                    var fileCell = document.createElement('td');
+                    var githubCell = document.createElement('td');
+                    var pageLink = document.createElement('a');
+                    var githubLink = document.createElement('a');
+
+                    titleCell.setAttribute('scope', 'row');
+                    pageLink.href = buildPageLink(lab.path, repoConfig);
+                    pageLink.textContent = formatLabTitle(lab.path);
+                    titleCell.appendChild(pageLink);
+
+                    fileCell.textContent = lab.path;
+
+                    githubLink.href = buildGitHubLink(repoConfig.owner, repoConfig.repo, repoConfig.branch, lab.path);
+                    githubLink.textContent = 'View on GitHub';
+                    githubLink.setAttribute('rel', 'noopener noreferrer');
+                    githubLink.setAttribute('aria-label', 'View ' + formatLabTitle(lab.path) + ' on GitHub (opens in new tab)');
+                    githubCell.appendChild(githubLink);
+
+                    row.appendChild(titleCell);
+                    row.appendChild(fileCell);
+                    row.appendChild(githubCell);
+                    tbody.appendChild(row);
+                });
+
+                repoInfo.hidden = false;
+                repoInfo.textContent = 'Labs loaded from github.com/' + repoConfig.owner + '/' + repoConfig.repo + ' (' + repoConfig.branch + ' branch).';
+                setStatus('Found ' + labs.length + ' lab file' + (labs.length === 1 ? '' : 's') + '.', false);
+            }
+
+            function fetchLabs(repoConfig) {
+                var apiUrl = 'https://api.github.com/repos/' + repoConfig.owner + '/' + repoConfig.repo + '/git/trees/' + repoConfig.branch + '?recursive=1';
+
+                return fetch(apiUrl)
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('GitHub API returned status ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        if (!data.tree) {
+                            throw new Error('No file tree returned from GitHub.');
+                        }
+
+                        return data.tree
+                            .filter(function (item) {
+                                return item.type === 'blob' && LAB_PATTERN.test(item.path) && !isRemovedChapter(item.path);
+                            })
+                            .map(function (item) {
+                                return { path: item.path };
+                            });
+                    });
+            }
+
+            function renderFallbackLabs(repoConfig) {
+                var tbody = document.getElementById('lab-list');
+                tbody.innerHTML = '';
+
+                var fallbackLabs = [
+                    {
+                        title: 'Chapter 1: SwiftUI Development Environment',
+                        path: 'Labs/chapter1_swiftui_environment_lab.html'
+                    },
+                    {
+                        title: 'Chapter 2: Swiftui Layouts',
+                        path: 'Labs/chapter2_swiftui_layouts_lab.html'
+                    },
+                    {
+                        title: 'Chapter 3: Swiftui Interactivity',
+                        path: 'Labs/chapter3_swiftui_interactivity_lab.html'
+                    },
+                    {
+                        title: 'Chapter 4: Swiftui Scrollable Views',
+                        path: 'Labs/chapter4_swiftui_scrollable_views_lab.html'
+                    },
+                    {
+                        title: 'Chapter 5: Swiftui Grids',
+                        path: 'Labs/chapter5_swiftui_grids_lab.html'
+                    },
+                    {
+                        title: 'Chapter 6: Swiftui Tabs and Modals',
+                        path: 'Labs/chapter6_swiftui_tabs_modals_lab.html'
+                    },
+                    {
+                        title: 'Chapter 7: All About Navigation',
+                        path: 'Labs/chapter7_swiftui_navigation_lab.html'
+                    },
+                    {
+                        title: 'Chapter 14: An Introduction to SwiftData',
+                        path: 'Labs/chapter14_swiftui_swiftdata_lab.html'
+                    },
+                    {
+                        title: 'Chapter 15: Consuming REST Services in SwiftUI',
+                        path: 'Labs/chapter15_swiftui_rest_services_lab.html'
+                    }
+                ];
+
+                fallbackLabs.forEach(function (lab) {
+                    var row = document.createElement('tr');
+                    var titleCell = document.createElement('th');
+                    var fileCell = document.createElement('td');
+                    var githubCell = document.createElement('td');
+                    var pageLink = document.createElement('a');
+
+                    titleCell.setAttribute('scope', 'row');
+                    pageLink.href = buildPageLink(lab.path, repoConfig);
+                    pageLink.textContent = lab.title;
+                    titleCell.appendChild(pageLink);
+                    fileCell.textContent = lab.path;
+                    githubCell.textContent = 'Set meta github-repo to load from GitHub.';
+
+                    row.appendChild(titleCell);
+                    row.appendChild(fileCell);
+                    row.appendChild(githubCell);
+                    tbody.appendChild(row);
+                });
+            }
+
+            function getSolutionTitle(folder) {
+                var titles = {
+                    'Solutions/chapter01_campus_welcome/': 'Chapter 1: SwiftUI Development Environment',
+                    'Solutions/chapter02_campus_events_layout/': 'Chapter 2: Basic UI Elements and Layouts',
+                    'Solutions/chapter03_campus_events_interactivity/': 'Chapter 3: Adding Interactivity to a SwiftUI View',
+                    'Solutions/chapter04_campus_club_directory/': 'Chapter 4: Scrollable Views and Lists',
+                    'Solutions/chapter05_campus_course_catalog/': 'Chapter 5: The Art of Displaying Grids',
+                    'Solutions/chapter06_campus_hub/': 'Chapter 6: Tab Bars and Modal View Presentation',
+                    'Solutions/chapter07_campus_navigator/': 'Chapter 7: All About Navigation',
+                    'Solutions/chapter14_campus_notes/': 'Chapter 14: An Introduction to SwiftData',
+                    'Solutions/chapter15_campus_feed/': 'Chapter 15: Consuming REST Services in SwiftUI'
+                };
+
+                return titles[folder] || formatLabTitle(folder.replace(/\/$/, ''));
+            }
+
+            function renderFallbackSolutions(repoConfig) {
+                var tbody = document.getElementById('solution-list');
+                tbody.innerHTML = '';
+
+                var fallbackSolutions = [
+                    {
+                        title: 'Chapter 1: SwiftUI Development Environment',
+                        folder: 'Solutions/chapter01_campus_welcome/',
+                        page: 'Solutions/chapter01_campus_welcome/solution.html',
+                        project: 'CampusWelcome'
+                    },
+                    {
+                        title: 'Chapter 2: Basic UI Elements and Layouts',
+                        folder: 'Solutions/chapter02_campus_events_layout/',
+                        page: 'Solutions/chapter02_campus_events_layout/solution.html',
+                        project: 'CampusEvents'
+                    },
+                    {
+                        title: 'Chapter 3: Adding Interactivity to a SwiftUI View',
+                        folder: 'Solutions/chapter03_campus_events_interactivity/',
+                        page: 'Solutions/chapter03_campus_events_interactivity/solution.html',
+                        project: 'CampusEvents'
+                    },
+                    {
+                        title: 'Chapter 4: Scrollable Views and Lists',
+                        folder: 'Solutions/chapter04_campus_club_directory/',
+                        page: 'Solutions/chapter04_campus_club_directory/solution.html',
+                        project: 'CampusEvents'
+                    },
+                    {
+                        title: 'Chapter 5: The Art of Displaying Grids',
+                        folder: 'Solutions/chapter05_campus_course_catalog/',
+                        page: 'Solutions/chapter05_campus_course_catalog/solution.html',
+                        project: 'CampusCatalog'
+                    },
+                    {
+                        title: 'Chapter 6: Tab Bars and Modal View Presentation',
+                        folder: 'Solutions/chapter06_campus_hub/',
+                        page: 'Solutions/chapter06_campus_hub/solution.html',
+                        project: 'CampusHub'
+                    },
+                    {
+                        title: 'Chapter 7: All About Navigation',
+                        folder: 'Solutions/chapter07_campus_navigator/',
+                        page: 'Solutions/chapter07_campus_navigator/solution.html',
+                        project: 'CampusNavigator'
+                    },
+                    {
+                        title: 'Chapter 14: An Introduction to SwiftData',
+                        folder: 'Solutions/chapter14_campus_notes/',
+                        page: 'Solutions/chapter14_campus_notes/solution.html',
+                        project: 'CampusNotes'
+                    },
+                    {
+                        title: 'Chapter 15: Consuming REST Services in SwiftUI',
+                        folder: 'Solutions/chapter15_campus_feed/',
+                        page: 'Solutions/chapter15_campus_feed/solution.html',
+                        project: 'CampusFeed'
+                    }
+                ];
+
+                fallbackSolutions.forEach(function (solution) {
+                    var row = document.createElement('tr');
+                    var titleCell = document.createElement('th');
+                    var folderCell = document.createElement('td');
+                    var projectCell = document.createElement('td');
+                    var githubCell = document.createElement('td');
+                    var readmeLink = document.createElement('a');
+                    var githubLink = document.createElement('a');
+                    var folderPath = solution.folder.replace(/\/$/, '');
+
+                    titleCell.setAttribute('scope', 'row');
+                    readmeLink.href = buildPageLink(solution.page, repoConfig);
+                    readmeLink.textContent = solution.title;
+                    titleCell.appendChild(readmeLink);
+
+                    folderCell.textContent = solution.folder;
+                    projectCell.textContent = solution.project;
+
+                    if (repoConfig) {
+                        githubLink.href = buildGitHubLink(repoConfig.owner, repoConfig.repo, repoConfig.branch, folderPath);
+                        githubLink.textContent = 'View on GitHub';
+                        githubLink.setAttribute('rel', 'noopener noreferrer');
+                        githubLink.setAttribute('aria-label', 'View ' + solution.title + ' solution on GitHub (opens in new tab)');
+                        githubCell.appendChild(githubLink);
+                    } else {
+                        githubCell.textContent = 'Set meta github-repo to load from GitHub.';
+                    }
+
+                    row.appendChild(titleCell);
+                    row.appendChild(folderCell);
+                    row.appendChild(projectCell);
+                    row.appendChild(githubCell);
+                    tbody.appendChild(row);
+                });
+
+                setSolutionStatus('Showing local fallback solution links.', true);
+            }
+
+            function fetchSolutions(repoConfig) {
+                var apiUrl = 'https://api.github.com/repos/' + repoConfig.owner + '/' + repoConfig.repo + '/git/trees/' + repoConfig.branch + '?recursive=1';
+
+                return fetch(apiUrl)
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('GitHub API returned status ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        if (!data.tree) {
+                            throw new Error('No file tree returned from GitHub.');
+                        }
+
+                        return data.tree
+                            .filter(function (item) {
+                                return item.type === 'blob' && SOLUTION_PATTERN.test(item.path) && !isRemovedChapter(item.path);
+                            })
+                            .map(function (item) {
+                                var folder = item.path.replace(/solution\.html$/i, '');
+                                var chapterMatch = folder.match(/chapter(\d+)/i);
+                                var projectNames = {
+                                    '01': 'CampusWelcome',
+                                    '02': 'CampusEvents',
+                                    '03': 'CampusEvents',
+                                    '04': 'CampusEvents',
+                                    '05': 'CampusCatalog',
+                                    '06': 'CampusHub',
+                                    '07': 'CampusNavigator',
+                                    '14': 'CampusNotes',
+                                    '15': 'CampusFeed'
+                                };
+                                var chapterKey = chapterMatch ? chapterMatch[1] : '';
+
+                                return {
+                                    title: getSolutionTitle(folder),
+                                    folder: folder,
+                                    page: item.path,
+                                    project: projectNames[chapterKey] || 'See solution page'
+                                };
+                            });
+                    });
+            }
+
+            function renderSolutions(solutions, repoConfig) {
+                var tbody = document.getElementById('solution-list');
+                tbody.innerHTML = '';
+
+                solutions.sort(function (a, b) {
+                    return a.folder.localeCompare(b.folder, undefined, { numeric: true, sensitivity: 'base' });
+                });
+
+                solutions.forEach(function (solution) {
+                    var row = document.createElement('tr');
+                    var titleCell = document.createElement('th');
+                    var folderCell = document.createElement('td');
+                    var projectCell = document.createElement('td');
+                    var githubCell = document.createElement('td');
+                    var readmeLink = document.createElement('a');
+                    var githubLink = document.createElement('a');
+                    var folderPath = solution.folder.replace(/\/$/, '');
+
+                    titleCell.setAttribute('scope', 'row');
+                    readmeLink.href = buildPageLink(solution.page, repoConfig);
+                    readmeLink.textContent = solution.title;
+                    titleCell.appendChild(readmeLink);
+
+                    folderCell.textContent = solution.folder;
+                    projectCell.textContent = solution.project;
+
+                    githubLink.href = buildGitHubLink(repoConfig.owner, repoConfig.repo, repoConfig.branch, folderPath);
+                    githubLink.textContent = 'View on GitHub';
+                    githubLink.setAttribute('rel', 'noopener noreferrer');
+                    githubLink.setAttribute('aria-label', 'View ' + solution.title + ' solution on GitHub (opens in new tab)');
+                    githubCell.appendChild(githubLink);
+
+                    row.appendChild(titleCell);
+                    row.appendChild(folderCell);
+                    row.appendChild(projectCell);
+                    row.appendChild(githubCell);
+                    tbody.appendChild(row);
+                });
+
+                setSolutionStatus(
+                    'Found ' + solutions.length + ' solution' + (solutions.length === 1 ? '' : 's') +
+                    ' from github.com/' + repoConfig.owner + '/' + repoConfig.repo + '.',
+                    false
+                );
+            }
+
+            var repoConfig = getRepoConfig();
+
+            if (!repoConfig) {
+                renderFallbackLabs(null);
+                renderFallbackSolutions(null);
+                setStatus('Could not detect a GitHub repo. Add content to the github-repo meta tag, for example owner/repo-name.', true);
+                return;
+            }
+
+            fetchSolutions(repoConfig)
+                .then(function (solutions) {
+                    if (solutions.length > 0) {
+                        renderSolutions(solutions, repoConfig);
+                        return;
+                    }
+
+                    renderFallbackSolutions(repoConfig);
+                    setSolutionStatus(
+                        'No solution.html files were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.',
+                        true
+                    );
+                })
+                .catch(function (error) {
+                    renderFallbackSolutions(repoConfig);
+                    setSolutionStatus('Unable to load solutions from GitHub (' + error.message + '). Showing local fallback links.', true);
+                });
+
+            fetchLabs(repoConfig)
+                .then(function (labs) {
+                    if (labs.length === 0) {
+                        renderFallbackLabs(repoConfig);
+                        setStatus('No lab.html files were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.', true);
+                        return;
+                    }
+
+                    renderLabs(labs, repoConfig);
+                })
+                .catch(function (error) {
+                    renderFallbackLabs(repoConfig);
+                    setStatus('Unable to load labs from GitHub (' + error.message + '). Showing local fallback links.', true);
+                });
+        })();
+    </script>
+</body>
+</html>
