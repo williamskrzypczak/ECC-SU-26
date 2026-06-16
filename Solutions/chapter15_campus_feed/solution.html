@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 15 Solution: Campus Feed</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 100; }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        pre { background: #f4f4f4; padding: 1rem; border-radius: 5px; overflow-x: auto; margin-bottom: 1rem; max-width: 50rem; border: 1px solid #ddd; }
+        pre code { background: transparent; padding: 0; }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button { display: inline-block; background-color: #005fcc; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .home-nav a:not(.home-button) { margin-left: 1rem; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; font-size: 0.9rem; color: #666; }
+        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } pre { font-size: 0.85em; } }
+        @media (prefers-contrast: high) { body, h1, h2 { color: #000; } pre { border: 2px solid #000; } }
+        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../../index.html">Home</a>
+        <a href="../index.html">All solutions</a>
+    </nav>
+    <main id="main-content">
+        <h1>Chapter 15 Solution: Campus Feed</h1>
+        <p><strong>Xcode project name:</strong> <code>CampusFeed</code></p>
+        <h2>Setup</h2>
+        <ol>            <li>Create a new App project named <code>CampusFeed</code>.</li>            <li>Set deployment target to iOS 16 or later.</li>            <li>Add all Swift files below and replace the default app file.</li>            <li>Run with an active internet connection.</li>        </ol>
+        <h2>What You Should See</h2>
+        <ul>            <li>Loading spinner on first launch</li>            <li>List of announcements from JSONPlaceholder</li>            <li>Pull-to-refresh and toolbar Refresh button</li>            <li>Friendly error message when airplane mode is on</li>            <li>Mock preview works without network</li>        </ul>
+        <h2>Files</h2>
+        <ul>            <li><code>CampusAnnouncement.swift</code> — Decodable model</li>            <li><code>AnnouncementService.swift</code> — live and mock services</li>            <li><code>AnnouncementListViewModel.swift</code> — @Published state</li>            <li><code>AnnouncementListView.swift</code> — feed UI and ContentView</li>            <li><code>CampusFeedApp.swift</code> — app entry point</li>        </ul>
+        <p>Sample written answers for reflection questions are in <code>SAMPLE_ANSWERS.md</code> in this folder.</p>
+        <h2>Solution Code</h2>
+        <p>Copy these files into your Xcode project.</p>        <h3>CampusAnnouncement.swift</h3>        <pre><code class="language-swift">import Foundation
+
+struct CampusAnnouncement: Identifiable, Decodable {
+    let id: Int
+    let title: String
+    let body: String
+}
+</code></pre>        <h3>AnnouncementService.swift</h3>        <pre><code class="language-swift">import Foundation
+
+enum AnnouncementError: Error {
+    case badServerResponse
+    case decodingFailed
+}
+
+protocol AnnouncementServiceProtocol {
+    func fetchAnnouncements() async throws -&gt; [CampusAnnouncement]
+}
+
+struct LiveAnnouncementService: AnnouncementServiceProtocol {
+    private let url = URL(string: &quot;https://jsonplaceholder.typicode.com/posts&quot;)!
+
+    func fetchAnnouncements() async throws -&gt; [CampusAnnouncement] {
+        var request = URLRequest(url: url)
+        request.httpMethod = &quot;GET&quot;
+        request.setValue(&quot;application/json&quot;, forHTTPHeaderField: &quot;Accept&quot;)
+
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        guard let httpResponse = response as? HTTPURLResponse,
+              httpResponse.statusCode == 200 else {
+            throw AnnouncementError.badServerResponse
+        }
+
+        do {
+            return try JSONDecoder().decode([CampusAnnouncement].self, from: data)
+        } catch {
+            throw AnnouncementError.decodingFailed
+        }
+    }
+}
+
+struct MockAnnouncementService: AnnouncementServiceProtocol {
+    func fetchAnnouncements() async throws -&gt; [CampusAnnouncement] {
+        [
+            CampusAnnouncement(
+                id: 1,
+                title: &quot;Club Fair Friday&quot;,
+                body: &quot;Meet student organizations in the quad.&quot;
+            ),
+            CampusAnnouncement(
+                id: 2,
+                title: &quot;Library Extended Hours&quot;,
+                body: &quot;Open until midnight during finals week.&quot;
+            )
+        ]
+    }
+}
+</code></pre>        <h3>AnnouncementListViewModel.swift</h3>        <pre><code class="language-swift">import Foundation
+
+@MainActor
+final class AnnouncementListViewModel: ObservableObject {
+    @Published var announcements: [CampusAnnouncement] = []
+    @Published var isLoading = false
+    @Published var errorMessage: String?
+
+    private let service: AnnouncementServiceProtocol
+
+    init(service: AnnouncementServiceProtocol = LiveAnnouncementService()) {
+        self.service = service
+    }
+
+    func loadAnnouncements() async {
+        isLoading = true
+        errorMessage = nil
+
+        do {
+            announcements = try await service.fetchAnnouncements()
+        } catch {
+            errorMessage = &quot;Could not load announcements. Check your connection and try again.&quot;
+        }
+
+        isLoading = false
+    }
+}
+</code></pre>        <h3>AnnouncementListView.swift</h3>        <pre><code class="language-swift">import SwiftUI
+
+struct AnnouncementListView: View {
+    @ObservedObject var viewModel: AnnouncementListViewModel
+
+    var body: some View {
+        NavigationStack {
+            Group {
+                if viewModel.isLoading &amp;&amp; viewModel.announcements.isEmpty {
+                    ProgressView(&quot;Loading announcements…&quot;)
+                } else if let errorMessage = viewModel.errorMessage,
+                          viewModel.announcements.isEmpty {
+                    ContentUnavailableView(
+                        &quot;Unable to Load&quot;,
+                        systemImage: &quot;wifi.exclamationmark&quot;,
+                        description: Text(errorMessage)
+                    )
+                } else {
+                    List(viewModel.announcements) { announcement in
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(announcement.title)
+                                .font(.headline)
+                                .lineLimit(2)
+                            Text(announcement.body)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                                .lineLimit(2)
+                        }
+                        .padding(.vertical, 4)
+                    }
+                    .refreshable {
+                        await viewModel.loadAnnouncements()
+                    }
+                }
+            }
+            .navigationTitle(&quot;Campus Feed&quot;)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(&quot;Refresh&quot;) {
+                        Task {
+                            await viewModel.loadAnnouncements()
+                        }
+                    }
+                }
+            }
+            .task {
+                await viewModel.loadAnnouncements()
+            }
+        }
+    }
+}
+
+struct ContentView: View {
+    @StateObject private var viewModel = AnnouncementListViewModel()
+
+    var body: some View {
+        AnnouncementListView(viewModel: viewModel)
+    }
+}
+
+#Preview(&quot;Mock Data&quot;) {
+    let viewModel = AnnouncementListViewModel(service: MockAnnouncementService())
+    return AnnouncementListView(viewModel: viewModel)
+        .task { await viewModel.loadAnnouncements() }
+}
+</code></pre>        <h3>CampusFeedApp.swift</h3>        <pre><code class="language-swift">import SwiftUI
+
+@main
+struct CampusFeedApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
+</code></pre>        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
