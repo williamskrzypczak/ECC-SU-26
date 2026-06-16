@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 14 Lab: An Introduction to SwiftData</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 14 Lab: An Introduction to SwiftData</h1>
+
+        <h2>Introduction</h2>
+        <p>You will build <code>CampusNotes</code>, a simple app that saves notes on the device. Notes stay after you close the app. That is persistence — data that outlives one launch.</p>
+        <p>SwiftData is Apple's modern way to store app data with SwiftUI. You describe your data with Swift classes instead of drawing diagrams in a separate editor.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Explain how SwiftData differs from Core Data in plain language</li>
+            <li>Define a persistent model with the <code>@Model</code> macro</li>
+            <li>Attach a <code>ModelContainer</code> to your app entry point</li>
+            <li>Fetch saved data with <code>@Query</code> in a SwiftUI view</li>
+            <li>Insert and delete records using <code>modelContext</code></li>
+            <li>Edit saved objects with <code>@Bindable</code> two-way bindings</li>
+            <li>Describe one-to-many relationships and cascade delete rules</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>SwiftData</strong> is like a smart campus locker. You label what goes inside with Swift code. The system handles the lock, shelf, and inventory list.</p>
+            <p><strong>Core Data</strong> is the older manual ledger system. It still works, but setup takes more steps and separate tools.</p>
+            <p><strong>ModelContainer</strong> is the storage building. <strong>ModelContext</strong> is the clerk at the front desk who files, updates, and removes items.</p>
+            <p><strong>@Query</strong> is a live bulletin board. When data changes in storage, the board updates on its own.</p>
+        </div>
+
+        <table>
+            <caption>SwiftData concepts and simple analogies</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Model</th>
+                    <td>Marks a Swift class as data SwiftData can save</td>
+                    <td>A locker label that tells the system what belongs inside</td>
+                </tr>
+                <tr>
+                    <th scope="row">ModelContainer</th>
+                    <td>Owns the database file and schema for your models</td>
+                    <td>The storage building on campus</td>
+                </tr>
+                <tr>
+                    <th scope="row">ModelContext</th>
+                    <td>Performs insert, update, and delete operations</td>
+                    <td>The clerk who files papers at the front desk</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Query</th>
+                    <td>Loads data into a view and refreshes when data changes</td>
+                    <td>A bulletin board that updates when new flyers arrive</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Bindable</th>
+                    <td>Creates two-way bindings to a stored model in a form</td>
+                    <td>An editable sticky note still pinned to the board</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Relationship</th>
+                    <td>Links two models, such as a folder and its notes</td>
+                    <td>A binder that holds many sheets of paper</td>
+                </tr>
+                <tr>
+                    <th scope="row">Cascade delete</th>
+                    <td>Deleting a parent can delete its children automatically</td>
+                    <td>Throwing away a binder also tosses the pages inside</td>
+                </tr>
+                <tr>
+                    <th scope="row">#Predicate</th>
+                    <td>Filters which records <code>@Query</code> loads</td>
+                    <td>Asking the clerk for only pinned notes</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>Complete Chapters 1 through 7 first. You need <code>NavigationStack</code>, <code>List</code>, and basic SwiftUI state from earlier labs.</p>
+        <p>Create a new SwiftUI app named <code>CampusNotes</code>. Set the deployment target to <strong>iOS 17 or later</strong>. SwiftData requires iOS 17. Use Xcode 15 or newer.</p>
+        <p>When Xcode asks about storage, choose <strong>None</strong>. You will add SwiftData yourself so you understand each piece.</p>
+
+        <h2>Lab Scenario: Campus Notes That Stick Around</h2>
+        <p>Students need quick notes for classes, club meetings, and study plans. Your app shows a list of notes, lets users add new ones, edit them, and delete them. After a force quit and relaunch, the notes must still be there.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: SwiftData vs Core Data</h3>
+        <p class="chapter-map">Topics: SwiftData versus Core Data; SwiftData and SwiftUI.</p>
+        <p>Before you write code, answer these three questions in your own words. One or two sentences each is enough.</p>
+        <ol>
+            <li>What problem does persistence solve in a mobile app?</li>
+            <li>Why might a new SwiftUI project choose SwiftData over Core Data?</li>
+            <li>What are the two main jobs of <code>ModelContainer</code> and <code>ModelContext</code>?</li>
+        </ol>
+        <p>Use the analogy box above if you get stuck. There is no single perfect answer. Focus on clear, simple explanations.</p>
+
+        <h3>Part 2: Create a @Model Class</h3>
+        <p class="chapter-map">Topics: Creating data models with @Model.</p>
+        <p>Add a new Swift file named <code>CampusNote.swift</code>. Import SwiftData and mark the class with <code>@Model</code>.</p>
+        <pre><code class="language-swift">import Foundation
+import SwiftData
+
+@Model
+final class CampusNote {
+    var title: String
+    var body: String
+    var createdAt: Date
+    var isPinned: Bool
+
+    init(title: String, body: String = "", isPinned: Bool = false) {
+        self.title = title
+        self.body = body
+        self.createdAt = Date()
+        self.isPinned = isPinned
+    }
+}</code></pre>
+        <p>The <code>@Model</code> macro turns this class into something SwiftData can store on disk. You write normal Swift properties. SwiftData handles the SQLite details behind the scenes.</p>
+
+        <h3>Part 3: Wire Up the ModelContainer</h3>
+        <p class="chapter-map">Topics: SwiftData and SwiftUI integration; fetching data.</p>
+        <p>Open your app file (for example, <code>CampusNotesApp.swift</code>). Import SwiftData and attach <code>.modelContainer(for:)</code> to the <code>WindowGroup</code>.</p>
+        <pre><code class="language-swift">import SwiftUI
+import SwiftData
+
+@main
+struct CampusNotesApp: App {
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+        .modelContainer(for: CampusNote.self)
+    }
+}</code></pre>
+        <p>This one line creates storage for <code>CampusNote</code> and injects a <code>ModelContext</code> into the SwiftUI environment. Every child view can reach the clerk at the desk through <code>@Environment(\.modelContext)</code>.</p>
+
+        <h3>Part 4: Display Notes with @Query</h3>
+        <p class="chapter-map">Topics: Fetching data; filtering with predicates.</p>
+        <p>Replace the default <code>ContentView</code> with a list that reads saved notes. Use <code>@Query</code> to fetch them sorted by date.</p>
+        <pre><code class="language-swift">import SwiftUI
+import SwiftData
+
+struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \CampusNote.createdAt, order: .reverse) private var notes: [CampusNote]
+
+    var body: some View {
+        NavigationStack {
+            List(notes) { note in
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(note.title)
+                        .font(.headline)
+                    Text(note.createdAt.formatted(date: .abbreviated, time: .shortened))
+                        .font(.caption)
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .navigationTitle("Campus Notes")
+            .overlay {
+                if notes.isEmpty {
+                    ContentUnavailableView(
+                        "No Notes Yet",
+                        systemImage: "note.text",
+                        description: Text("Add your first campus note.")
+                    )
+                }
+            }
+        }
+    }
+}</code></pre>
+        <p>Run the app. The list is empty because nothing is saved yet. That is expected.</p>
+        <p><strong>Optional stretch:</strong> Add a second <code>@Query</code> that only loads pinned notes using a predicate:</p>
+        <pre><code class="language-swift">@Query(filter: #Predicate&lt;CampusNote&gt; { $0.isPinned == true },
+      sort: \CampusNote.createdAt, order: .reverse)
+private var pinnedNotes: [CampusNote]</code></pre>
+
+        <h3>Part 5: Add and Delete Notes</h3>
+        <p class="chapter-map">Topics: ModelContext insert and delete operations.</p>
+        <p>Add a text field and buttons so users can create notes. Use <code>modelContext.insert(_:)</code> to save and swipe-to-delete to remove.</p>
+        <pre><code class="language-swift">struct ContentView: View {
+    @Environment(\.modelContext) private var modelContext
+    @Query(sort: \CampusNote.createdAt, order: .reverse) private var notes: [CampusNote]
+    @State private var newTitle = ""
+
+    var body: some View {
+        NavigationStack {
+            List {
+                ForEach(notes) { note in
+                    NavigationLink(value: note) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(note.title)
+                                .font(.headline)
+                            if note.isPinned {
+                                Text("Pinned")
+                                    .font(.caption)
+                                    .foregroundStyle(.orange)
+                            }
+                        }
+                    }
+                }
+                .onDelete(perform: deleteNotes)
+            }
+            .navigationDestination(for: CampusNote.self) { note in
+                NoteDetailView(note: note)
+            }
+            .navigationTitle("Campus Notes")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Sample") {
+                        addSampleNote()
+                    }
+                }
+            }
+            .safeAreaInset(edge: .bottom) {
+                HStack {
+                    TextField("Note title", text: $newTitle)
+                        .textFieldStyle(.roundedBorder)
+                    Button("Add") {
+                        addNote()
+                    }
+                    .disabled(newTitle.trimmingCharacters(in: .whitespaces).isEmpty)
+                }
+                .padding()
+            }
+        }
+    }
+
+    private func addNote() {
+        let trimmed = newTitle.trimmingCharacters(in: .whitespaces)
+        guard !trimmed.isEmpty else { return }
+        modelContext.insert(CampusNote(title: trimmed))
+        newTitle = ""
+    }
+
+    private func addSampleNote() {
+        modelContext.insert(
+            CampusNote(title: "Study for MAD 157", body: "Review SwiftData lab.")
+        )
+    }
+
+    private func deleteNotes(at offsets: IndexSet) {
+        for index in offsets {
+            modelContext.delete(notes[index])
+        }
+    }
+}</code></pre>
+        <p>Add a note, then force quit the simulator and relaunch. Your note should still appear. That proves persistence works.</p>
+
+        <h3>Part 6: Edit a Note with @Bindable</h3>
+        <p class="chapter-map">Topics: Binding changes with @Bindable and @Observable models.</p>
+        <p>Create <code>NoteDetailView.swift</code>. Use <code>@Bindable</code> so text fields write changes back to the saved model.</p>
+        <pre><code class="language-swift">import SwiftUI
+import SwiftData
+
+struct NoteDetailView: View {
+    @Bindable var note: CampusNote
+
+    var body: some View {
+        Form {
+            TextField("Title", text: $note.title)
+            TextField("Body", text: $note.body, axis: .vertical)
+                .lineLimit(3...8)
+            Toggle("Pin this note", isOn: $note.isPinned)
+        }
+        .navigationTitle("Edit Note")
+    }
+}</code></pre>
+        <p>Tap a note in the list, change the title, go back, and tap again. The edit should stick without extra save code. SwiftData autosaves when the context changes.</p>
+        <p>Why <code>@Bindable</code> instead of <code>@State</code>? <code>@State</code> is for short-lived view data. <code>@Bindable</code> connects form controls to a persistent object that lives in the database.</p>
+
+        <h3>Part 7: Relationships and Cascade Delete</h3>
+        <p class="chapter-map">Topics: One-to-many relationships; cascading deletion rules.</p>
+        <p>Real apps group data. A folder holds many notes. Add a second model and link it to <code>CampusNote</code>.</p>
+        <p>Create <code>CampusFolder.swift</code>:</p>
+        <pre><code class="language-swift">import Foundation
+import SwiftData
+
+@Model
+final class CampusFolder {
+    var name: String
+
+    @Relationship(deleteRule: .cascade, inverse: \CampusNote.folder)
+    var notes: [CampusNote]
+
+    init(name: String, notes: [CampusNote] = []) {
+        self.name = name
+        self.notes = notes
+    }
+}</code></pre>
+        <p>Add an optional folder property to <code>CampusNote</code>:</p>
+        <pre><code class="language-swift">var folder: CampusFolder?</code></pre>
+        <p>Update your app file so the container knows about both models:</p>
+        <pre><code class="language-swift">.modelContainer(for: [CampusNote.self, CampusFolder.self])</code></pre>
+        <p>In <code>addSampleNote()</code>, create a folder and attach a note to it:</p>
+        <pre><code class="language-swift">private func addSampleNote() {
+    let folder = CampusFolder(name: "MAD 157")
+    let note = CampusNote(title: "Study SwiftData", body: "Finish lab by Friday.")
+    note.folder = folder
+    folder.notes.append(note)
+    modelContext.insert(folder)
+    modelContext.insert(note)
+}</code></pre>
+        <p>The <code>.cascade</code> rule means deleting a folder also deletes its notes — like throwing away a binder with pages still inside.</p>
+
+        <h4>Task 7.1: Reflection Questions</h4>
+        <p>Answer these in your submission:</p>
+        <ol>
+            <li>What is a one-to-many relationship in this lab? Name the parent and the children.</li>
+            <li>What would happen if you deleted a folder but used <code>deleteRule: .nullify</code> instead of <code>.cascade</code>?</li>
+            <li>Why does <code>@Query</code> refresh the list when you insert a note?</li>
+            <li>When would you filter with <code>#Predicate</code> instead of loading every record?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following through Canvas:</p>
+        <ul>
+            <li>Screenshot 1: Empty state or list with at least two notes</li>
+            <li>Screenshot 2: Note detail screen with edited title and body</li>
+            <li>Screenshot 3: App relaunched showing notes still present</li>
+            <li>Pasted code for <code>CampusNote</code>, <code>CampusFolder</code>, <code>ContentView</code>, <code>NoteDetailView</code>, and your app file</li>
+            <li>Written answers for Part 1 and Part 7 reflection questions</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">@Model classes defined correctly with required properties</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">ModelContainer attached at app root for all models</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Query displays sorted notes in a NavigationStack list</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Insert and delete work through modelContext</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Bindable detail view edits persist after navigating back</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Folder-to-notes relationship with cascade rule demonstrated or explained</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th scope="row">Screenshots, code, and written answers submitted</th>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>@Query Returns an Empty List After Adding Data</h3>
+        <p>Confirm <code>.modelContainer(for:)</code> is on the <code>WindowGroup</code>, not on a child view alone. Check that you call <code>modelContext.insert(_:)</code> and that your model has <code>@Model</code> at the class level.</p>
+
+        <h3>Cannot Find SwiftData Types</h3>
+        <p>Add <code>import SwiftData</code> to every file that uses <code>@Model</code>, <code>@Query</code>, or <code>modelContext</code>. Set the deployment target to iOS 17 or later.</p>
+
+        <h3>Edits in NoteDetailView Do Not Save</h3>
+        <p>Use <code>@Bindable var note</code>, not <code>let note</code> without a binding wrapper. Bind text fields with <code>$note.title</code> and <code>$note.body</code>.</p>
+
+        <h3>App Crashes After Adding CampusFolder</h3>
+        <p>When you add a new model, update <code>.modelContainer(for:)</code> to include every <code>@Model</code> type. Clean the build folder and delete the app from the simulator to reset old storage during development.</p>
+
+        <h3>Relationship Errors or Missing Inverse</h3>
+        <p>Both sides of a relationship must link to each other. The <code>inverse:</code> parameter on <code>@Relationship</code> must point to the property on the other model.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
