@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0 Lab: Trello Basics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Lab: Trello Basics</h1>
+
+        <h2>Introduction</h2>
+        <p>You will learn how to plan and track project tasks using Trello. Trello organizes work on a board with columns and cards you can drag between stages.</p>
+        <p>Think of Trello like sticky notes on a whiteboard. Each note is a task. You move notes across columns as work progresses. This lab takes about 60 to 75 minutes. Complete it after the GitHub and Figma labs and before the Chapter 1 SwiftUI lab.</p>
+        <p>You will plan the same Campus Welcome app you design in Figma and build in Chapter 1. All work happens at <a href="https://trello.com" rel="noopener noreferrer" aria-label="Trello website (opens in new tab)">trello.com</a> in your browser.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Explain board, list, card, label, checklist, due date, member, and comment</li>
+            <li>Create a board with To Do, In Progress, and Done lists</li>
+            <li>Add and edit cards with descriptions</li>
+            <li>Apply labels and due dates</li>
+            <li>Add a checklist to break a card into steps</li>
+            <li>Move cards across lists to track progress</li>
+            <li>Share a board link with view or edit access</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>A board is your project whiteboard.</strong> Lists are columns like To Do and Done. Cards are individual tasks written on sticky notes.</p>
+            <p><strong>Drag cards to show progress.</strong> Labels add color-coded categories. Checklists break one task into smaller steps. Comments let you leave notes on any card.</p>
+        </div>
+
+        <table>
+            <caption>Trello concepts and real-world parallels</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Real-world parallel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Board</th>
+                    <td>A project workspace</td>
+                    <td>A whiteboard for one project</td>
+                </tr>
+                <tr>
+                    <th scope="row">List</th>
+                    <td>A column of related cards</td>
+                    <td>A stage like "To Do" or "Done"</td>
+                </tr>
+                <tr>
+                    <th scope="row">Card</th>
+                    <td>One task or idea</td>
+                    <td>A sticky note with details</td>
+                </tr>
+                <tr>
+                    <th scope="row">Label</th>
+                    <td>Color tag for category or priority</td>
+                    <td>Colored dot on a folder tab</td>
+                </tr>
+                <tr>
+                    <th scope="row">Checklist</th>
+                    <td>Subtasks inside a card</td>
+                    <td>A to-do list on one sticky note</td>
+                </tr>
+                <tr>
+                    <th scope="row">Due date</th>
+                    <td>Deadline on a card</td>
+                    <td>Date written in the corner</td>
+                </tr>
+                <tr>
+                    <th scope="row">Member</th>
+                    <td>Person assigned to the board or card</td>
+                    <td>Name on the task owner line</td>
+                </tr>
+                <tr>
+                    <th scope="row">Comment</th>
+                    <td>Message thread on a card</td>
+                    <td>Notes back and forth on a task</td>
+                </tr>
+                <tr>
+                    <th scope="row">Activity</th>
+                    <td>Automatic log of changes</td>
+                    <td>History of who moved what</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>You need a computer with a modern web browser and internet access. Create a free Trello account at <a href="https://trello.com/signup" rel="noopener noreferrer" aria-label="Create a Trello account (opens in new tab)">trello.com/signup</a> if you do not have one yet. Complete the Chapter 0 GitHub and Figma labs first.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Set Up Trello and Tour the Interface</h3>
+        <p class="chapter-map">Topics: Trello account, board view, and main panels.</p>
+        <ol>
+            <li>Go to <a href="https://trello.com" rel="noopener noreferrer" aria-label="Trello website (opens in new tab)">trello.com</a> and sign in or create an account.</li>
+            <li>From the home screen, click <strong>Create new</strong> or <strong>+ Create</strong>. Choose <strong>Create board</strong>.</li>
+            <li>Find these areas on screen:
+                <ul>
+                    <li><strong>Board title</strong> — top of the page (name your project here)</li>
+                    <li><strong>Lists</strong> — vertical columns across the board</li>
+                    <li><strong>Add a card</strong> — link at the bottom of each list</li>
+                    <li><strong>Card detail panel</strong> — opens when you click a card</li>
+                    <li><strong>Menu</strong> — board options on the right side</li>
+                </ul>
+            </li>
+        </ol>
+        <p>Take a screenshot of your new empty board. Note the five areas listed above. You will submit this later.</p>
+
+        <h3>Part 2: Create Board and Lists</h3>
+        <p class="chapter-map">Topics: Board setup and Kanban columns.</p>
+        <ol>
+            <li>Name the board <code>Campus Welcome App Sprint</code>.</li>
+            <li>Click <strong>Add another list</strong> until you have three lists.</li>
+            <li>Rename the lists to <code>To Do</code>, <code>In Progress</code>, and <code>Done</code>.</li>
+            <li>Click the board title or open the board menu. Add a description: <code>Plan tasks for the Chapter 1 Campus Welcome SwiftUI app</code>.</li>
+        </ol>
+        <p>These three lists form a simple Kanban workflow. Tasks start in To Do and move right as you finish them.</p>
+
+        <h3>Part 3: Add Cards</h3>
+        <p class="chapter-map">Topics: Creating tasks and writing descriptions.</p>
+        <p>In the <strong>To Do</strong> list, click <strong>Add a card</strong> and create these four cards:</p>
+        <ul>
+            <li><code>Set up Xcode project</code></li>
+            <li><code>Build ContentView welcome screen</code></li>
+            <li><code>Test in preview and simulator</code></li>
+            <li><code>Push project to GitHub</code></li>
+        </ul>
+        <p>Click the <code>Set up Xcode project</code> card to open it. Add a <strong>Description</strong> with one sentence, such as: <code>Create a new Multiplatform SwiftUI app named CampusWelcome in Xcode.</code></p>
+        <p>Take a screenshot showing all four cards in the To Do list.</p>
+
+        <h3>Part 4: Labels and Due Dates</h3>
+        <p class="chapter-map">Topics: Color-coded categories and deadlines.</p>
+        <ol>
+            <li>Open any card. Click <strong>Labels</strong> on the right side of the card panel.</li>
+            <li>Create three labels: <code>Setup</code> (green), <code>Coding</code> (blue), and <code>High priority</code> (red).</li>
+            <li>Apply labels to your cards. For example, put <code>Setup</code> on the Xcode project card and <code>Coding</code> on the ContentView card.</li>
+            <li>Click <strong>Dates</strong> on a card. Set a <strong>Due date</strong> on at least two cards. Use dates within the current week.</li>
+            <li>Enable <strong>Show on front of card</strong> for labels so colors appear on the board view.</li>
+        </ol>
+        <p>Take a screenshot of an open card showing its description, labels, and due date.</p>
+
+        <h3>Part 5: Checklists</h3>
+        <p class="chapter-map">Topics: Breaking a task into smaller steps.</p>
+        <ol>
+            <li>Open the <code>Build ContentView welcome screen</code> card.</li>
+            <li>Click <strong>Checklist</strong> on the right side. Name it <code>Steps</code>.</li>
+            <li>Add at least three checklist items:
+                <ul>
+                    <li><code>Add title text</code></li>
+                    <li><code>Add student name</code></li>
+                    <li><code>Add SwiftUI modifiers</code></li>
+                </ul>
+            </li>
+            <li>Check off one item to mark it complete.</li>
+        </ol>
+        <p>Take a screenshot showing the checklist with at least one item checked.</p>
+
+        <h3>Part 6: Move Cards Through the Workflow</h3>
+        <p class="chapter-map">Topics: Drag and drop, comments, and activity log.</p>
+        <ol>
+            <li>Drag <code>Set up Xcode project</code> from <strong>To Do</strong> to <strong>In Progress</strong>.</li>
+            <li>Drag one task you consider finished to <strong>Done</strong>.</li>
+            <li>Click the card in <strong>Done</strong>. Add a <strong>Comment</strong> noting what you finished. Example: <code>Created the CampusWelcome project in Xcode.</code></li>
+            <li>Scroll down on the card to view the <strong>Activity</strong> feed. It shows when the card moved and who added the comment.</li>
+        </ol>
+        <p>Take a screenshot of the board with cards in different lists.</p>
+
+        <h3>Part 7: Share the Board</h3>
+        <p class="chapter-map">Topics: Sharing and submitting your work.</p>
+        <ol>
+            <li>Click <strong>Share</strong> at the top of the board.</li>
+            <li>Set link access to <strong>Anyone with the link can view</strong>. Or invite your instructor by email if they provide one.</li>
+            <li>Copy the board URL.</li>
+            <li>Save the link. You will submit it with your other deliverables.</li>
+        </ol>
+
+        <h2>Reflection Questions</h2>
+        <p>Answer each question in one sentence:</p>
+        <ol>
+            <li>What is the difference between a list and a card?</li>
+            <li>Why use labels on cards?</li>
+            <li>How does moving a card to Done help a team?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following to your instructor:</p>
+        <ul>
+            <li>Your Trello board share link</li>
+            <li>Screenshot 1: Board with three lists and at least four cards</li>
+            <li>Screenshot 2: Card open showing description, labels, and due date</li>
+            <li>Screenshot 3: Checklist with at least one item checked</li>
+            <li>Screenshot 4: Board showing cards in different lists</li>
+            <li>Your three reflection answers</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Board created with To Do, In Progress, Done lists</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">At least four project-related cards with one description</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Labels and due dates applied</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Checklist with progress marked</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Cards moved across lists with a comment on Done card</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th scope="row">Share link submitted</th>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Cannot Create Lists</h3>
+        <p>Click <strong>Add another list</strong> at the right edge of the board. If you only see one list, scroll horizontally to find the add button.</p>
+
+        <h3>Card Detail Panel Missing</h3>
+        <p>Click the card title itself, not the empty space below it. The detail panel opens on the right side of the screen.</p>
+
+        <h3>Labels Not Visible on the Board</h3>
+        <p>Open the card and click <strong>Labels</strong>. Check <strong>Show on front of card</strong> for each label you want to display.</p>
+
+        <h3>Drag and Drop Does Not Work</h3>
+        <p>Grab the card by its title bar. Do not click the <strong>Add a card</strong> field below the cards.</p>
+
+        <h3>Share Link Not Copying</h3>
+        <p>Click <strong>Share</strong> at the top of the board. Make sure link sharing is turned on before copying the URL.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
