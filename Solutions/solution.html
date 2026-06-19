@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 0 Solution: GitHub and Xcode Source Control</title>
+    <title>Chapter 0 Solution: Figma Basics</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 1rem; }
@@ -47,170 +47,144 @@
     </nav>
 
     <main id="main-content">
-        <h1>Chapter 0 Solution: GitHub and Xcode Source Control</h1>
-        <p><strong>Xcode project name:</strong> <code>GitPractice</code></p>
-        <p>This reference shows the expected Git workflow for the Chapter 0 lab. There is no Swift source code to copy. Your finished repo history is the solution.</p>
+        <h1>Chapter 0 Solution: Figma Basics</h1>
+        <p><strong>Project name:</strong> <code>CampusWelcomeWireframe</code></p>
+        <p>This reference shows the expected wireframe for the Chapter 0 Figma lab. There is no code to copy. Your finished Figma file is the solution.</p>
+
+        <h2>Layer Checklist</h2>
+        <p>Your completed file should include these layers:</p>
+        <ul>
+            <li>File: <code>Campus Welcome Wireframe</code></li>
+            <li>Frame: <code>Welcome Screen</code> (iPhone 15 size)</li>
+            <li>Frame: <code>Detail Screen</code> (duplicate of Welcome Screen)</li>
+            <li>Text: <code>Campus Welcome</code> (title on Welcome Screen)</li>
+            <li>Text: <code>Built by Your Name</code> (subtitle)</li>
+            <li>Text: <code>Learning SwiftUI one view at a time</code> (tagline)</li>
+            <li>Component: <code>PrimaryButton</code> with label <code>Get Started</code></li>
+            <li>Auto layout group wrapping title, subtitle, tagline, and button</li>
+            <li>Prototype link: Get Started → Detail Screen</li>
+        </ul>
+
+        <h2>Design Spec</h2>
+        <table>
+            <caption>Suggested sizes, colors, and spacing</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Element</th>
+                    <th scope="col">Spec</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Frame size</th>
+                    <td>iPhone 15 preset (393 × 852 px)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Title</th>
+                    <td>28px, Bold, color <code>#005FCC</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Subtitle</th>
+                    <td>18px, Regular, color <code>#666666</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Tagline</th>
+                    <td>14px, Regular, color <code>#999999</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Button</th>
+                    <td>Fill <code>#005FCC</code>, corner radius 8px, white label text</td>
+                </tr>
+                <tr>
+                    <th scope="row">Auto layout spacing</th>
+                    <td>12–16px between items</td>
+                </tr>
+                <tr>
+                    <th scope="row">Auto layout padding</th>
+                    <td>24px on all sides</td>
+                </tr>
+                <tr>
+                    <th scope="row">Alignment</th>
+                    <td>Centered vertically and horizontally in frame</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Expected Wireframe</h2>
+        <div class="diagram" role="img" aria-label="ASCII wireframe of the Campus Welcome screen showing a title, subtitle, tagline, and Get Started button centered vertically">
++---------------------------+
+|                           |
+|      Campus Welcome       |
+|     Built by Your Name    |
+|  Learning SwiftUI one...  |
+|                           |
+|      [ Get Started ]      |
+|                           |
++---------------------------+
+        </div>
+        <p>The Detail Screen uses the same layout. Change only the title to <code>Welcome aboard!</code></p>
 
         <h2>Workflow Checklist</h2>
         <table>
-            <caption>Expected steps and Xcode menu paths</caption>
+            <caption>Expected steps and Figma actions</caption>
             <thead>
                 <tr>
                     <th scope="col">Part</th>
                     <th scope="col">Action</th>
-                    <th scope="col">Xcode menu path</th>
+                    <th scope="col">How</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Sign in to GitHub</td>
-                    <td><strong>Xcode → Settings → Accounts → + → GitHub</strong></td>
+                    <td>Create design file</td>
+                    <td><strong>New design file</strong> → rename to Campus Welcome Wireframe</td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
-                    <td>Create project with Git</td>
-                    <td><strong>File → New → Project</strong> (check Source Control box)</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Connect to GitHub</td>
-                    <td><strong>Source Control → New Remote Repository…</strong></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Initial push</td>
-                    <td><strong>Source Control → Push</strong></td>
+                    <td>Add iPhone frame</td>
+                    <td>Press <strong>F</strong> → choose iPhone 15 preset</td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
-                    <td>Commit code change</td>
-                    <td><strong>Source Control → Commit…</strong> (Cmd+Option+C)</td>
+                    <td>Add text and button</td>
+                    <td>Press <strong>T</strong> for text, <strong>R</strong> for button rectangle</td>
                 </tr>
                 <tr>
                     <th scope="row">4</th>
-                    <td>Push commit</td>
-                    <td><strong>Source Control → Push</strong></td>
+                    <td>Apply auto layout</td>
+                    <td>Select items → <strong>Shift+A</strong> → vertical, 12–16px spacing, 24px padding</td>
                 </tr>
                 <tr>
                     <th scope="row">5</th>
-                    <td>Pull README edit</td>
-                    <td><strong>Source Control → Pull</strong></td>
+                    <td>Create component</td>
+                    <td>Select button → <strong>Cmd+Option+K</strong> → rename PrimaryButton</td>
                 </tr>
                 <tr>
                     <th scope="row">6</th>
-                    <td>Create branch</td>
-                    <td><strong>Source Control → New Branch…</strong></td>
-                </tr>
-                <tr>
-                    <th scope="row">6</th>
-                    <td>Commit on branch</td>
-                    <td><strong>Source Control → Commit…</strong></td>
+                    <td>Build prototype</td>
+                    <td>Duplicate frame → Prototype tab → drag arrow → Present</td>
                 </tr>
                 <tr>
                     <th scope="row">7</th>
-                    <td>Switch to main</td>
-                    <td>Branch picker in toolbar → <code>main</code></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Merge branch</td>
-                    <td><strong>Source Control → Merge…</strong></td>
-                </tr>
-                <tr>
-                    <th scope="row">7</th>
-                    <td>Push merged main</td>
-                    <td><strong>Source Control → Push</strong></td>
+                    <td>Share and export</td>
+                    <td>Share link → Export Welcome Screen as PNG 1x</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>Commit Message Examples</h2>
-        <table>
-            <caption>Good vs. weak commit messages</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Quality</th>
-                    <th scope="col">Example</th>
-                    <th scope="col">Why</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Good</th>
-                    <td><code>Add my name to welcome screen</code></td>
-                    <td>Describes exactly what changed</td>
-                </tr>
-                <tr>
-                    <th scope="row">Good</th>
-                    <td><code>Add course note to README</code></td>
-                    <td>Short, clear, and specific</td>
-                </tr>
-                <tr>
-                    <th scope="row">Good</th>
-                    <td><code>Add tagline on add-tagline branch</code></td>
-                    <td>Notes both the change and the branch context</td>
-                </tr>
-                <tr>
-                    <th scope="row">Weak</th>
-                    <td><code>update</code></td>
-                    <td>Too vague — update what?</td>
-                </tr>
-                <tr>
-                    <th scope="row">Weak</th>
-                    <td><code>fix stuff</code></td>
-                    <td>Does not help you find this change later</td>
-                </tr>
-                <tr>
-                    <th scope="row">Weak</th>
-                    <td><code>asdfasdf</code></td>
-                    <td>Meaningless — treat commit messages like labels on folders</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2>Expected Final State</h2>
-        <p>When you finish the lab, your GitHub repo should look like this:</p>
-        <ul>
-            <li><code>main</code> branch contains your name in <code>ContentView.swift</code></li>
-            <li><code>main</code> branch contains the tagline text from the merge</li>
-            <li><code>README.md</code> includes the course note you added on GitHub.com</li>
-            <li>At least four commits visible in the commit history</li>
-            <li>Repo is public and accessible at <code>github.com/your-username/GitPractice</code></li>
-        </ul>
-
-        <h3>Expected ContentView.swift on main</h3>
-        <pre><code class="language-swift">import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Text("Git Practice App")
-                .font(.title)
-            Text("Built by Your Name")
-                .font(.headline)
-            Text("Learning Git one commit at a time.")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-        }
-        .padding()
-    }
-}</code></pre>
-
-        <h2>Branch History Diagram</h2>
-        <p>Your branches should follow this pattern:</p>
-        <div class="diagram" role="img" aria-label="Branch diagram showing main branch receiving a README commit, then add-tagline branch splitting off for a tagline commit, then merging back into main">
-main:     ●───●───●─────────────●  (initial → name → README pull → merge)
-               \
-add-tagline:    ●───●  (create branch → add tagline)
+        <h2>Prototype Map</h2>
+        <div class="diagram" role="img" aria-label="Prototype flow diagram showing Welcome Screen connecting to Detail Screen when Get Started is tapped">
+Welcome Screen
+  └── [ Get Started ] ──on tap──> Detail Screen
+                                    └── title: "Welcome aboard!"
         </div>
-        <p>The README commit happens on GitHub.com and arrives on <code>main</code> via pull. The tagline commit happens on <code>add-tagline</code> and joins <code>main</code> via merge.</p>
 
         <h2>Sample Reflection Answers</h2>
         <div class="analogy-box">
-            <p><strong>What is a commit?</strong> A commit is a saved snapshot of your project with a message that describes what changed.</p>
-            <p><strong>What is the difference between push and pull?</strong> Push sends your local commits to GitHub. Pull downloads commits from GitHub to your Mac.</p>
-            <p><strong>Why use a branch?</strong> A branch lets you try changes safely without breaking the working code on <code>main</code>.</p>
+            <p><strong>Frame vs. group:</strong> A frame has a fixed size like a phone screen. A group just bundles layers together without a device size.</p>
+            <p><strong>Auto layout:</strong> Auto layout stacks and spaces layers automatically so you do not position every item by hand.</p>
+            <p><strong>Components:</strong> A component lets you update every button at once by editing the master design.</p>
         </div>
 
         <h2>Troubleshooting Quick Reference</h2>
@@ -224,24 +198,24 @@ add-tagline:    ●───●  (create branch → add tagline)
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">Push rejected</th>
-                    <td>Pull first, then push again</td>
+                    <th scope="row">Frame tool missing</th>
+                    <td>Press <strong>F</strong> on the keyboard</td>
                 </tr>
                 <tr>
-                    <th scope="row">Wrong branch</th>
-                    <td>Use the branch picker in the toolbar to switch</td>
+                    <th scope="row">Auto layout wrong direction</th>
+                    <td>Set direction to <strong>Vertical</strong> in properties</td>
                 </tr>
                 <tr>
-                    <th scope="row">Merge blocked</th>
-                    <td>Commit or discard uncommitted changes first</td>
+                    <th scope="row">Prototype will not play</th>
+                    <td>Check blue arrow exists, then click <strong>Present</strong></td>
                 </tr>
                 <tr>
-                    <th scope="row">Not signed in</th>
-                    <td>Re-add GitHub under <strong>Settings → Accounts</strong></td>
+                    <th scope="row">Export is blank</th>
+                    <td>Select the outer frame, not an inner layer</td>
                 </tr>
                 <tr>
-                    <th scope="row">No remote repo option</th>
-                    <td>Create empty repo on GitHub.com, then add remote URL in Xcode</td>
+                    <th scope="row">Component not created</th>
+                    <td>Select both rectangle and label before Cmd+Option+K</td>
                 </tr>
             </tbody>
         </table>
