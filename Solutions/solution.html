@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0 Solution: GitHub and Xcode Source Control</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 100; }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        pre { background: #f4f4f4; padding: 1rem; border-radius: 5px; overflow-x: auto; margin-bottom: 1rem; max-width: 50rem; border: 1px solid #ddd; }
+        pre code { background: transparent; padding: 0; }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button { display: inline-block; background-color: #005fcc; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .home-nav a:not(.home-button) { margin-left: 1rem; }
+        .analogy-box { background-color: #f8f9fa; border-left: 4px solid #005fcc; padding: 1rem 1.25rem; margin-bottom: 1.5rem; max-width: 50rem; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; font-size: 0.9rem; color: #666; }
+        table { width: 100%; max-width: 50rem; border-collapse: collapse; margin-bottom: 1.5rem; }
+        caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; color: #2a2a2a; }
+        th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: #f0f0f0; }
+        .diagram { background: #f8f9fa; border: 1px solid #ddd; padding: 1rem 1.25rem; margin-bottom: 1.5rem; max-width: 50rem; font-family: 'Courier New', monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; }
+        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } pre { font-size: 0.85em; } }
+        @media (prefers-contrast: high) { body, h1, h2 { color: #000; } pre, th, td { border: 2px solid #000; } }
+        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../../index.html">Home</a>
+        <a href="../index.html">All solutions</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Solution: GitHub and Xcode Source Control</h1>
+        <p><strong>Xcode project name:</strong> <code>GitPractice</code></p>
+        <p>This reference shows the expected Git workflow for the Chapter 0 lab. There is no Swift source code to copy. Your finished repo history is the solution.</p>
+
+        <h2>Workflow Checklist</h2>
+        <table>
+            <caption>Expected steps and Xcode menu paths</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Part</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">Xcode menu path</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Sign in to GitHub</td>
+                    <td><strong>Xcode → Settings → Accounts → + → GitHub</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Create project with Git</td>
+                    <td><strong>File → New → Project</strong> (check Source Control box)</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Connect to GitHub</td>
+                    <td><strong>Source Control → New Remote Repository…</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Initial push</td>
+                    <td><strong>Source Control → Push</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Commit code change</td>
+                    <td><strong>Source Control → Commit…</strong> (Cmd+Option+C)</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Push commit</td>
+                    <td><strong>Source Control → Push</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Pull README edit</td>
+                    <td><strong>Source Control → Pull</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Create branch</td>
+                    <td><strong>Source Control → New Branch…</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Commit on branch</td>
+                    <td><strong>Source Control → Commit…</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Switch to main</td>
+                    <td>Branch picker in toolbar → <code>main</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Merge branch</td>
+                    <td><strong>Source Control → Merge…</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Push merged main</td>
+                    <td><strong>Source Control → Push</strong></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Commit Message Examples</h2>
+        <table>
+            <caption>Good vs. weak commit messages</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Quality</th>
+                    <th scope="col">Example</th>
+                    <th scope="col">Why</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Good</th>
+                    <td><code>Add my name to welcome screen</code></td>
+                    <td>Describes exactly what changed</td>
+                </tr>
+                <tr>
+                    <th scope="row">Good</th>
+                    <td><code>Add course note to README</code></td>
+                    <td>Short, clear, and specific</td>
+                </tr>
+                <tr>
+                    <th scope="row">Good</th>
+                    <td><code>Add tagline on add-tagline branch</code></td>
+                    <td>Notes both the change and the branch context</td>
+                </tr>
+                <tr>
+                    <th scope="row">Weak</th>
+                    <td><code>update</code></td>
+                    <td>Too vague — update what?</td>
+                </tr>
+                <tr>
+                    <th scope="row">Weak</th>
+                    <td><code>fix stuff</code></td>
+                    <td>Does not help you find this change later</td>
+                </tr>
+                <tr>
+                    <th scope="row">Weak</th>
+                    <td><code>asdfasdf</code></td>
+                    <td>Meaningless — treat commit messages like labels on folders</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Expected Final State</h2>
+        <p>When you finish the lab, your GitHub repo should look like this:</p>
+        <ul>
+            <li><code>main</code> branch contains your name in <code>ContentView.swift</code></li>
+            <li><code>main</code> branch contains the tagline text from the merge</li>
+            <li><code>README.md</code> includes the course note you added on GitHub.com</li>
+            <li>At least four commits visible in the commit history</li>
+            <li>Repo is public and accessible at <code>github.com/your-username/GitPractice</code></li>
+        </ul>
+
+        <h3>Expected ContentView.swift on main</h3>
+        <pre><code class="language-swift">import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Text("Git Practice App")
+                .font(.title)
+            Text("Built by Your Name")
+                .font(.headline)
+            Text("Learning Git one commit at a time.")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+        .padding()
+    }
+}</code></pre>
+
+        <h2>Branch History Diagram</h2>
+        <p>Your branches should follow this pattern:</p>
+        <div class="diagram" role="img" aria-label="Branch diagram showing main branch receiving a README commit, then add-tagline branch splitting off for a tagline commit, then merging back into main">
+main:     ●───●───●─────────────●  (initial → name → README pull → merge)
+               \
+add-tagline:    ●───●  (create branch → add tagline)
+        </div>
+        <p>The README commit happens on GitHub.com and arrives on <code>main</code> via pull. The tagline commit happens on <code>add-tagline</code> and joins <code>main</code> via merge.</p>
+
+        <h2>Sample Reflection Answers</h2>
+        <div class="analogy-box">
+            <p><strong>What is a commit?</strong> A commit is a saved snapshot of your project with a message that describes what changed.</p>
+            <p><strong>What is the difference between push and pull?</strong> Push sends your local commits to GitHub. Pull downloads commits from GitHub to your Mac.</p>
+            <p><strong>Why use a branch?</strong> A branch lets you try changes safely without breaking the working code on <code>main</code>.</p>
+        </div>
+
+        <h2>Troubleshooting Quick Reference</h2>
+        <table>
+            <caption>Common problems and fixes</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Problem</th>
+                    <th scope="col">Fix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Push rejected</th>
+                    <td>Pull first, then push again</td>
+                </tr>
+                <tr>
+                    <th scope="row">Wrong branch</th>
+                    <td>Use the branch picker in the toolbar to switch</td>
+                </tr>
+                <tr>
+                    <th scope="row">Merge blocked</th>
+                    <td>Commit or discard uncommitted changes first</td>
+                </tr>
+                <tr>
+                    <th scope="row">Not signed in</th>
+                    <td>Re-add GitHub under <strong>Settings → Accounts</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">No remote repo option</th>
+                    <td>Create empty repo on GitHub.com, then add remote URL in Xcode</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
