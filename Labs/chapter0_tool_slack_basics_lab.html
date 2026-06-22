@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0 Lab: Slack Basics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Lab: Slack Basics</h1>
+
+        <h2>Introduction</h2>
+        <p>You will learn how teams communicate using Slack. Slack replaces long email chains with organized channels where everyone can chat, share files, and ask questions.</p>
+        <p>Think of Slack like a group chat for a whole class or dev team. Each channel covers one topic. You can complete this lab in about 15 minutes. Complete it after the GitHub, Figma, and Trello labs and before the Chapter 1 SwiftUI lab.</p>
+        <p>You will set up a practice workspace called <code>MAD 157 Team Hub</code>. Use the Slack web app at <a href="https://slack.com" rel="noopener noreferrer" aria-label="Slack website (opens in new tab)">slack.com</a> or the desktop app.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Explain workspace, channel, direct message, thread, mention, and reaction</li>
+            <li>Join or create a workspace and navigate the Slack interface</li>
+            <li>Create channels and send formatted messages</li>
+            <li>Reply in a thread to keep conversations organized</li>
+            <li>Use @mentions and emoji reactions</li>
+            <li>Share a file or code snippet</li>
+            <li>Search messages and copy a channel link to share</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>A workspace is your team's home base.</strong> Channels are rooms for different topics. Direct messages are private chats between two people.</p>
+            <p><strong>Threads keep conversations tidy.</strong> Instead of flooding a channel, you reply in a thread tied to one message. Reactions give quick feedback without a full reply.</p>
+        </div>
+
+        <table>
+            <caption>Slack concepts and real-world parallels</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Real-world parallel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Workspace</th>
+                    <td>The home for one team or class</td>
+                    <td>A shared office building</td>
+                </tr>
+                <tr>
+                    <th scope="row">Channel</th>
+                    <td>A topic-based chat room</td>
+                    <td>A classroom or meeting room</td>
+                </tr>
+                <tr>
+                    <th scope="row">Direct message (DM)</th>
+                    <td>Private chat between people</td>
+                    <td>A private text conversation</td>
+                </tr>
+                <tr>
+                    <th scope="row">Message</th>
+                    <td>A post in a channel or DM</td>
+                    <td>A comment in a group chat</td>
+                </tr>
+                <tr>
+                    <th scope="row">Thread</th>
+                    <td>Replies tied to one message</td>
+                    <td>Comment thread on a single post</td>
+                </tr>
+                <tr>
+                    <th scope="row">@mention</th>
+                    <td>Tag a person to notify them</td>
+                    <td>Saying someone's name in a meeting</td>
+                </tr>
+                <tr>
+                    <th scope="row">Reaction</th>
+                    <td>Emoji reply on a message</td>
+                    <td>A quick thumbs-up</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pin</th>
+                    <td>Highlight an important message</td>
+                    <td>Sticky note on the bulletin board</td>
+                </tr>
+                <tr>
+                    <th scope="row">Search</th>
+                    <td>Find past messages</td>
+                    <td>Ctrl+F for the whole team chat</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>You need a computer with a modern web browser and internet access. Create a free Slack account at <a href="https://slack.com/get-started" rel="noopener noreferrer" aria-label="Get started with Slack (opens in new tab)">slack.com/get-started</a> or join an instructor-provided workspace invite link. Complete the Chapter 0 GitHub, Figma, and Trello labs first.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Set Up Slack and Tour the Interface</h3>
+        <p class="chapter-map">Topics: Slack account, workspace, and main panels.</p>
+        <ol>
+            <li>Go to <a href="https://slack.com/get-started" rel="noopener noreferrer" aria-label="Get started with Slack (opens in new tab)">slack.com/get-started</a> and sign in or create an account.</li>
+            <li>Create a new workspace named <code>MAD 157 Team Hub</code>. Or open an invite link from your instructor if one is provided.</li>
+            <li>Find these areas on screen:
+                <ul>
+                    <li><strong>Sidebar</strong> — left side (channels and direct messages)</li>
+                    <li><strong>Message list</strong> — center area showing channel messages</li>
+                    <li><strong>Compose box</strong> — bottom of the screen where you type</li>
+                    <li><strong>Details panel</strong> — right side (channel info, members, pins)</li>
+                </ul>
+            </li>
+        </ol>
+        <p>Take a screenshot of your workspace. Note the four areas listed above. You will submit this later.</p>
+
+        <h3>Part 2: Create Channels</h3>
+        <p class="chapter-map">Topics: Public channels and channel topics.</p>
+        <ol>
+            <li>Click the <strong>+</strong> next to <strong>Channels</strong> in the sidebar.</li>
+            <li>Create three public channels: <code>general</code>, <code>help</code>, and <code>campus-welcome</code>.</li>
+            <li>Open <code>#campus-welcome</code>. Click the channel name at the top to open details.</li>
+            <li>Set the channel topic to: <code>Discuss the Chapter 1 Campus Welcome SwiftUI app</code>.</li>
+            <li>Click each channel in the sidebar to confirm you can switch between them.</li>
+        </ol>
+        <p>Take a screenshot of the sidebar showing all three channels.</p>
+
+        <h3>Part 3: Send Messages</h3>
+        <p class="chapter-map">Topics: Posting messages and basic formatting.</p>
+        <ol>
+            <li>Open <code>#general</code>. Post an introduction with your name, the course (MAD 157), and one sentence about your coding experience.</li>
+            <li>Open <code>#campus-welcome</code>. Post a message about your Figma wireframe or Trello board from the earlier labs.</li>
+            <li>Use basic formatting in your <code>#campus-welcome</code> message:
+                <ul>
+                    <li>Wrap one word in asterisks for <strong>bold</strong>: <code>*bold*</code></li>
+                    <li>Wrap a project name in backticks for inline code: <code>`CampusWelcome`</code></li>
+                </ul>
+            </li>
+        </ol>
+        <p>Example message: <code>Finished my *Figma* wireframe for the `CampusWelcome` app. Ready to start coding in Chapter 1!</code></p>
+        <p>Take a screenshot of your formatted message in <code>#campus-welcome</code>.</p>
+
+        <h3>Part 4: Use Threads</h3>
+        <p class="chapter-map">Topics: Organized replies without cluttering the channel.</p>
+        <ol>
+            <li>Go to <code>#general</code> and find your introduction message.</li>
+            <li>Hover over the message. Click <strong>Reply in thread</strong> (speech bubble icon).</li>
+            <li>Type a follow-up, such as: <code>Looking forward to building my first SwiftUI app!</code></li>
+            <li>Send the reply. Notice the thread opens in a side panel without adding noise to the main channel.</li>
+        </ol>
+        <p>Take a screenshot of the open thread with at least one reply.</p>
+
+        <h3>Part 5: Mentions and Reactions</h3>
+        <p class="chapter-map">Topics: Notifying people and quick emoji feedback.</p>
+        <ol>
+            <li>Open <code>#help</code>. Post a question about the course or a lab step.</li>
+            <li>Type <code>@</code> followed by your name to @mention yourself (or a classmate if on a shared workspace). Select the name from the popup list.</li>
+            <li>Find any message in your workspace. Hover over it and click the <strong>Add reaction</strong> icon (smiley face).</li>
+            <li>Add a reaction such as a thumbs-up or checkmark.</li>
+        </ol>
+        <p>In your notes, write one sentence explaining why threads and reactions reduce noise in a busy channel.</p>
+
+        <h3>Part 6: Share a File or Snippet</h3>
+        <p class="chapter-map">Topics: Uploading files and sharing code.</p>
+        <ol>
+            <li>Open <code>#campus-welcome</code>.</li>
+            <li>Click the <strong>+</strong> icon to the left of the compose box.</li>
+            <li>Choose one option:
+                <ul>
+                    <li>Upload a screenshot from your Figma or Trello lab, or</li>
+                    <li>Create a <strong>Snippet</strong> and paste a few lines from your GitHub lab <code>ContentView.swift</code></li>
+                </ul>
+            </li>
+            <li>Add a caption explaining what you shared. Example: <code>My Figma wireframe for the welcome screen.</code></li>
+            <li>Send the message.</li>
+        </ol>
+        <p>Take a screenshot showing your message with the uploaded file or snippet and an emoji reaction.</p>
+
+        <h3>Part 7: Search and Share a Link</h3>
+        <p class="chapter-map">Topics: Finding messages and sharing channel access.</p>
+        <ol>
+            <li>Click the <strong>Search</strong> bar at the top of Slack.</li>
+            <li>Search for a keyword from one of your earlier messages, such as <code>CampusWelcome</code> or <code>Figma</code>.</li>
+            <li>Confirm your message appears in the search results.</li>
+            <li>Open <code>#campus-welcome</code> channel details. Copy the <strong>channel link</strong>.</li>
+            <li>Optional stretch: hover your file-sharing message and click <strong>Pin to channel</strong> so it stays easy to find.</li>
+        </ol>
+
+        <h2>Reflection Questions</h2>
+        <p>Answer each question in one sentence:</p>
+        <ol>
+            <li>What is the difference between a channel and a direct message?</li>
+            <li>Why reply in a thread instead of the main channel?</li>
+            <li>When would you use an @mention?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following to your instructor:</p>
+        <ul>
+            <li>Workspace name and channel link for <code>#campus-welcome</code> (or a screenshot if using a private workspace)</li>
+            <li>Screenshot 1: Slack sidebar showing your three channels</li>
+            <li>Screenshot 2: Formatted message in <code>#campus-welcome</code></li>
+            <li>Screenshot 3: An open thread with at least one reply</li>
+            <li>Screenshot 4: Message with a reaction and a shared file or snippet</li>
+            <li>Your three reflection answers</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Workspace joined or created and interface toured</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Three channels created with topic on #campus-welcome</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Introduction and project messages with formatting</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Thread reply demonstrating organized conversation</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">@mention and emoji reaction used</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">File or snippet shared and search demonstrated</th>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Cannot Create a Workspace</h3>
+        <p>Use an instructor invite link if one is provided. Or sign in with a different email address and try again.</p>
+
+        <h3>Channel Not Visible in Sidebar</h3>
+        <p>Click the <strong>+</strong> next to Channels. Choose <strong>Create a channel</strong> or browse channels to join.</p>
+
+        <h3>Thread Panel Missing</h3>
+        <p>Hover over a message until the action icons appear. Click <strong>Reply in thread</strong> (speech bubble icon).</p>
+
+        <h3>File Upload Fails</h3>
+        <p>Check that your file is under 5 MB. PNG screenshots from Figma or Trello work well.</p>
+
+        <h3>@mention Not Working</h3>
+        <p>Type <code>@</code> and wait for the name popup. Click a name from the list instead of typing the full name manually.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3 Lab: Adding Interactivity to a SwiftUI View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 3 Lab: Adding Interactivity to a SwiftUI View</h1>
+
+        <h2>Introduction</h2>
+        <p>You will turn a static event card into an interactive RSVP screen that responds to taps, toggles, and text input.</p>
+        <p>Until now, your views were like posters on a wall. They looked nice but could not react. This chapter teaches you how to make the screen respond when users tap, type, or choose options.</p>
+        <p>You can complete this lab in about 15 minutes.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Pass values into a view when you create it</li>
+            <li>Use <code>@State</code> to store data that changes inside a view</li>
+            <li>Respond to button taps and update the UI dynamically</li>
+            <li>Bind controls like <code>Toggle</code>, <code>Picker</code>, and <code>TextField</code> with <code>$</code></li>
+            <li>Share state with a child view using <code>@Binding</code></li>
+            <li>Explain the difference between <code>@State</code> and <code>@Binding</code></li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>Views are structs.</strong> They are normally immutable, like a printed form. <code>@State</code> gives the view a whiteboard it can erase and rewrite when the user acts.</p>
+            <p><strong>Bindings are two-way streets.</strong> The parent owns the data. The child gets a <code>@Binding</code> so both views stay in sync, like sharing one notebook instead of copying pages.</p>
+        </div>
+
+        <table>
+            <caption>interactivity concepts and simple analogies</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Passing values at creation</th>
+                    <td>Send data into a view through its initializer</td>
+                    <td>Writing a name tag before handing it to someone</td>
+                </tr>
+                <tr>
+                    <th scope="row">@State</th>
+                    <td>Stores changeable data owned by this view</td>
+                    <td>A whiteboard only this view can update</td>
+                </tr>
+                <tr>
+                    <th scope="row">Button action</th>
+                    <td>Runs code when the user taps</td>
+                    <td>A doorbell that triggers something inside</td>
+                </tr>
+                <tr>
+                    <th scope="row">$ binding prefix</th>
+                    <td>Creates a two-way link to a <code>@State</code> value</td>
+                    <td>A shared notebook both views can write in</td>
+                </tr>
+                <tr>
+                    <th scope="row">@Binding</th>
+                    <td>Lets a child view read and write parent state</td>
+                    <td>A remote control for someone else's whiteboard</td>
+                </tr>
+                <tr>
+                    <th scope="row">Toggle</th>
+                    <td>On/off switch bound to a Bool value</td>
+                    <td>A light switch on the wall</td>
+                </tr>
+                <tr>
+                    <th scope="row">Picker</th>
+                    <td>Dropdown or wheel to choose one option</td>
+                    <td>A cafeteria menu with set choices</td>
+                </tr>
+                <tr>
+                    <th scope="row">TextField</th>
+                    <td>Text input that updates as the user types</td>
+                    <td>A fill-in-the-blank line on a form</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>Complete the Chapter 1 and Chapter 2 labs first. Open your existing SwiftUI project or create a new one named <code>CampusEvents</code>.</p>
+
+        <h2>Lab Scenario: Campus Event RSVP</h2>
+        <p>You will upgrade your campus event card into an RSVP form. Students can tap a button to sign up, toggle reminders, pick a session, and type their name. The screen updates live as they interact.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Pass Values at View Creation</h3>
+        <p class="chapter-map">Topics: Passing values at view creation.</p>
+        <p>This lab shows that you can pass data into a view when you build it. Create an <code>EventCard</code> that accepts an event title and location as parameters.</p>
+        <pre><code class="language-swift">import SwiftUI
+
+struct EventCard: View {
+    let eventTitle: String
+    let location: String
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(eventTitle)
+                .font(.title2)
+                .fontWeight(.bold)
+            Text(location)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
+    }
+}</code></pre>
+        <p>Preview it with different values to see how passing data at creation works:</p>
+        <pre><code class="language-swift">#Preview {
+    EventCard(eventTitle: "SwiftUI Study Night", location: "Room 204")
+}</code></pre>
+
+        <h3>Part 2: Add @State and a Button</h3>
+        <p class="chapter-map">Topics: Responding to a button tap and Property wrappers.</p>
+        <p>Static views cannot change. Add <code>@State</code> to track how many students tapped RSVP. Use a <code>Button</code> to increase the count.</p>
+        <pre><code class="language-swift">struct ContentView: View {
+    @State private var rsvpCount = 0
+
+    var body: some View {
+        VStack(spacing: 20) {
+            EventCard(
+                eventTitle: "SwiftUI Study Night",
+                location: "MCC Student Center, Room 204"
+            )
+
+            Text("RSVPs so far: \(rsvpCount)")
+                .font(.headline)
+
+            Button("Count Me In") {
+                rsvpCount += 1
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding()
+    }
+}</code></pre>
+        <p>Tap the button in the preview or simulator. The count should go up each time. SwiftUI redraws the view when <code>@State</code> changes.</p>
+
+        <h3>Part 3: Change Appearance Dynamically</h3>
+        <p class="chapter-map">Topics: Changing a view appearance dynamically using modifiers.</p>
+        <p>Add a Bool state value to track whether the current user has RSVP'd. Change the screen when the value is true.</p>
+        <pre><code class="language-swift">@State private var isGoing = false
+
+// Inside the VStack, below the button:
+if isGoing {
+    Text("You are signed up!")
+        .foregroundColor(.green)
+        .fontWeight(.semibold)
+} else {
+    Text("Tap the button to RSVP.")
+        .foregroundColor(.secondary)
+}
+
+Button(isGoing ? "Cancel RSVP" : "Count Me In") {
+    isGoing.toggle()
+    if isGoing {
+        rsvpCount += 1
+    } else if rsvpCount > 0 {
+        rsvpCount -= 1
+    }
+}
+.buttonStyle(.borderedProminent)
+.tint(isGoing ? .red : .blue)</code></pre>
+        <p>Notice how the button label, color, and message all react to <code>isGoing</code>. This is a responsive UI.</p>
+
+        <h3>Part 4: Bidirectional Binding with Toggle and TextField</h3>
+        <p class="chapter-map">Topics: Bidirectional binding with Picker and TextField examples.</p>
+        <p>Add a reminder toggle and a name field. Use the <code>$</code> prefix to create two-way bindings.</p>
+        <pre><code class="language-swift">@State private var wantsReminder = false
+@State private var studentName = ""
+
+// Add inside the VStack:
+Divider()
+
+Toggle("Send me a reminder", isOn: $wantsReminder)
+
+TextField("Enter your name", text: $studentName)
+    .textFieldStyle(.roundedBorder)
+
+if !studentName.isEmpty {
+    Text("Hello, \(studentName)!")
+        .font(.callout)
+        .foregroundColor(.blue)
+}</code></pre>
+        <p>Type in the TextField and flip the Toggle. Both controls stay synced with your <code>@State</code> variables instantly.</p>
+
+        <h3>Part 5: Add a Picker for Session Choice</h3>
+        <p class="chapter-map">Topics: Bidirectional binding with Picker.</p>
+        <p>Let students pick a session time. Store the choice in <code>@State</code> and bind it to a <code>Picker</code>.</p>
+        <pre><code class="language-swift">@State private var selectedSession = "6:00 PM"
+
+let sessions = ["5:00 PM", "6:00 PM", "7:00 PM"]
+
+// Add inside the VStack:
+Picker("Choose a session", selection: $selectedSession) {
+    ForEach(sessions, id: \.self) { session in
+        Text(session).tag(session)
+    }
+}
+.pickerStyle(.segmented)
+
+Text("You chose the \(selectedSession) session.")
+    .font(.caption)
+    .foregroundColor(.secondary)</code></pre>
+
+        <h3>Part 6: Share State with a Child View Using @Binding</h3>
+        <p class="chapter-map">Topics: Final notes on Subviews and @Binding.</p>
+        <p>Extract the RSVP button into its own view. Pass a <code>@Binding</code> so the child can change the parent's state. This is the two-way street from the analogy box.</p>
+        <pre><code class="language-swift">struct RSVPButton: View {
+    @Binding var isGoing: Bool
+    @Binding var rsvpCount: Int
+
+    var body: some View {
+        Button(isGoing ? "Cancel RSVP" : "Count Me In") {
+            isGoing.toggle()
+            if isGoing {
+                rsvpCount += 1
+            } else if rsvpCount > 0 {
+                rsvpCount -= 1
+            }
+        }
+        .buttonStyle(.borderedProminent)
+        .tint(isGoing ? .red : .blue)
+    }
+}</code></pre>
+        <p>In <code>ContentView</code>, replace your inline button with the child view. Pass bindings using <code>$</code>:</p>
+        <pre><code class="language-swift">RSVPButton(isGoing: $isGoing, rsvpCount: $rsvpCount)</code></pre>
+
+        <h4>Task 6.1: @State vs @Binding Reflection</h4>
+        <p>Answer these questions in your submission:</p>
+        <ol>
+            <li>What does <code>@State</code> do, and why is it marked <code>private</code> in the parent view?</li>
+            <li>Why do you pass <code>$isGoing</code> instead of <code>isGoing</code> to the child view?</li>
+            <li>What is one limitation of <code>@State</code>? (Hint: it works best for simple value types owned by one view.)</li>
+        </ol>
+
+        <h3>Part 7: Chapter Preview — ObservableObject (Optional Reading)</h3>
+        <p class="chapter-map">Topics: Classes, @ObservableObject, and @StateObject.</p>
+        <p>This section also introduces <code>@ObservableObject</code> and <code>@StateObject</code> for sharing data across many views. You do not need to implement them in this lab. Just know that when state grows beyond one screen, you can move it into a class that publishes changes.</p>
+        <p>Answer this bonus question if you read that section: When might <code>@State</code> alone no longer be enough for an app?</p>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following through Canvas:</p>
+        <ul>
+            <li>Screenshot 1: RSVP screen with default state (not signed up)</li>
+            <li>Screenshot 2: Same screen after RSVP with name entered and toggle on</li>
+            <li>Screenshot 3: Picker showing a different session selected</li>
+            <li>Screenshot 4: App running in the iOS simulator</li>
+            <li>Pasted code for <code>ContentView</code>, <code>EventCard</code>, and <code>RSVPButton</code></li>
+            <li>Written answers for the Part 6 reflection questions</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">EventCard accepts passed-in values</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">@State, Button, and dynamic UI changes work</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Toggle, TextField, and Picker bindings work</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">RSVPButton child view uses @Binding correctly</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Screenshots, code, and reflection answers submitted</th>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Button Tap Does Not Update the Screen</h3>
+        <p>Make sure the changing value uses <code>@State</code>. A regular <code>var</code> will not trigger a redraw. Mark state properties as <code>private</code> in the owning view.</p>
+
+        <h3>Toggle or TextField Does Not Change Data</h3>
+        <p>Check that you used the <code>$</code> prefix in the control. <code>Toggle("Label", isOn: $wantsReminder)</code> is correct. Without <code>$</code>, the control cannot write back to state.</p>
+
+        <h3>Child View Cannot Modify Parent Value</h3>
+        <p>The child needs <code>@Binding</code>, not <code>@State</code>. The parent passes <code>$propertyName</code>. Both views must reference the same source of truth.</p>
+
+        <h3>Picker Shows Empty Selection</h3>
+        <p>Make sure <code>.tag()</code> values on each <code>Text</code> inside the <code>Picker</code> match the type stored in <code>@State</code>. Your default <code>selectedSession</code> must match one of the tags.</p>
+
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
