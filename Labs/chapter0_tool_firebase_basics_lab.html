@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0 Lab: Firebase Basics</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #4a4a4a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        pre code {
+            background-color: transparent;
+            padding: 0;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            pre {
+                font-size: 0.85em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3, h4 {
+                color: #000;
+            }
+
+            pre, th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Lab: Firebase Basics</h1>
+
+        <h2>Introduction</h2>
+        <p>You will learn how to store app data in the cloud using Firebase. Firebase is Google's platform for mobile and web apps. Cloud Firestore is its online database.</p>
+        <p>Think of Firestore like a shared Google Sheet in the cloud. Your iOS app can read and write rows of data. A collection is a tab, a document is a row, and fields are the columns. You can complete this lab in about 15 minutes.</p>
+        <p>You will build <code>CampusFirebase</code>, a simple SwiftUI app that posts and lists campus announcements. Complete the Chapter 0 GitHub lab first so you can save your project.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Explain Firebase project, Console, Firestore, collection, document, and field</li>
+            <li>Create a Firebase project and register an iOS app</li>
+            <li>Create a Firestore database and add test data in the Console</li>
+            <li>Add the Firebase iOS SDK to an Xcode project with Swift Package Manager</li>
+            <li>Connect your app with <code>GoogleService-Info.plist</code> and <code>FirebaseApp.configure()</code></li>
+            <li>Write and read documents from Firestore in SwiftUI</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>Firestore is your cloud spreadsheet.</strong> Collections group related documents. Each document holds fields like text and dates. Your app talks to Firestore through the Firebase SDK.</p>
+            <p><strong><code>GoogleService-Info.plist</code> is your app's address book.</strong> It tells Firebase which project belongs to your iOS app. Without it, the SDK cannot find your database.</p>
+        </div>
+
+        <table>
+            <caption>Firebase concepts and simple analogies</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Concept</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Analogy</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Firebase project</th>
+                    <td>Container for your app's backend services</td>
+                    <td>A project folder in the cloud</td>
+                </tr>
+                <tr>
+                    <th scope="row">Firebase Console</th>
+                    <td>Web dashboard to manage Firebase</td>
+                    <td>The control panel for your app's backend</td>
+                </tr>
+                <tr>
+                    <th scope="row">Cloud Firestore</th>
+                    <td>Document database stored online</td>
+                    <td>A shared spreadsheet in the cloud</td>
+                </tr>
+                <tr>
+                    <th scope="row">Collection</th>
+                    <td>Group of related documents</td>
+                    <td>A sheet tab</td>
+                </tr>
+                <tr>
+                    <th scope="row">Document</th>
+                    <td>One record with fields</td>
+                    <td>A row in the sheet</td>
+                </tr>
+                <tr>
+                    <th scope="row">Field</th>
+                    <td>A single value such as text or a date</td>
+                    <td>A cell</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>GoogleService-Info.plist</code></th>
+                    <td>Config file linking your iOS app to Firebase</td>
+                    <td>Your app's address book for the cloud</td>
+                </tr>
+                <tr>
+                    <th scope="row">SDK</th>
+                    <td>Code library that talks to Firebase</td>
+                    <td>A translator between your app and Google's servers</td>
+                </tr>
+                <tr>
+                    <th scope="row">Read / Write</th>
+                    <td>Load data from or save data to Firestore</td>
+                    <td>Opening or editing the shared sheet</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <p>You need a Mac with Xcode 15 or later installed. You also need a Google account. Sign in at <a href="https://firebase.google.com" rel="noopener noreferrer" aria-label="Firebase website (opens in new tab)">firebase.google.com</a> if you do not have one yet.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Create a Google Account and Open Firebase</h3>
+        <p class="chapter-map">Topics: Google sign-in and Firebase Console layout.</p>
+        <ol>
+            <li>Go to <a href="https://firebase.google.com" rel="noopener noreferrer" aria-label="Firebase website (opens in new tab)">firebase.google.com</a>.</li>
+            <li>Click <strong>Get started</strong> or <strong>Go to console</strong>. Sign in with your Google account.</li>
+            <li>Find these areas in the Console:
+                <ul>
+                    <li><strong>Project list</strong> — home screen showing your projects</li>
+                    <li><strong>Left sidebar</strong> — Build, Run, Analytics, and other sections</li>
+                    <li><strong>Project settings</strong> — gear icon for app registration and config files</li>
+                </ul>
+            </li>
+        </ol>
+        <p>Take a screenshot of the Firebase Console home screen. You will submit this later.</p>
+
+        <h3>Part 2: Create a Firebase Project</h3>
+        <p class="chapter-map">Topics: Project creation and dashboard.</p>
+        <ol>
+            <li>Click <strong>Add project</strong> (or <strong>Create a project</strong>).</li>
+            <li>Enter the project name: <code>Campus Firebase Lab</code>.</li>
+            <li>Google Analytics is optional. You may disable it to keep setup simpler. Click <strong>Continue</strong>.</li>
+            <li>Click <strong>Create project</strong>. Wait for setup to finish.</li>
+            <li>Click <strong>Continue</strong> to open your project dashboard.</li>
+        </ol>
+
+        <h3>Part 3: Register Your iOS App</h3>
+        <p class="chapter-map">Topics: Bundle ID and config file download.</p>
+        <ol>
+            <li>On the project overview page, click the <strong>iOS</strong> icon to add an Apple app.</li>
+            <li>Enter an iOS bundle ID. Example: <code>com.yourname.CampusFirebase</code>. Use your actual name in place of <code>yourname</code>.</li>
+            <li>Enter the app nickname: <code>CampusFirebase</code>. Skip App Store ID for now.</li>
+            <li>Click <strong>Register app</strong>.</li>
+            <li>Download <strong>GoogleService-Info.plist</strong>. Save it where you can find it. You will add it to Xcode in Part 5.</li>
+            <li>Click through the remaining setup steps. SDK installation comes next in Part 5.</li>
+        </ol>
+        <p>Important: your Bundle ID in Firebase must exactly match the Bundle ID in Xcode later.</p>
+
+        <h3>Part 4: Create a Firestore Database</h3>
+        <p class="chapter-map">Topics: Cloud Firestore, test mode, and manual data entry.</p>
+        <ol>
+            <li>In the left sidebar, open <strong>Build → Firestore Database</strong>.</li>
+            <li>Click <strong>Create database</strong>.</li>
+            <li>Choose <strong>Start in test mode</strong>. This allows read and write access for learning. Test mode is not safe for public apps. Click <strong>Next</strong>.</li>
+            <li>Pick a Cloud Firestore location close to you. Click <strong>Enable</strong>.</li>
+            <li>Click <strong>Start collection</strong>. Set the collection ID to <code>announcements</code>.</li>
+            <li>Add a test document with these fields:
+                <ul>
+                    <li><code>title</code> (string): <code>Welcome to MAD 157</code></li>
+                    <li><code>author</code> (string): <code>Your Name</code></li>
+                    <li><code>createdAt</code> (timestamp): use today's date and time</li>
+                </ul>
+            </li>
+            <li>Click <strong>Save</strong>. Confirm the document appears in the Data tab.</li>
+        </ol>
+        <p>Take a screenshot of the Firestore Data tab showing the <code>announcements</code> collection.</p>
+
+        <h3>Part 5: Create Xcode Project and Add Firebase SDK</h3>
+        <p class="chapter-map">Topics: Xcode project, config file, and Swift Package Manager.</p>
+        <ol>
+            <li>Open Xcode. Choose <strong>File → New → Project</strong>.</li>
+            <li>Select <strong>iOS → App</strong>. Click <strong>Next</strong>.</li>
+            <li>Set the product name to <code>CampusFirebase</code>. Set Interface to <strong>SwiftUI</strong> and Language to <strong>Swift</strong>.</li>
+            <li>Set the Bundle Identifier to match Part 3 exactly (for example, <code>com.yourname.CampusFirebase</code>).</li>
+            <li>Drag <code>GoogleService-Info.plist</code> into the Xcode project navigator. Check <strong>Copy items if needed</strong> and your app target.</li>
+            <li>Choose <strong>File → Add Package Dependencies</strong>.</li>
+            <li>Enter the URL: <code>https://github.com/firebase/firebase-ios-sdk</code>. Click <strong>Add Package</strong>.</li>
+            <li>Select <strong>FirebaseFirestore</strong>. Add it to the <code>CampusFirebase</code> target. FirebaseCore is included automatically.</li>
+        </ol>
+
+        <h3>Part 6: Write SwiftUI Read and Write Code</h3>
+        <p class="chapter-map">Topics: Firebase initialization and Firestore read/write.</p>
+
+        <h4>Step 6.1: Initialize Firebase in your app entry file</h4>
+        <p>Open <code>CampusFirebaseApp.swift</code> (or your app entry file). Add Firebase setup:</p>
+        <pre><code class="language-swift">import SwiftUI
+import FirebaseCore
+
+@main
+struct CampusFirebaseApp: App {
+    init() {
+        FirebaseApp.configure()
+    }
+
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}</code></pre>
+
+        <h4>Step 6.2: Build ContentView with read and write</h4>
+        <p>Replace <code>ContentView.swift</code> with the code below. Replace <code>Your Name</code> with your actual name.</p>
+        <pre><code class="language-swift">import SwiftUI
+import FirebaseFirestore
+
+struct Announcement: Identifiable {
+    let id: String
+    let title: String
+    let author: String
+}
+
+struct ContentView: View {
+    @State private var titleText = ""
+    @State private var announcements: [Announcement] = []
+    @State private var statusMessage = "Ready"
+
+    private let db = Firestore.firestore()
+
+    var body: some View {
+        NavigationStack {
+            VStack(spacing: 16) {
+                TextField("Announcement title", text: $titleText)
+                    .textFieldStyle(.roundedBorder)
+
+                Button("Post") {
+                    postAnnouncement()
+                }
+                .buttonStyle(.borderedProminent)
+
+                Text(statusMessage)
+                    .font(.footnote)
+                    .foregroundColor(.secondary)
+
+                List(announcements) { item in
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(item.title)
+                            .font(.headline)
+                        Text("By \(item.author)")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    }
+                }
+            }
+            .padding()
+            .navigationTitle("Campus Announcements")
+            .onAppear {
+                loadAnnouncements()
+            }
+        }
+    }
+
+    private func postAnnouncement() {
+        let trimmed = titleText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmed.isEmpty else {
+            statusMessage = "Enter a title first."
+            return
+        }
+
+        db.collection("announcements").addDocument(data: [
+            "title": trimmed,
+            "author": "Your Name",
+            "createdAt": Timestamp(date: Date())
+        ]) { error in
+            if let error = error {
+                statusMessage = "Write failed: \(error.localizedDescription)"
+                return
+            }
+            titleText = ""
+            statusMessage = "Posted to Firestore."
+            loadAnnouncements()
+        }
+    }
+
+    private func loadAnnouncements() {
+        db.collection("announcements")
+            .order(by: "createdAt", descending: true)
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    statusMessage = "Read failed: \(error.localizedDescription)"
+                    return
+                }
+
+                announcements = snapshot?.documents.compactMap { doc in
+                    let data = doc.data()
+                    guard let title = data["title"] as? String,
+                          let author = data["author"] as? String else {
+                        return nil
+                    }
+                    return Announcement(id: doc.documentID, title: title, author: author)
+                } ?? []
+            }
+    }
+}
+
+#Preview {
+    ContentView()
+}</code></pre>
+        <p>See the <a href="../Solutions/chapter00_tool_firebase_basics/solution.html">solution page</a> for the complete reference code.</p>
+
+        <h3>Part 7: Run and Verify</h3>
+        <p class="chapter-map">Topics: Simulator testing and Console verification.</p>
+        <ol>
+            <li>Select an iPhone simulator. Press <strong>Run</strong> (Cmd+R).</li>
+            <li>Confirm your test announcement from Part 4 appears in the list.</li>
+            <li>Type a new title and click <strong>Post</strong>.</li>
+            <li>Open the Firebase Console. Go to <strong>Firestore Database → Data</strong>.</li>
+            <li>Confirm your new document appears in the <code>announcements</code> collection.</li>
+        </ol>
+        <p>Take a screenshot of the app running with announcements visible. Take a second screenshot of the Firestore Console showing your new document.</p>
+
+        <h2>Reflection Questions</h2>
+        <p>Answer each question in one sentence:</p>
+        <ol>
+            <li>What is the difference between a collection and a document?</li>
+            <li>What does <code>GoogleService-Info.plist</code> do?</li>
+            <li>Why should test mode rules not be used in a public app?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <p>Submit the following to your instructor:</p>
+        <ul>
+            <li>Screenshot 1: Firebase project dashboard with iOS app registered</li>
+            <li>Screenshot 2: Firestore Data tab showing the <code>announcements</code> collection</li>
+            <li>Screenshot 3: App running with at least one posted announcement</li>
+            <li>Your final app entry file and <code>ContentView.swift</code> pasted as text</li>
+            <li>Your three reflection answers</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Firebase project and iOS app registered</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Firestore database created with test collection</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row"><code>GoogleService-Info.plist</code> added correctly</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Firebase SDK installed via Swift Package Manager</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">App writes a new document to Firestore</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">App reads and displays announcements</th>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Bundle ID Mismatch</h3>
+        <p>The Bundle ID in Firebase must exactly match your Xcode target. Check both under Project Settings → General and in the Firebase Console app registration.</p>
+
+        <h3><code>GoogleService-Info.plist</code> Not Found</h3>
+        <p>Click the file in Xcode. Open the File inspector on the right. Confirm your app target is checked under Target Membership.</p>
+
+        <h3>Permission Denied on Write</h3>
+        <p>Confirm Firestore is in test mode. Open Firestore → Rules in the Console. Test mode allows open read/write for a limited time.</p>
+
+        <h3>Package Resolve Fails</h3>
+        <p>Check your internet connection. Use the exact URL <code>https://github.com/firebase/firebase-ios-sdk</code>. Try <strong>File → Packages → Reset Package Caches</strong>.</p>
+
+        <h3>Empty List in the App</h3>
+        <p>Check that the collection name is exactly <code>announcements</code>. Confirm documents exist in the Firestore Data tab. Read the status message at the bottom of the app for error details.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

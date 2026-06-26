@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0 Solution: Figma Basics</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 100; }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        pre { background: #f4f4f4; padding: 1rem; border-radius: 5px; overflow-x: auto; margin-bottom: 1rem; max-width: 50rem; border: 1px solid #ddd; }
+        pre code { background: transparent; padding: 0; }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button { display: inline-block; background-color: #005fcc; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .home-nav a:not(.home-button) { margin-left: 1rem; }
+        .analogy-box { background-color: #f8f9fa; border-left: 4px solid #005fcc; padding: 1rem 1.25rem; margin-bottom: 1.5rem; max-width: 50rem; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; font-size: 0.9rem; color: #666; }
+        table { width: 100%; max-width: 50rem; border-collapse: collapse; margin-bottom: 1.5rem; }
+        caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; color: #2a2a2a; }
+        th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: #f0f0f0; }
+        .diagram { background: #f8f9fa; border: 1px solid #ddd; padding: 1rem 1.25rem; margin-bottom: 1.5rem; max-width: 50rem; font-family: 'Courier New', monospace; font-size: 0.9em; white-space: pre; overflow-x: auto; }
+        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } pre { font-size: 0.85em; } }
+        @media (prefers-contrast: high) { body, h1, h2 { color: #000; } pre, th, td { border: 2px solid #000; } }
+        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../../index.html">Home</a>
+        <a href="../index.html">All solutions</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Solution: Figma Basics</h1>
+        <p><strong>Project name:</strong> <code>CampusWelcomeWireframe</code></p>
+        <p>This reference shows the expected wireframe for the Chapter 0 Figma lab. There is no code to copy. Your finished Figma file is the solution.</p>
+
+        <h2>Layer Checklist</h2>
+        <p>Your completed file should include these layers:</p>
+        <ul>
+            <li>File: <code>Campus Welcome Wireframe</code></li>
+            <li>Frame: <code>Welcome Screen</code> (iPhone 15 size)</li>
+            <li>Frame: <code>Detail Screen</code> (duplicate of Welcome Screen)</li>
+            <li>Text: <code>Campus Welcome</code> (title on Welcome Screen)</li>
+            <li>Text: <code>Built by Your Name</code> (subtitle)</li>
+            <li>Text: <code>Learning SwiftUI one view at a time</code> (tagline)</li>
+            <li>Component: <code>PrimaryButton</code> with label <code>Get Started</code></li>
+            <li>Auto layout group wrapping title, subtitle, tagline, and button</li>
+            <li>Prototype link: Get Started → Detail Screen</li>
+        </ul>
+
+        <h2>Design Spec</h2>
+        <table>
+            <caption>Suggested sizes, colors, and spacing</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Element</th>
+                    <th scope="col">Spec</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Frame size</th>
+                    <td>iPhone 15 preset (393 × 852 px)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Title</th>
+                    <td>28px, Bold, color <code>#005FCC</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Subtitle</th>
+                    <td>18px, Regular, color <code>#666666</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Tagline</th>
+                    <td>14px, Regular, color <code>#999999</code></td>
+                </tr>
+                <tr>
+                    <th scope="row">Button</th>
+                    <td>Fill <code>#005FCC</code>, corner radius 8px, white label text</td>
+                </tr>
+                <tr>
+                    <th scope="row">Auto layout spacing</th>
+                    <td>12–16px between items</td>
+                </tr>
+                <tr>
+                    <th scope="row">Auto layout padding</th>
+                    <td>24px on all sides</td>
+                </tr>
+                <tr>
+                    <th scope="row">Alignment</th>
+                    <td>Centered vertically and horizontally in frame</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Expected Wireframe</h2>
+        <div class="diagram" role="img" aria-label="ASCII wireframe of the Campus Welcome screen showing a title, subtitle, tagline, and Get Started button centered vertically">
++---------------------------+
+|                           |
+|      Campus Welcome       |
+|     Built by Your Name    |
+|  Learning SwiftUI one...  |
+|                           |
+|      [ Get Started ]      |
+|                           |
++---------------------------+
+        </div>
+        <p>The Detail Screen uses the same layout. Change only the title to <code>Welcome aboard!</code></p>
+
+        <h2>Workflow Checklist</h2>
+        <table>
+            <caption>Expected steps and Figma actions</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Part</th>
+                    <th scope="col">Action</th>
+                    <th scope="col">How</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Create design file</td>
+                    <td><strong>New design file</strong> → rename to Campus Welcome Wireframe</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Add iPhone frame</td>
+                    <td>Press <strong>F</strong> → choose iPhone 15 preset</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Add text and button</td>
+                    <td>Press <strong>T</strong> for text, <strong>R</strong> for button rectangle</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Apply auto layout</td>
+                    <td>Select items → <strong>Shift+A</strong> → vertical, 12–16px spacing, 24px padding</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Create component</td>
+                    <td>Select button → <strong>Cmd+Option+K</strong> → rename PrimaryButton</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Build prototype</td>
+                    <td>Duplicate frame → Prototype tab → drag arrow → Present</td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Share and export</td>
+                    <td>Share link → Export Welcome Screen as PNG 1x</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prototype Map</h2>
+        <div class="diagram" role="img" aria-label="Prototype flow diagram showing Welcome Screen connecting to Detail Screen when Get Started is tapped">
+Welcome Screen
+  └── [ Get Started ] ──on tap──> Detail Screen
+                                    └── title: "Welcome aboard!"
+        </div>
+
+        <h2>Sample Reflection Answers</h2>
+        <div class="analogy-box">
+            <p><strong>Frame vs. group:</strong> A frame has a fixed size like a phone screen. A group just bundles layers together without a device size.</p>
+            <p><strong>Auto layout:</strong> Auto layout stacks and spaces layers automatically so you do not position every item by hand.</p>
+            <p><strong>Components:</strong> A component lets you update every button at once by editing the master design.</p>
+        </div>
+
+        <h2>Troubleshooting Quick Reference</h2>
+        <table>
+            <caption>Common problems and fixes</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Problem</th>
+                    <th scope="col">Fix</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Frame tool missing</th>
+                    <td>Press <strong>F</strong> on the keyboard</td>
+                </tr>
+                <tr>
+                    <th scope="row">Auto layout wrong direction</th>
+                    <td>Set direction to <strong>Vertical</strong> in properties</td>
+                </tr>
+                <tr>
+                    <th scope="row">Prototype will not play</th>
+                    <td>Check blue arrow exists, then click <strong>Present</strong></td>
+                </tr>
+                <tr>
+                    <th scope="row">Export is blank</th>
+                    <td>Select the outer frame, not an inner layer</td>
+                </tr>
+                <tr>
+                    <th scope="row">Component not created</th>
+                    <td>Select both rectangle and label before Cmd+Option+K</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
