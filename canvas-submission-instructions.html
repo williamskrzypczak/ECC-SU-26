@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAD 157 Canvas Lab Submission Instructions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 100; }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        pre {
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            white-space: pre-wrap;
+        }
+        .home-nav { margin-bottom: 1.5rem; }
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .notice {
+            background: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+        .lab-section {
+            max-width: 50rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+        .toc { max-width: 50rem; margin-bottom: 2rem; }
+        .toc li { margin-bottom: 0.35rem; }
+        table { width: 100%; max-width: 50rem; border-collapse: collapse; margin-bottom: 1rem; }
+        caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; }
+        th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: #f0f0f0; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; font-size: 0.9rem; color: #666; }
+        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } }
+        @media (prefers-contrast: high) { body, h1, h2 { color: #000; } th, td, pre { border: 2px solid #000; } }
+        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="Tools/lab-grader/index.html">Lab Grader</a>
+        <a href="index.html" style="margin-left:1rem;">Course Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>MAD 157 Canvas Lab Submission Instructions</h1>
+        <p>Copy the assignment text for each lab into Canvas. Every lab uses the same zip structure so submissions are complete and easy to grade.</p>
+
+        <div class="notice">
+            <strong>For students:</strong> Submit one zip file per lab. Use lowercase names. Replace <code>lastname</code> and <code>firstname</code> with your name.
+        </div>
+
+        <h2>Rules for Every Lab</h2>
+        <ol>
+            <li>Zip file name: see each lab below (example: <code>chapter1-smith-jane.zip</code>).</li>
+            <li>Include a <code>reflections.txt</code> file with answers labeled <code>Q1:</code>, <code>Q2:</code>, and so on.</li>
+            <li>Save screenshots as PNG files inside a <code>screenshots/</code> folder.</li>
+            <li>Use the exact screenshot file names listed for each lab.</li>
+            <li>Swift and Firebase labs also include <code>code.swift</code> with all Swift files combined.</li>
+            <li>Tool labs (GitHub, Figma, Trello, Slack) include a <code>links.txt</code> file for URLs.</li>
+        </ol>
+
+        <h2>Standard Zip Structure</h2>
+        <pre>your-lab-zip-name.zip
+├── code.swift          (Swift labs and Firebase only)
+├── links.txt           (tool labs only — GitHub, Figma, Trello, Slack)
+├── commit-messages.txt (GitHub lab only)
+├── reflections.txt
+├── exports/            (Figma lab only)
+│   └── campus-welcome-wireframe.png
+└── screenshots/
+    ├── preview.png
+    └── (other files named in the lab)</pre>
+
+        <section class="notice" id="zip-on-mac">
+            <h2>How to Create a Zip File on a Mac</h2>
+            <p>Follow these steps before you upload to Canvas.</p>
+            <ol>
+                <li>Open <strong>Finder</strong> and go to your Desktop (or another easy-to-find location).</li>
+                <li>Create a new folder: <strong>File → New Folder</strong>. Name it for your lab (example: <code>chapter1-smith-jane</code>).</li>
+                <li>Put all required files inside that folder:
+                    <ul>
+                        <li><code>reflections.txt</code></li>
+                        <li><code>code.swift</code> (Swift and Firebase labs)</li>
+                        <li><code>links.txt</code> and other tool-lab files when required</li>
+                        <li>a <code>screenshots</code> folder containing your PNG files</li>
+                    </ul>
+                </li>
+                <li>Check the folder one last time. Every required file name should match the lab submission guide.</li>
+                <li>Right-click the folder (or Control-click).</li>
+                <li>Choose <strong>Compress "folder name"</strong>. Finder creates a file named <code>folder name.zip</code> in the same location.</li>
+                <li>If needed, rename the zip file to match the lab (example: <code>chapter1-smith-jane.zip</code>).</li>
+                <li>Open Canvas, go to the assignment, and upload the zip file.</li>
+            </ol>
+            <h3>Tips</h3>
+            <ul>
+                <li>Compress the <strong>folder</strong>, not individual files. Your zip should open to show files and folders at the top level.</li>
+                <li>Do not submit a <code>.rar</code> or <code>.7z</code> file. Canvas expects a standard <code>.zip</code>.</li>
+                <li>If the zip is larger than the Canvas limit, shrink PNG screenshots or ask your instructor.</li>
+                <li>To check your zip, double-click it. Confirm you see <code>reflections.txt</code>, <code>screenshots/</code>, and any other required files.</li>
+            </ul>
+        </section>
+
+        <nav class="toc" aria-label="Lab list">
+            <h2>Jump to a Lab</h2>
+            <ul>
+                <li><a href="#zip-on-mac">How to create a zip on a Mac</a></li>
+                <li><a href="#lab-ch0-github">Chapter 0: GitHub and Xcode</a></li>
+                <li><a href="#lab-ch0-figma">Chapter 0: Figma Basics</a></li>
+                <li><a href="#lab-ch0-trello">Chapter 0: Trello Basics</a></li>
+                <li><a href="#lab-ch0-slack">Chapter 0: Slack Basics</a></li>
+                <li><a href="#lab-ch0-firebase">Chapter 0: Firebase Basics</a></li>
+                <li><a href="#lab-ch1">Chapter 1: SwiftUI Environment</a></li>
+                <li><a href="#lab-ch2">Chapter 2: Layouts</a></li>
+                <li><a href="#lab-ch3">Chapter 3: Interactivity</a></li>
+                <li><a href="#lab-ch4">Chapter 4: Scrollable Views</a></li>
+                <li><a href="#lab-ch5">Chapter 5: Grids</a></li>
+                <li><a href="#lab-ch6">Chapter 6: Tabs and Modals</a></li>
+                <li><a href="#lab-ch7">Chapter 7: Navigation</a></li>
+                <li><a href="#lab-ch14">Chapter 14: SwiftData</a></li>
+                <li><a href="#lab-ch15">Chapter 15: REST Services</a></li>
+                <li><a href="#lab-project-proposal">Project Proposal</a></li>
+                <li><a href="#lab-sprint1">Sprint 1: Trello and Sprint Review</a></li>
+            </ul>
+        </nav>
+
+        <!-- Chapter 0 GitHub -->
+        <section class="lab-section" id="lab-ch0-github">
+            <h2>Chapter 0: GitHub and Xcode Source Control</h2>
+            <p><strong>Zip name:</strong> <code>chapter0-github-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>links.txt</code></th><td>GitHub repo URL</td></tr>
+                    <tr><th scope="row"><code>commit-messages.txt</code></th><td>Each commit message you used during the lab</td></tr>
+                    <tr><th scope="row"><code>reflections.txt</code></th><td>Q1–Q3 below</td></tr>
+                    <tr><th scope="row"><code>screenshots/</code></th><td>Five PNG files listed below</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Screenshot file names:</strong></p>
+            <ul>
+                <li><code>xcode-github-connected.png</code></li>
+                <li><code>github-commit.png</code></li>
+                <li><code>readme-after-pull.png</code></li>
+                <li><code>add-tagline-branch.png</code></li>
+                <li><code>merged-main.png</code></li>
+            </ul>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter0-github-lastname-firstname.zip containing:
+
+links.txt — your public GitHub repo URL (example: https://github.com/your-username/GitPractice)
+commit-messages.txt — every commit message you used during the lab
+reflections.txt — answer each question on its own line:
+  Q1: What is a commit?
+  Q2: What is the difference between push and pull?
+  Q3: Why use a branch instead of editing main directly?
+screenshots/ — five PNG files:
+  xcode-github-connected.png (GitHub connected in Xcode Settings)
+  github-commit.png (commit visible on GitHub.com)
+  readme-after-pull.png (README.md in Xcode after pull)
+  add-tagline-branch.png (code on the add-tagline branch)
+  merged-main.png (merged ContentView.swift on main pushed to GitHub)</pre>
+        </section>
+
+        <!-- Chapter 0 Figma -->
+        <section class="lab-section" id="lab-ch0-figma">
+            <h2>Chapter 0: Figma Basics</h2>
+            <p><strong>Zip name:</strong> <code>chapter0-figma-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>links.txt</code></th><td>Figma share link with view access enabled</td></tr>
+                    <tr><th scope="row"><code>exports/campus-welcome-wireframe.png</code></th><td>Exported Welcome Screen PNG</td></tr>
+                    <tr><th scope="row"><code>reflections.txt</code></th><td>Q1–Q3 below</td></tr>
+                    <tr><th scope="row"><code>screenshots/</code></th><td>Five PNG files listed below</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Screenshot file names:</strong></p>
+            <ul>
+                <li><code>figma-interface.png</code></li>
+                <li><code>auto-layout.png</code></li>
+                <li><code>primary-button-component.png</code></li>
+                <li><code>prototype-connection.png</code></li>
+                <li><code>present-mode-detail.png</code></li>
+            </ul>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter0-figma-lastname-firstname.zip containing:
+
+links.txt — your Figma share link (view access enabled)
+exports/campus-welcome-wireframe.png — exported Welcome Screen
+reflections.txt:
+  Q1: What is the difference between a frame and a group?
+  Q2: What does auto layout do?
+  Q3: Why use a component instead of copying a button manually?
+screenshots/ — five PNG files:
+  figma-interface.png (four main Figma areas noted)
+  auto-layout.png (auto layout in the properties panel)
+  primary-button-component.png (PrimaryButton in layers panel)
+  prototype-connection.png (prototype between Welcome and Detail screens)
+  present-mode-detail.png (Present mode showing Detail Screen)</pre>
+        </section>
+
+        <!-- Chapter 0 Trello -->
+        <section class="lab-section" id="lab-ch0-trello">
+            <h2>Chapter 0: Trello Basics</h2>
+            <p><strong>Zip name:</strong> <code>chapter0-trello-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>links.txt</code></th><td>Trello board share link</td></tr>
+                    <tr><th scope="row"><code>reflections.txt</code></th><td>Q1–Q3 below</td></tr>
+                    <tr><th scope="row"><code>screenshots/</code></th><td>Four PNG files listed below</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Screenshot file names:</strong></p>
+            <ul>
+                <li><code>board-lists-cards.png</code></li>
+                <li><code>card-detail.png</code></li>
+                <li><code>checklist-progress.png</code></li>
+                <li><code>cards-moved.png</code></li>
+            </ul>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter0-trello-lastname-firstname.zip containing:
+
+links.txt — your Trello board share link
+reflections.txt:
+  Q1: What is the difference between a list and a card?
+  Q2: Why use labels on cards?
+  Q3: How does moving a card to Done help a team?
+screenshots/ — four PNG files:
+  board-lists-cards.png (three lists with at least four cards)
+  card-detail.png (open card with description, labels, and due date)
+  checklist-progress.png (checklist with at least one item checked)
+  cards-moved.png (cards in different lists)</pre>
+        </section>
+
+        <!-- Chapter 0 Slack -->
+        <section class="lab-section" id="lab-ch0-slack">
+            <h2>Chapter 0: Slack Basics</h2>
+            <p><strong>Zip name:</strong> <code>chapter0-slack-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>links.txt</code></th><td>Workspace name and #campus-welcome channel link</td></tr>
+                    <tr><th scope="row"><code>reflections.txt</code></th><td>Q1–Q3 below</td></tr>
+                    <tr><th scope="row"><code>screenshots/</code></th><td>Four PNG files listed below</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Screenshot file names:</strong></p>
+            <ul>
+                <li><code>sidebar-channels.png</code></li>
+                <li><code>formatted-message.png</code></li>
+                <li><code>thread-reply.png</code></li>
+                <li><code>reaction-and-file.png</code></li>
+            </ul>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter0-slack-lastname-firstname.zip containing:
+
+links.txt — workspace name and channel link for #campus-welcome
+reflections.txt:
+  Q1: What is the difference between a channel and a direct message?
+  Q2: Why reply in a thread instead of the main channel?
+  Q3: When would you use an @mention?
+screenshots/ — four PNG files:
+  sidebar-channels.png (sidebar showing general, help, and campus-welcome)
+  formatted-message.png (formatted message in #campus-welcome)
+  thread-reply.png (open thread with at least one reply)
+  reaction-and-file.png (message with a reaction and a shared file or snippet)</pre>
+        </section>
+
+        <!-- Chapter 0 Firebase -->
+        <section class="lab-section" id="lab-ch0-firebase">
+            <h2>Chapter 0: Firebase Basics</h2>
+            <p><strong>Zip name:</strong> <code>chapter0-firebase-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>code.swift</code></th><td>App entry file and ContentView.swift (use comment headers)</td></tr>
+                    <tr><th scope="row"><code>reflections.txt</code></th><td>Q1–Q3 below</td></tr>
+                    <tr><th scope="row"><code>screenshots/</code></th><td>Three PNG files listed below</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Screenshot file names:</strong></p>
+            <ul>
+                <li><code>firebase-dashboard.png</code></li>
+                <li><code>firestore-announcements.png</code></li>
+                <li><code>app-running.png</code></li>
+            </ul>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter0-firebase-lastname-firstname.zip containing:
+
+code.swift — your app entry file and ContentView.swift combined (use // headers if needed)
+reflections.txt:
+  Q1: What is the difference between a collection and a document?
+  Q2: What does GoogleService-Info.plist do?
+  Q3: Why should test mode rules not be used in a public app?
+screenshots/ — three PNG files:
+  firebase-dashboard.png (Firebase project with iOS app registered)
+  firestore-announcements.png (Firestore Data tab showing announcements)
+  app-running.png (app running with at least one posted announcement)</pre>
+        </section>
+
+        <!-- Chapter 1 -->
+        <section class="lab-section" id="lab-ch1">
+            <h2>Chapter 1: SwiftUI Development Environment</h2>
+            <p><strong>Zip name:</strong> <code>chapter1-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>preview.png</code>, <code>simulator.png</code>, <code>modifier-or-playground.png</code>, <code>unit-test-result.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter1-lastname-firstname.zip containing:
+
+code.swift — your final ContentView.swift
+reflections.txt:
+  Q1: What is the purpose of CampusWelcomeApp.swift?
+  Q2: What is the purpose of ContentView.swift?
+  Q3: What is the purpose of the CampusWelcomeTests target?
+  Q4: Why do modifier order and border/padding order look different?
+  Q5: When would you use the preview canvas vs the simulator?
+  Q6: Why are automated tests useful?
+  Q7: Why do you not need a paid developer account to use the simulator?
+screenshots/ — four PNG files:
+  preview.png (Xcode preview of ContentView)
+  simulator.png (app running in the iOS simulator)
+  modifier-or-playground.png (modifier order comparison OR playground live view)
+  unit-test-result.png (unit test run result — pass or fail)</pre>
+        </section>
+
+        <!-- Chapter 2 -->
+        <section class="lab-section" id="lab-ch2">
+            <h2>Chapter 2: Basic UI Elements and Layouts</h2>
+            <p><strong>Zip name:</strong> <code>chapter2-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>event-card-preview.png</code>, <code>spacer-layout.png</code>, <code>alignment-or-geometry.png</code>, <code>simulator.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter2-lastname-firstname.zip containing:
+
+code.swift — ContentView.swift and EventHeader.swift combined
+reflections.txt:
+  Q1: Why is it helpful to extract EventHeader into its own struct?
+  Q2: When would you choose a VStack over an HStack?
+  Q3: What is one good use case for a ZStack?
+  Q4: What does a Spacer do inside a stack?
+  Q5: What does GeometryReader measure in this lab?
+screenshots/ — four PNG files:
+  event-card-preview.png (event card with Featured badge)
+  spacer-layout.png (Spacer pushing date and location apart)
+  alignment-or-geometry.png (alignment demo OR GeometryReader width display)
+  simulator.png (app running in the iOS simulator)</pre>
+        </section>
+
+        <!-- Chapter 3 -->
+        <section class="lab-section" id="lab-ch3">
+            <h2>Chapter 3: Adding Interactivity to a SwiftUI View</h2>
+            <p><strong>Zip name:</strong> <code>chapter3-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>rsvp-default.png</code>, <code>rsvp-signed-up.png</code>, <code>picker-session.png</code>, <code>simulator.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter3-lastname-firstname.zip containing:
+
+code.swift — ContentView.swift, EventCard.swift, and RSVPButton.swift combined
+reflections.txt:
+  Q1: What does @State do, and why is it marked private in the parent view?
+  Q2: Why do you pass $isGoing instead of isGoing to the child view?
+  Q3: What is one limitation of @State?
+screenshots/ — four PNG files:
+  rsvp-default.png (RSVP screen — not signed up)
+  rsvp-signed-up.png (after RSVP with name entered and toggle on)
+  picker-session.png (Picker showing a different session selected)
+  simulator.png (app running in the iOS simulator)</pre>
+        </section>
+
+        <!-- Chapter 4 -->
+        <section class="lab-section" id="lab-ch4">
+            <h2>Chapter 4: Scrollable Views and Lists</h2>
+            <p><strong>Zip name:</strong> <code>chapter4-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>club-directory.png</code>, <code>search-filter.png</code>, <code>section-jump.png</code>, <code>simulator.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter4-lastname-firstname.zip containing:
+
+code.swift — ContentView.swift, ClubRow.swift, and Club.swift combined
+reflections.txt:
+  Q1: Why does ForEach require Identifiable items or an id tag?
+  Q2: When would you pick ScrollView instead of List?
+  Q3: What role does @FocusState play when the user taps Done?
+screenshots/ — four PNG files:
+  club-directory.png (scrollable club directory with section headers)
+  search-filter.png (search filtering results)
+  section-jump.png (view scrolled to a section after tapping a letter button)
+  simulator.png (simulator with navigation title visible)</pre>
+        </section>
+
+        <!-- Chapter 5 -->
+        <section class="lab-section" id="lab-ch5">
+            <h2>Chapter 5: The Art of Displaying Grids</h2>
+            <p><strong>Zip name:</strong> <code>chapter5-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>static-grid.png</code>, <code>lazy-vgrid-iphone.png</code>, <code>lazy-vgrid-wide.png</code>, <code>featured-strip.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter5-lastname-firstname.zip containing:
+
+code.swift — ContentView.swift, CourseCard.swift, and Course.swift combined
+reflections.txt:
+  Q1: When would you use a static Grid instead of a LazyVGrid?
+  Q2: What is the difference between GridItem(.flexible()) and GridItem(.adaptive(minimum:))?
+  Q3: Why does a lazy grid belong inside a ScrollView?
+screenshots/ — four PNG files:
+  static-grid.png (static Grid schedule preview)
+  lazy-vgrid-iphone.png (LazyVGrid with adaptive columns on iPhone)
+  lazy-vgrid-wide.png (same grid on a wider device or after rotation)
+  featured-strip.png (horizontal featured strip and one selected course card)</pre>
+        </section>
+
+        <!-- Chapter 6 -->
+        <section class="lab-section" id="lab-ch6">
+            <h2>Chapter 6: Tab Bars and Modal View Presentation</h2>
+            <p><strong>Zip name:</strong> <code>chapter6-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>tabs.png</code>, <code>rsvp-sheet.png</code>, <code>leave-club-alert.png</code>, <code>help-popover.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter6-lastname-firstname.zip containing:
+
+code.swift — ContentView.swift, all three tab views, and RSVPSheet.swift combined
+reflections.txt:
+  Q1: When would you use a TabView in an app?
+  Q2: What is the difference between a .sheet and an .alert?
+  Q3: Why do we call dismiss() inside the sheet instead of setting the Bool directly?
+screenshots/ — four PNG files:
+  tabs.png (TabView showing all three tabs — one screenshot per tab is fine)
+  rsvp-sheet.png (RSVP sheet open on the Home tab)
+  leave-club-alert.png (Leave club confirmation alert on the Clubs tab)
+  help-popover.png (Help popover on the Profile tab)</pre>
+        </section>
+
+        <!-- Chapter 7 -->
+        <section class="lab-section" id="lab-ch7">
+            <h2>Chapter 7: All About Navigation</h2>
+            <p><strong>Zip name:</strong> <code>chapter7-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>building-list.png</code>, <code>building-detail.png</code>, <code>about-screen.png</code>, <code>library-button.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter7-lastname-firstname.zip containing:
+
+code.swift — ContentView.swift, BuildingDetailView.swift, AboutView.swift, and CampusBuilding.swift combined
+reflections.txt:
+  Q1: What is the difference between NavigationView and NavigationStack?
+  Q2: Why move the destination view into .navigationDestination instead of NavigationLink?
+  Q3: When would you use NavigationPath.append() instead of a NavigationLink?
+  Q4: What happens to the navigation stack when the user taps the system Back button?
+screenshots/ — four PNG files:
+  building-list.png (building list on the home screen)
+  building-detail.png (detail screen with Back button visible)
+  about-screen.png (About screen from the Help toolbar button)
+  library-button.png (detail screen opened by the Go to Library button)</pre>
+        </section>
+
+        <!-- Chapter 14 -->
+        <section class="lab-section" id="lab-ch14">
+            <h2>Chapter 14: An Introduction to SwiftData</h2>
+            <p><strong>Zip name:</strong> <code>chapter14-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>notes-list.png</code>, <code>note-detail.png</code>, <code>notes-after-relaunch.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter14-lastname-firstname.zip containing:
+
+code.swift — CampusNote.swift, CampusFolder.swift, ContentView.swift, NoteDetailView.swift, and your app file combined
+reflections.txt:
+  Q1: What problem does persistence solve in a mobile app?
+  Q2: Why might a new SwiftUI project choose SwiftData over Core Data?
+  Q3: What are the two main jobs of ModelContainer and ModelContext?
+  Q4: What is a one-to-many relationship in this lab? Name the parent and the children.
+  Q5: What would happen if you deleted a folder but used deleteRule: .nullify instead of .cascade?
+  Q6: Why does @Query refresh the list when you insert a note?
+  Q7: When would you filter with #Predicate instead of loading every record?
+screenshots/ — three PNG files:
+  notes-list.png (empty state OR list with at least two notes)
+  note-detail.png (note detail with edited title and body)
+  notes-after-relaunch.png (app relaunched showing notes still present)</pre>
+        </section>
+
+        <!-- Chapter 15 -->
+        <section class="lab-section" id="lab-ch15">
+            <h2>Chapter 15: Consuming REST Services in SwiftUI</h2>
+            <p><strong>Zip name:</strong> <code>chapter15-lastname-firstname.zip</code></p>
+            <p><strong>Screenshot file names:</strong> <code>feed-loaded.png</code>, <code>loading-spinner.png</code>, <code>error-state.png</code></p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named chapter15-lastname-firstname.zip containing:
+
+code.swift — CampusAnnouncement.swift, AnnouncementService.swift, AnnouncementListViewModel.swift, main view, and app file combined
+reflections.txt:
+  Q1: What is the difference between data on the device and data from a REST API?
+  Q2: Why does this lab use HTTP GET instead of POST for loading the feed?
+  Q3: What does the s in https:// tell you about the connection?
+  Q4: Why is https:// safer than http:// on campus Wi-Fi?
+  Q5: What is a man-in-the-middle attack in one plain sentence?
+  Q6: Why did we put URLSession in a service instead of inside the view?
+  Q7: What is URLProtocol used for, even if you do not implement it in this lab?
+screenshots/ — three PNG files:
+  feed-loaded.png (feed loaded with multiple announcements)
+  loading-spinner.png (loading spinner on first launch or refresh)
+  error-state.png (error state with airplane mode enabled)</pre>
+        </section>
+
+        <!-- Project Proposal -->
+        <section class="lab-section" id="lab-project-proposal">
+            <h2>Project Proposal Assignment</h2>
+            <p><strong>Zip name:</strong> <code>project-proposal-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>proposal.md</code> or <code>proposal.pdf</code></th><td>Capstone project proposal (800–1200 words) with all required sections</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Required sections in the document:</strong> Problem statement, Data, Methods, Evaluation, Concept coverage (Chapters 1–8), optional Timeline and References.</p>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named project-proposal-lastname-firstname.zip containing:
+
+proposal.md OR proposal.pdf — your capstone project proposal (800–1200 words, not including references)
+
+Your document must include these sections with matching headings:
+  Problem statement
+  Data
+  Methods
+  Evaluation
+  Concept coverage (address required concepts from Chapters 1–8)
+
+Optional sections: Timeline or milestones, References or resources
+
+Concept coverage must explain how your app uses course topics from:
+  Chapter 1 — SwiftUI environment and Xcode workflow
+  Chapter 2 — Layouts and reusable views
+  Chapter 3 — Interactivity and state
+  Chapter 4 — Scrollable views and lists
+  Chapter 5 — Grids
+  Chapter 6 — Tabs and modal presentation
+  Chapter 7 — Navigation
+  Chapter 8 — Data/services (SwiftData, REST, or Firebase) and success criteria</pre>
+        </section>
+
+        <!-- Sprint 1 -->
+        <section class="lab-section" id="lab-sprint1">
+            <h2>Sprint 1: Trello Boards and Sprint Review</h2>
+            <p><strong>Zip name:</strong> <code>sprint1-lastname-firstname.zip</code></p>
+            <table>
+                <caption>Required files</caption>
+                <thead><tr><th scope="col">File</th><th scope="col">Contents</th></tr></thead>
+                <tbody>
+                    <tr><th scope="row"><code>links.txt</code></th><td>Trello board share link; video link if hosted outside Canvas</td></tr>
+                    <tr><th scope="row"><code>sprint-review.mp4</code></th><td>Optional if you upload the video file in the zip instead of Canvas Studio</td></tr>
+                    <tr><th scope="row"><code>screenshots/trello-done-column.png</code></th><td>Screenshot of Done column for Sprint 1</td></tr>
+                </tbody>
+            </table>
+            <h3>Canvas assignment text (copy below)</h3>
+            <pre>Submit one zip file named sprint1-lastname-firstname.zip containing:
+
+links.txt — Trello board link (board name: MAD-157 - [Project Name] - [Team Name])
+            Video link if you did not upload the video directly to this Canvas assignment
+screenshots/ — one PNG file:
+  trello-done-column.png (Done column showing completed Sprint 1 cards)
+
+Optional: sprint-review.mp4 (~7 minutes) if uploading video inside the zip
+
+Your sprint review video must cover:
+  Slide 1 — Title (project, team, Sprint 1 Review, date)
+  Slide 2 — Sprint goals
+  Slide 3 — What was completed (include Trello Done screenshot)
+  Slide 4 — What was not completed and why
+  Slides 5+ — Live demo of working SwiftUI software (simulator or device)
+  Key learnings and metrics
+  Goals for the next sprint
+  Q&amp;A</pre>
+        </section>
+
+        <div class="copyright">
+            <p>Copyright &copy; 2026 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

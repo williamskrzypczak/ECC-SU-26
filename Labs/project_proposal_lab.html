@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Project Proposal Assignment — MAD 157</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main { padding: 2rem 1rem; }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        p, ul, ol {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol { margin-left: 2rem; }
+
+        li { margin-bottom: 0.5rem; }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            white-space: pre-wrap;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th { background-color: #f0f0f0; }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .notice {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover { background-color: #004799; }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            h1 { font-size: 1.75rem; }
+            main { padding: 1rem 0.5rem; }
+        }
+
+        @media (prefers-contrast: high) {
+            body, h1, h2, h3 { color: #000; }
+            th, td, pre { border: 2px solid #000; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Project Proposal Assignment</h1>
+
+        <h2>Purpose</h2>
+        <p>Propose your own SwiftUI iOS app for the course capstone. Define the problem, users, features, data, and how you will know the app succeeds. Your proposal must show that you can apply the major concepts from this course (Chapters 1 through 7, plus data and services from Chapters 14–15). The goal is to demonstrate understanding by designing a feasible app you could build in Xcode.</p>
+
+        <div class="analogy-box">
+            <p><strong>Think of this as a blueprint, not the house.</strong> You are not building the full app yet. You are explaining what you would build, why it matters, and which course skills each part of the app will use.</p>
+        </div>
+
+        <h2>Concept Coverage Requirement</h2>
+        <p>Your proposal must explicitly address or plan to use the concepts below. Include a <strong>Concept coverage</strong> section (see Required sections) where you state how your project uses each.</p>
+
+        <h3>Chapter 1: SwiftUI Development Environment</h3>
+        <ul>
+            <li>What is SwiftUI? (declarative UI built in Swift)</li>
+            <li>App structure: <code>@main</code> app file, <code>WindowGroup</code>, and primary views</li>
+            <li>Xcode tooling: previews, simulator, and project organization</li>
+            <li>How you will use GitHub (or similar) to track your capstone work</li>
+        </ul>
+
+        <h3>Chapter 2: Basic UI Elements and Layouts</h3>
+        <ul>
+            <li>Layout stacks you will use (<code>VStack</code>, <code>HStack</code>, <code>ZStack</code>)</li>
+            <li>At least two reusable view components (custom structs or subviews)</li>
+            <li>Spacing, padding, alignment, or <code>Spacer</code> in your screen designs</li>
+        </ul>
+
+        <h3>Chapter 3: Adding Interactivity</h3>
+        <ul>
+            <li>State management with <code>@State</code> or related patterns</li>
+            <li>At least one user control (button, toggle, picker, or text field)</li>
+            <li>How user input changes what appears on screen</li>
+        </ul>
+
+        <h3>Chapter 4: Scrollable Views and Lists</h3>
+        <ul>
+            <li>A scrollable screen using <code>ScrollView</code>, <code>List</code>, or <code>ForEach</code></li>
+            <li>What data drives the list (sample items, categories, or search results)</li>
+            <li>Search, sections, or keyboard handling if relevant to your app</li>
+        </ul>
+
+        <h3>Chapter 5: Grids</h3>
+        <ul>
+            <li>A grid-based screen using <code>LazyVGrid</code>, <code>LazyHGrid</code>, or a static <code>Grid</code></li>
+            <li>If grids are not central to your app, explain why and where a grid still fits (catalog, gallery, schedule)</li>
+        </ul>
+
+        <h3>Chapter 6: Tab Bars and Modal Presentation</h3>
+        <ul>
+            <li>Main navigation pattern: <code>TabView</code> and/or modal presentation (<code>.sheet</code>, <code>.alert</code>, or popover)</li>
+            <li>Which tasks belong in a tab vs a temporary modal</li>
+        </ul>
+
+        <h3>Chapter 7: Navigation</h3>
+        <ul>
+            <li>Navigation with <code>NavigationStack</code> (or equivalent for your iOS target)</li>
+            <li>At least one drill-down flow (list → detail) or programmatic navigation</li>
+            <li>Toolbar actions or secondary screens (settings, about, help)</li>
+        </ul>
+
+        <h3>Chapter 8: Data, Services, and Wrapping Up</h3>
+        <p>This section maps to advanced course topics (SwiftData, REST, Firebase) and project completion.</p>
+        <ul>
+            <li>Data strategy: local persistence (SwiftData), cloud (Firebase), and/or REST API — state which you will use and why</li>
+            <li>Problem definition and success criteria (how you will measure success)</li>
+            <li>Impact or “what if it works well?” (who benefits and why the app matters)</li>
+            <li>Optional: Figma wireframe reference, TestFlight, App Store steps, or accessibility plan</li>
+        </ul>
+
+        <h2>Required Proposal Sections</h2>
+        <p>Use the following structure. Write in clear, concise prose. Headings in your document should match these section names.</p>
+        <ol>
+            <li><strong>Problem statement</strong> — What question or goal does the app address? Who is the user? Why does it matter?</li>
+            <li><strong>Data</strong> — Data sources (user input, local storage, API, Firebase). Approximate entities or models. Known limits (offline use, privacy, sample vs live data).</li>
+            <li><strong>Methods</strong> — Planned screens, SwiftUI patterns, and architecture. Describe how they align with Chapters 2–7 and your data choice (Chapter 8). Include a brief screen-flow sketch (tabs → lists → detail) so navigation and modals are clear.</li>
+            <li><strong>Evaluation</strong> — How you will test the app (preview, simulator, manual test checklist). Success criteria and what “done” looks like for the capstone.</li>
+            <li><strong>Concept coverage</strong> — For each chapter (1–8), write one or two sentences explaining how your project uses the required concepts. You may use a checklist plus short narrative.</li>
+            <li><strong>Timeline or milestones</strong> (optional) — High-level phases (wireframe, core screens, data layer, polish, testing).</li>
+            <li><strong>References or resources</strong> (optional) — Apple docs, Figma file, API docs, or tutorials you plan to use.</li>
+        </ol>
+
+        <h2>Deliverable and Format</h2>
+        <table>
+            <caption>Project proposal deliverable requirements</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Requirement</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Deliverable</th>
+                    <td>A single project proposal document inside one zip file</td>
+                </tr>
+                <tr>
+                    <th scope="row">Format</th>
+                    <td>Markdown (<code>proposal.md</code>) or PDF (<code>proposal.pdf</code>). Use headings that match the required sections.</td>
+                </tr>
+                <tr>
+                    <th scope="row">Length</th>
+                    <td>800–1200 words (about 2–4 pages), not including references</td>
+                </tr>
+                <tr>
+                    <th scope="row">Submission</th>
+                    <td>Submit via Canvas as specified below</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="notice">
+            <p><strong>Tip:</strong> Start from the campus app labs if you need inspiration. Your capstone should go further — a distinct app idea with a clear user and purpose.</p>
+        </div>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Project proposal grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Clarity of problem — goal, user, and motivation are clear</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Feasibility — scope, data, and SwiftUI methods are realistic for the term</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Concept integration — required concepts from Chapters 1–8 are addressed completely</th>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">Evaluation plan — testing approach and success criteria are appropriate</th>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <th scope="row">Writing quality — organized, concise, and free of major errors</th>
+                    <td>10</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Deliverables</h2>
+        <ul>
+            <li><code>proposal.md</code> or <code>proposal.pdf</code> with all required sections</li>
+            <li>Word count within 800–1200 words (excluding references)</li>
+            <li>Concept coverage for Chapters 1–8</li>
+        </ul>
+
+        <h2>How to Submit on Canvas</h2>
+        <p>Package your work as one zip file. Use the exact structure in the <a href="../canvas-submission-instructions.html#lab-project-proposal">Project Proposal submission guide</a>.</p>
+
+        <h3>Create your zip on a Mac</h3>
+        <ol>
+            <li>Create a folder on your Desktop named for the assignment (example: <code>project-proposal-smith-jane</code>).</li>
+            <li>Place <code>proposal.md</code> or <code>proposal.pdf</code> inside the folder.</li>
+            <li>Right-click the folder and choose <strong>Compress "folder name"</strong>.</li>
+            <li>Rename the zip if needed (example: <code>project-proposal-smith-jane.zip</code>).</li>
+            <li>Upload the zip to the Canvas assignment.</li>
+        </ol>
+        <p>See the full <a href="../canvas-submission-instructions.html#zip-on-mac">Mac zip instructions</a> if you get stuck.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

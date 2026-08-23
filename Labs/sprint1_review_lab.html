@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Sprint 1: Trello Boards and Sprint Review — MAD 157</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main { padding: 2rem 1rem; }
+
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th { background-color: #f0f0f0; }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .notice {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover { background-color: #004799; }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            h1 { font-size: 1.75rem; }
+            main { padding: 1rem 0.5rem; }
+            table { font-size: 0.9em; }
+        }
+
+        @media (prefers-contrast: high) {
+            body, h1, h2, h3 { color: #000; }
+            th, td { border: 2px solid #000; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Sprint 1: Trello Boards and Sprint Review</h1>
+
+        <h2>Introduction</h2>
+        <p>This module provides official guidelines for your team Trello project board and your Sprint 1 review presentation. The goal is a consistent, professional Agile workflow. This structure helps you stay organized, track work, and present progress clearly.</p>
+
+        <div class="analogy-box">
+            <p><strong>Trello is your team dashboard.</strong> The sprint review is your demo day. The board shows what you planned and finished. The presentation shows working software — not a status email.</p>
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing Sprint 1, you will be able to:</p>
+        <ul>
+            <li>Set up a Trello board using the required list structure</li>
+            <li>Write user stories and acceptance criteria on Trello cards</li>
+            <li>Move work through Product Backlog → Done with clear ownership</li>
+            <li>Deliver a 7-minute sprint review that demos working SwiftUI features</li>
+        </ul>
+
+        <h2>Trello Project Board Setup</h2>
+        <p>Your Trello board is the central hub for the project. It shows your workflow and tracks progress. All teams must set up their board as follows.</p>
+
+        <h3>Board naming convention</h3>
+        <p>Name your board using this format:</p>
+        <p><code>[Course Code] - [Project Name] - [Team Name]</code></p>
+        <p>Example: <code>MAD-157 - Campus Hub App - Team Alpha</code></p>
+
+        <h3>Required lists (columns)</h3>
+        <p>Your board must have these five lists in this order:</p>
+        <ol>
+            <li><strong>Product Backlog</strong> — Master list of all tasks, features, and user stories for the entire project.</li>
+            <li><strong>Sprint Backlog</strong> — Items your team commits to for this sprint, moved from the Product Backlog before the sprint starts.</li>
+            <li><strong>In Progress</strong> — Tasks actively being worked on. Only assign work here when someone has started it.</li>
+            <li><strong>In Review / Testing</strong> — Completed tasks waiting for teammate review, test, and approval.</li>
+            <li><strong>Done</strong> — Reviewed, verified, and accepted work for the current sprint.</li>
+        </ol>
+
+        <h3>Card (task) structure</h3>
+        <p>Each card represents one task or user story and must include:</p>
+        <ul>
+            <li><strong>Card title</strong> — Clear, concise task name (example: <code>Build RSVP sheet UI</code>)</li>
+            <li><strong>Description</strong> with:
+                <ul>
+                    <li><strong>User story:</strong> As a [user type], I want [an action] so that [a benefit].</li>
+                    <li><strong>Acceptance criteria:</strong> Bulleted list of conditions for Done (example: <code>Sheet opens from Home tab</code>, <code>User can submit RSVP</code>)</li>
+                </ul>
+            </li>
+            <li><strong>Members</strong> — Assigned teammate(s)</li>
+            <li><strong>Labels</strong> — Required labels: Feature, Bug, UI/UX, Backend, Documentation. Add SwiftUI or Xcode when relevant.</li>
+            <li><strong>Checklist</strong> — Use for complex tasks broken into sub-steps</li>
+        </ul>
+
+        <h2>Sprint Review Presentation Structure</h2>
+        <p>The sprint review is a formal demo of working software built during the sprint. It is not a status report. Follow this slide structure for consistency.</p>
+
+        <div class="notice">
+            <p><strong>Target time:</strong> 7 minutes total.</p>
+        </div>
+
+        <table>
+            <caption>Sprint review slide structure</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Slide</th>
+                    <th scope="col">Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1 — Title</th>
+                    <td>Project name, team name, sprint number (example: Sprint 1 Review), and date</td>
+                </tr>
+                <tr>
+                    <th scope="row">2 — Sprint goals</th>
+                    <td>Bullet list of high-level goals (example: Implement tab navigation, Build RSVP sheet)</td>
+                </tr>
+                <tr>
+                    <th scope="row">3 — What was completed</th>
+                    <td>Screenshot of the Done column from your Trello board. List key features or user stories completed.</td>
+                </tr>
+                <tr>
+                    <th scope="row">4 — What was not completed (and why)</th>
+                    <td>Items left in Sprint Backlog or In Progress. Give a brief, professional reason for each. Transparency matters.</td>
+                </tr>
+                <tr>
+                    <th scope="row">5 through N — Live demonstration</th>
+                    <td>Demo working software in the simulator or on device. Do not show code or static mockups. Walk through completed user stories from a user perspective. Each teammate demos work they contributed.</td>
+                </tr>
+                <tr>
+                    <th scope="row">N+1 — Key learnings and metrics</th>
+                    <td>What the team learned (technology, collaboration, challenges). Include a simple metric (example: 8 of 10 stories completed).</td>
+                </tr>
+                <tr>
+                    <th scope="row">N+2 — Goals for the next sprint</th>
+                    <td>High-level goals for Sprint 2 to show forward planning</td>
+                </tr>
+                <tr>
+                    <th scope="row">Final — Q&amp;A</th>
+                    <td>Open the floor for questions from the instructor and classmates</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Your recorded video must include at least slides 1 through 8 worth of content: title, goals, completed work, incomplete work, live demo, learnings, next sprint goals, and Q&amp;A (even if Q&amp;A has no audience questions, state that the floor is open).</p>
+
+        <h2>Deliverables</h2>
+        <ul>
+            <li>Trello board set up with the five required lists and at least four sprint cards</li>
+            <li>Sprint review video (~7 minutes) covering the slide structure above</li>
+            <li>Screenshot of your Trello Done column for Sprint 1</li>
+            <li><code>links.txt</code> with your Trello board link and video link (if the video is hosted outside Canvas)</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Sprint 1 grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Trello board follows naming, lists, and card structure</th>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">Presentation includes all required sections (slides 1–8 content)</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Live demo shows working SwiftUI software (not code or mockups only)</th>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">Professional communication — clear goals, honest blockers, team participation</th>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Trello board is missing a required list</h3>
+        <p>Add the list and drag cards into the correct column. Match the exact list names in this module.</p>
+
+        <h3>Video is too long</h3>
+        <p>Cut repetition in the demo. Keep slides 1–4 and the final sections brief so most time goes to the live demonstration.</p>
+
+        <h3>Video file is too large for Canvas</h3>
+        <p>Upload to Canvas Studio or an unlisted host. Put the view link in <code>links.txt</code> and note that in your Canvas comment.</p>
+
+        <h3>No working features to demo yet</h3>
+        <p>Demo the smallest working slice (one screen, one flow). Explain blockers on slide 4 and show your plan for Sprint 2.</p>
+
+        <h2>How to Submit on Canvas</h2>
+        <p>Package your work as one zip file. Use the exact structure in the <a href="../canvas-submission-instructions.html#lab-sprint1">Sprint 1 submission guide</a>.</p>
+
+        <h3>Create your zip on a Mac</h3>
+        <ol>
+            <li>Create a folder (example: <code>sprint1-smith-jane</code>).</li>
+            <li>Add <code>links.txt</code>, your video file (if required in the zip), and a <code>screenshots/</code> folder with <code>trello-done-column.png</code>.</li>
+            <li>Right-click the folder and choose <strong>Compress "folder name"</strong>.</li>
+            <li>Rename the zip to <code>sprint1-lastname-firstname.zip</code> and upload to Canvas.</li>
+        </ol>
+        <p>See the full <a href="../canvas-submission-instructions.html#zip-on-mac">Mac zip instructions</a> if you get stuck.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
