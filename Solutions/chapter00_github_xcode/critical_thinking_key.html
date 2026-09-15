@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 0 Instructor Key: Git Decisions</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 1rem; }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 100; }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button { display: inline-block; background-color: #005fcc; color: #fff; padding: 0.5rem 1rem; border-radius: 6px; text-decoration: none; font-weight: 600; }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .home-nav a:not(.home-button) { margin-left: 1rem; }
+        .analogy-box { background-color: #f8f9fa; border-left: 4px solid #005fcc; padding: 1rem 1.25rem; margin-bottom: 1.5rem; max-width: 50rem; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; font-size: 0.9rem; color: #666; }
+        table { width: 100%; max-width: 50rem; border-collapse: collapse; margin-bottom: 1.5rem; }
+        caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; color: #2a2a2a; }
+        th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: #f0f0f0; }
+        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } table { font-size: 0.9em; } }
+        @media (prefers-contrast: high) { body, h1, h2, h3 { color: #000; } pre, th, td { border: 2px solid #000; } }
+        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+        @media print { .skip-link, .home-nav { display: none; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../../index.html">Home</a>
+        <a href="../index.html">All solutions</a>
+        <a href="./solution.html">GitHub solution</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Instructor Key: Git Decisions</h1>
+        <p>Use this page while groups work. Do not print it with the student cards. The student page is <a href="../../Labs/chapter0_github_critical_thinking.html">Chapter 0 In-Class: Git Decisions</a>.</p>
+
+        <h2>Desired Results</h2>
+        <p>Students should leave able to say these five ideas in plain language:</p>
+        <ol>
+            <li>Commit is not a backup. It saves a snapshot on this Mac. GitHub does not have it until they push.</li>
+            <li>Push and pull go opposite ways. Push is Mac to GitHub. Pull is GitHub to Mac.</li>
+            <li><code>main</code> is the copy they would show a client. Experiments go on a branch, then merge, then push.</li>
+            <li>Edits on GitHub.com do not appear in Xcode until they pull.</li>
+            <li>Uncommitted work blocks merge. Commit or discard first.</li>
+        </ol>
+        <p>If a group still says “just save it to GitHub” for every card, they have not split commit from push. Stay with Cards A and B until that clicks.</p>
+
+        <h2>Answer Key</h2>
+        <table>
+            <caption>Correct move, why it works, and what to listen for</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Card</th>
+                    <th scope="col">Correct move</th>
+                    <th scope="col">Why</th>
+                    <th scope="col">Wrong move</th>
+                    <th scope="col">Listen for</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">A</th>
+                    <td>Commit, then push</td>
+                    <td>Xcode has the new text. GitHub does not. Commit writes the snapshot on the Mac. Push uploads it.</td>
+                    <td>Only commit leaves the website old. Only push with nothing committed leaves GitHub old.</td>
+                    <td>Local versus online, or phone versus iCloud</td>
+                </tr>
+                <tr>
+                    <th scope="row">B</th>
+                    <td>Pull</td>
+                    <td>The new README lives on GitHub. Pull downloads it.</td>
+                    <td>Push tries to upload the old file. It can fail or fight the website copy.</td>
+                    <td>The website is ahead of my Mac</td>
+                </tr>
+                <tr>
+                    <th scope="row">C</th>
+                    <td>Make a new branch, then edit there</td>
+                    <td><code>main</code> stays the working app. The tagline is a draft.</td>
+                    <td>Edit <code>main</code> and a bad tagline is now in the copy they would demo.</td>
+                    <td>Draft thread. Do not break the good version.</td>
+                </tr>
+                <tr>
+                    <th scope="row">D</th>
+                    <td>Merge into <code>main</code>, then push</td>
+                    <td>Switch to <code>main</code>, merge, then push. Merge is local. GitHub needs a push.</td>
+                    <td>Merge and stop. GitHub <code>main</code> stays old. Stay on the branch forever and <code>main</code> never gets the work.</td>
+                    <td>Merge is on the Mac. GitHub needs a push.</td>
+                </tr>
+                <tr>
+                    <th scope="row">E</th>
+                    <td>Pull, then push</td>
+                    <td>GitHub has commits the Mac does not. Pull first, then push. Same as the lab troubleshooting note.</td>
+                    <td>Keep pushing. It keeps getting rejected.</td>
+                    <td>Download their change first</td>
+                </tr>
+                <tr>
+                    <th scope="row">F</th>
+                    <td>Stop and commit (or throw away) leftover changes first</td>
+                    <td>Git will not merge while there is unfinished work. Then merge.</td>
+                    <td>Ignore leftover files. They get stuck or mix half-finished edits into <code>main</code>.</td>
+                    <td>Finish or undo the current edits first</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Exit Tickets</h2>
+        <h3>They got it</h3>
+        <ul>
+            <li>A commit is on my Mac. A push is sending that save to GitHub.</li>
+            <li>I use a branch so that if my idea is bad, <code>main</code> still works.</li>
+        </ul>
+        <h3>Not there yet</h3>
+        <ul>
+            <li>Commit and push are the same.</li>
+            <li>Pull is how I upload.</li>
+            <li>A branch is a second GitHub account, or a copy of Xcode.</li>
+        </ul>
+
+        <h2>Debrief Script</h2>
+        <p>Ask the whole class. Do not open Terminal. Do not introduce pull requests today.</p>
+        <ol>
+            <li>After Card A, is your work safe if the laptop dies? Only if they pushed.</li>
+            <li>After Card B, who has the newest README, the Mac or GitHub? GitHub, until they pull.</li>
+            <li>If the tagline was ugly, who still has a clean app? Anyone who used a branch.</li>
+        </ol>
+
+        <h2>If a Group Is Lost</h2>
+        <div class="analogy-box">
+            <p>Use one analogy only. Google Docs. Commit is a named version on this computer. GitHub is the file in Drive. Push is upload. Pull is download. Branch is “Make a copy” before a messy rewrite.</p>
+        </div>
+        <p>If they finish early, have them rewrite one bad commit message. Change <code>update</code> or <code>fix stuff</code> into a lab-style message such as <code>Add my name to welcome screen</code>.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
