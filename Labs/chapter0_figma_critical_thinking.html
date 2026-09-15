@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Chapter 0 In-Class: Figma Decisions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .decision-card {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            max-width: 50rem;
+            page-break-inside: avoid;
+        }
+
+        .decision-card h3 {
+            margin-top: 0;
+        }
+
+        .exit-ticket {
+            background-color: #f8f9fa;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3 {
+                color: #000;
+            }
+
+            .decision-card,
+            .exit-ticket {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link,
+            .home-nav {
+                display: none;
+            }
+
+            .decision-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+        <a href="./chapter0_tool_figma_basics_lab.html">Figma lab</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 In-Class: Figma Decisions</h1>
+        <p>You already sketched a welcome screen in Figma. This is not more drawing. It is “what would you do next, and why?”</p>
+
+        <h2>Setup</h2>
+        <p>Work in groups of three for about 15 minutes. Pick one recorder. That person writes the group’s answers.</p>
+        <p>Keep your <code>Campus Welcome Wireframe</code> file nearby if you want. Do not start a new Figma file. Do not open Xcode.</p>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p>Figma is your sketchbook. A floor plan comes before you build the house. A <strong>frame</strong> is one phone screen.</p>
+            <p><strong>Auto layout</strong> stacks items like a SwiftUI <code>VStack</code>. A <strong>component</strong> is a stamp. An <strong>instance</strong> is a copy still linked to that stamp.</p>
+            <p>A <strong>prototype</strong> is the tap that opens the next screen. <strong>Export</strong> saves the outer frame as a PNG, not a loose text layer.</p>
+        </div>
+
+        <h2>How to Play</h2>
+        <ol>
+            <li>Read each card out loud.</li>
+            <li>Agree on one next move and one sentence why.</li>
+            <li>Write what goes wrong if you pick the wrong move.</li>
+            <li>Finish all six cards in about six minutes. Then we compare answers.</li>
+        </ol>
+        <p>Pick one next move per card:</p>
+        <ul>
+            <li>Create an iPhone frame and put the layers inside</li>
+            <li>Apply Auto layout</li>
+            <li>Create a component, then use instances</li>
+            <li>Duplicate the frame</li>
+            <li>Connect a prototype, then Present</li>
+            <li>Select the outer frame, then export</li>
+        </ul>
+
+        <h2>The Cards</h2>
+
+        <article class="decision-card">
+            <h3>Card A — Drawing with no phone</h3>
+            <p>You typed a title and drew a button on the empty canvas. There is no iPhone outline. The layers sit in open space.</p>
+            <p>What do you do next? What goes wrong if you keep drawing on the blank canvas?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card B — The stack falls apart</h3>
+            <p>You lined up the title, name, tagline, and button by hand. You move the title. The rest stay put. The gaps look uneven.</p>
+            <p>What do you do next? What goes wrong if you keep nudging each piece?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card C — The copy does not update</h3>
+            <p>You copy-pasted Get Started onto the Detail Screen. You change the first button to blue. The copy on Detail Screen stays gray.</p>
+            <p>What do you do next? What goes wrong if you keep pasting more copies?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card D — You need a second screen</h3>
+            <p>Welcome Screen looks good. You want a Detail Screen to tap into. Starting from a blank canvas feels slow and easy to mismatch.</p>
+            <p>What do you do next? What goes wrong if you draw a tiny new rectangle instead?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card E — The click does nothing</h3>
+            <p>You have two frames. You click Get Started on the Design canvas. Nothing happens. There is no blue arrow.</p>
+            <p>What do you do next? What goes wrong if you keep clicking in Design view?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card F — The PNG looks wrong</h3>
+            <p>You hit Export. The PNG is a tiny piece of text, or it looks empty. The layers panel shows a text layer selected, not <code>Welcome Screen</code>.</p>
+            <p>What do you do next? What goes wrong if you export that inner layer?</p>
+        </article>
+
+        <h2>Exit Tickets</h2>
+        <p>As a group, finish these two sentences. Write them on the recorder’s notes.</p>
+        <div class="exit-ticket">
+            <p>A frame is a phone screen. A group is ________________________________.</p>
+        </div>
+        <div class="exit-ticket">
+            <p>I use a component so that when I change the button, ________________________________.</p>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
