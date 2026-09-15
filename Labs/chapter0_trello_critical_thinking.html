@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Chapter 0 In-Class: Trello Decisions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .decision-card {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.25rem;
+            max-width: 50rem;
+            page-break-inside: avoid;
+        }
+
+        .decision-card h3 {
+            margin-top: 0;
+        }
+
+        .exit-ticket {
+            background-color: #f8f9fa;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3 {
+                color: #000;
+            }
+
+            .decision-card,
+            .exit-ticket {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link,
+            .home-nav {
+                display: none;
+            }
+
+            .decision-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+        <a href="./chapter0_tool_trello_basics_lab.html">Trello lab</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 In-Class: Trello Decisions</h1>
+        <p>You already planned Campus Welcome tasks in Trello. This is not more clicking. It is “what would you do next, and why?”</p>
+
+        <h2>Setup</h2>
+        <p>Work in groups of three for about 15 minutes. Pick one recorder. That person writes the group’s answers.</p>
+        <p>Keep your <code>Campus Welcome App Sprint</code> board nearby if you want. Do not create a new board. Do not open Xcode.</p>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p>Trello is sticky notes on a whiteboard. A <strong>board</strong> is one project. A <strong>list</strong> is a column, like To Do or Done.</p>
+            <p>A <strong>card</strong> is one sticky note. A <strong>label</strong> is a color category. A <strong>checklist</strong> is the small steps on that one note.</p>
+            <p>Drag a card right to show progress. A <strong>comment</strong> is a note on the task. Share the board so a classmate can open it.</p>
+        </div>
+
+        <h2>How to Play</h2>
+        <ol>
+            <li>Read each card out loud.</li>
+            <li>Agree on one next move and one sentence why.</li>
+            <li>Write what goes wrong if you pick the wrong move.</li>
+            <li>Finish all six cards in about six minutes. Then we compare answers.</li>
+        </ol>
+        <p>Pick one next move per card:</p>
+        <ul>
+            <li>Create To Do, In Progress, and Done lists</li>
+            <li>Add a card (not a new list)</li>
+            <li>Add a checklist</li>
+            <li>Apply labels and show them on the front</li>
+            <li>Move the card to Done, then comment</li>
+            <li>Share the board link</li>
+        </ul>
+
+        <h2>The Cards</h2>
+
+        <article class="decision-card">
+            <h3>Card A — Everything in one pile</h3>
+            <p>You have a board. All four tasks sit in one unnamed column. You cannot tell what is started and what is finished.</p>
+            <p>What do you do next? What goes wrong if you keep one pile?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card B — The column is named like a task</h3>
+            <p>You renamed a list to <code>Set up Xcode project</code> because that is one task. The column is now a single job, not a stage.</p>
+            <p>What do you do next? What goes wrong if lists are named after tasks?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card C — One huge card</h3>
+            <p>The <code>Build ContentView welcome screen</code> card has title text, a student name, modifiers, and a preview. You keep forgetting a piece.</p>
+            <p>What do you do next? What goes wrong if you dump it all in the description with no checkboxes?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card D — You cannot see priority</h3>
+            <p>Four cards look the same on the board. You cannot tell Setup from Coding or High priority unless you open each card.</p>
+            <p>What do you do next? What goes wrong if colors stay hidden?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card E — The work is done, the card is not</h3>
+            <p>You created the Xcode project. The card still sits in To Do. Teammates think you have not started.</p>
+            <p>What do you do next? What goes wrong if you delete the card instead?</p>
+        </article>
+
+        <article class="decision-card">
+            <h3>Card F — The classmate cannot get in</h3>
+            <p>You pasted the board URL in chat. They hit a login wall, or the board looks private.</p>
+            <p>What do you do next? What goes wrong if you only send a screenshot?</p>
+        </article>
+
+        <h2>Exit Tickets</h2>
+        <p>As a group, finish these two sentences. Write them on the recorder’s notes.</p>
+        <div class="exit-ticket">
+            <p>A list is a column or stage. A card is ________________________________.</p>
+        </div>
+        <div class="exit-ticket">
+            <p>I move a card to Done so that ________________________________.</p>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

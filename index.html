@@ -340,6 +340,13 @@
                         <td>Labs/chapter0_figma_critical_thinking.html</td>
                         <td>Enable JavaScript to load links from GitHub.</td>
                     </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Labs/chapter0_trello_critical_thinking.html">Chapter 0 In-Class: Trello Decisions</a>
+                        </th>
+                        <td>Labs/chapter0_trello_critical_thinking.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
                 </noscript>
             </tbody>
         </table>
@@ -375,6 +382,14 @@
                         </th>
                         <td>Solutions/chapter00_tool_figma_basics/</td>
                         <td>CampusWelcomeWireframe</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <a href="./Solutions/chapter00_tool_trello_basics/solution.html">Chapter 0: Trello Basics</a>
+                        </th>
+                        <td>Solutions/chapter00_tool_trello_basics/</td>
+                        <td>Campus Welcome App Sprint</td>
                         <td>Enable JavaScript to load links from GitHub.</td>
                     </tr>
                     <tr>
@@ -520,7 +535,8 @@
             function formatCteTitle(path) {
                 var titles = {
                     'Labs/chapter0_github_critical_thinking.html': 'Chapter 0 In-Class: Git Decisions',
-                    'Labs/chapter0_figma_critical_thinking.html': 'Chapter 0 In-Class: Figma Decisions'
+                    'Labs/chapter0_figma_critical_thinking.html': 'Chapter 0 In-Class: Figma Decisions',
+                    'Labs/chapter0_trello_critical_thinking.html': 'Chapter 0 In-Class: Trello Decisions'
                 };
 
                 if (titles[path]) {
@@ -764,6 +780,10 @@
                     {
                         title: 'Chapter 0 In-Class: Figma Decisions',
                         path: 'Labs/chapter0_figma_critical_thinking.html'
+                    },
+                    {
+                        title: 'Chapter 0 In-Class: Trello Decisions',
+                        path: 'Labs/chapter0_trello_critical_thinking.html'
                     }
                 ];
 
@@ -911,6 +931,7 @@
                 var titles = {
                     'Solutions/chapter00_github_xcode/': 'Chapter 0: GitHub and Xcode Source Control',
                     'Solutions/chapter00_tool_figma_basics/': 'Chapter 0: Figma Basics',
+                    'Solutions/chapter00_tool_trello_basics/': 'Chapter 0: Trello Basics',
                     'Solutions/chapter00_tool_firebase_basics/': 'Chapter 0: Firebase Basics',
                     'Solutions/chapter01_campus_welcome/': 'Chapter 1: SwiftUI Development Environment',
                     'Solutions/chapter02_campus_events_layout/': 'Chapter 2: Basic UI Elements and Layouts',
@@ -942,6 +963,12 @@
                         folder: 'Solutions/chapter00_tool_figma_basics/',
                         page: 'Solutions/chapter00_tool_figma_basics/solution.html',
                         project: 'CampusWelcomeWireframe'
+                    },
+                    {
+                        title: 'Chapter 0: Trello Basics',
+                        folder: 'Solutions/chapter00_tool_trello_basics/',
+                        page: 'Solutions/chapter00_tool_trello_basics/solution.html',
+                        project: 'Campus Welcome App Sprint'
                     },
                     {
                         title: 'Chapter 0: Firebase Basics',
@@ -1068,6 +1095,7 @@
                                 var projectNames = {
                                     '00': 'GitPractice',
                                     '00_tool_figma': 'CampusWelcomeWireframe',
+                                    '00_tool_trello': 'Campus Welcome App Sprint',
                                     '00_tool_firebase': 'CampusFirebase',
                                     '01': 'CampusWelcome',
                                     '02': 'CampusEvents',
@@ -1081,6 +1109,8 @@
                                 };
                                 var chapterKey = /chapter00_tool_figma/i.test(folder)
                                     ? '00_tool_figma'
+                                    : /chapter00_tool_trello/i.test(folder)
+                                    ? '00_tool_trello'
                                     : /chapter00_tool_firebase/i.test(folder)
                                     ? '00_tool_firebase'
                                     : (chapterMatch ? chapterMatch[1] : '');
