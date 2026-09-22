@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Chapter 0 In-Class: Trello Agile Challenges</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a {
+            color: #005fcc;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .challenge-card {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+            page-break-inside: avoid;
+        }
+
+        .challenge-card h2 {
+            margin-top: 0;
+        }
+
+        .exit-ticket {
+            background-color: #f8f9fa;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3 {
+                color: #000;
+            }
+
+            .challenge-card,
+            .exit-ticket {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link,
+            .home-nav {
+                display: none;
+            }
+
+            .challenge-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+        <a href="../Labs/chapter0_tool_trello_basics_lab.html">Trello lab</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 In-Class: Trello Agile Challenges</h1>
+        <p>You already made a Trello board for a fake sprint. This is not more clicking through menus. Your group plans one messy college weekend on a real board.</p>
+
+        <h2>Setup</h2>
+        <p>Work in groups of four for about 20 to 25 minutes. Pick one recorder. That person names the board and keeps it shared.</p>
+        <ul>
+            <li>Pick <strong>one</strong> of the three challenges. Do not do all three.</li>
+            <li>Start a <strong>new</strong> Trello board. Do not reuse Campus Welcome App Sprint.</li>
+            <li>Every must-do card gets <strong>one owner</strong>. A card with no name will not happen.</li>
+            <li>Talk on the cards. Group chat does not count as an update.</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>A board is the group chat you can still read tomorrow.</strong> Lists are buckets. Cards are jobs. One name on a card means that person owns it.</p>
+            <p><strong>Tonight’s work is small.</strong> New wishes go to a later list. Finish one card before you start three more.</p>
+        </div>
+
+        <h2>How to Play</h2>
+        <ol>
+            <li>Read all three challenges out loud. Vote. Pick one.</li>
+            <li>Assign the four named people in that challenge to the four of you.</li>
+            <li>Argue for about five minutes. What would a clumsy board look like? What would a clear board look like?</li>
+            <li>Build the board in Trello. Name the board. Put one name on each must-do card.</li>
+            <li>Be ready to show the board for about 60 seconds.</li>
+        </ol>
+
+        <article class="challenge-card" id="ra-friday">
+            <h2>Challenge 1: RA Inspection Friday</h2>
+            <p>Email at 9 p.m. Room inspection is Friday at 10 a.m. Four zones will get checked: kitchen, bathroom, living room, dumpster. Fail one zone, lose $200. The group chat is “I’ll do it later.”</p>
+            <h3>The four people</h3>
+            <ul>
+                <li><strong>Jules</strong> has the only car. If Jules does not take trash to the dumpster, bags sit in the hall.</li>
+                <li><strong>Kai</strong> lives in the kitchen mess. Dishes and counters are Kai’s. Nobody else knows which Tupperware is science.</li>
+                <li><strong>Morgan</strong> is the only one with a key to the hall closet. The vacuum is in there. Living room carpet is Morgan’s.</li>
+                <li><strong>Riley</strong> has an exam Thursday night and the only plunger. Bathroom is Riley’s, Friday 8 a.m. after the exam.</li>
+            </ul>
+            <h3>Rules</h3>
+            <ul>
+                <li>Four Friday cards. Four different owners. A zone with no name fails.</li>
+                <li>Inspection at 10 a.m. is the finish line. Hallway yelling is not an update.</li>
+                <li>Jules cannot also own the kitchen. Kai cannot also own the vacuum.</li>
+                <li>Nice-to-clean stuff is allowed. It does not live on the Friday list.</li>
+            </ul>
+            <h3>Your board is done when</h3>
+            <p>Each zone has a named card and a Friday due date. One card is Done with a comment from that person, such as “bags at the chute, 9:40.” You can tell who owns dumpster, kitchen, vacuum, and bathroom without asking.</p>
+            <p><strong>Trello:</strong> Board <code>RA Friday</code>. Exactly four must-do cards, four owners, Friday due dates. One Done comment.</p>
+        </article>
+
+        <article class="challenge-card" id="van-friday">
+            <h2>Challenge 2: Spring Break in One Van</h2>
+            <p>Four friends. One van. Leave Friday 6 a.m. Nobody booked the Airbnb. Three people already bought snacks. One person is still “looking at beaches.” Two people think they are driving first. The group chat has 80 messages and zero decisions.</p>
+            <h3>The four people</h3>
+            <ul>
+                <li><strong>Casey</strong> is the vibe captain. Picks the playlist. Books nothing. Casey must own the Airbnb card.</li>
+                <li><strong>Priya</strong> is the money-worrier. Venmo anxiety. Priya must own gas money.</li>
+                <li><strong>Devon</strong> is the overpacker. Started packing three suitcases, not the van. Devon must own the cooler, not every suitcase.</li>
+                <li><strong>Alex</strong> is the driver who might flake. Hasn’t confirmed the car. Alex must own confirm van. If Alex is quiet, that card is blocked, not in progress.</li>
+            </ul>
+            <h3>Rules</h3>
+            <ul>
+                <li>Max one In Progress card per person. Four people means four In Progress cards, not twelve.</li>
+                <li>Split “plan the trip” into real tasks. Playlist is not the trip.</li>
+                <li>If you are waiting on Alex, that card is blocked. Do not fake that it is moving.</li>
+                <li>Friday 6 a.m. is the finish line.</li>
+            </ul>
+            <h3>Your board is done when</h3>
+            <p>The board shows who books the room, who confirms the van, who collects gas money, and who handles the cooler. At most four cards sit in In Progress. Gas money uses a checklist. Confirm van has a blocked note if Alex has not said yes.</p>
+            <p><strong>Trello:</strong> Board <code>Van Friday 6am</code>. At most four In Progress cards, each with a member. One split card with a checklist. One blocked note.</p>
+        </article>
+
+        <article class="challenge-card" id="friendsgiving">
+            <h2>Challenge 3: Friendsgiving Scope Creep</h2>
+            <p>Four roommates said “cheap dinner, four people, Sunday.” By Wednesday the Instagram story says “OPEN HOUSE.” One oven. Budget $60. At 1 a.m. Sam DMs: “quick add: chocolate fountain and a seating chart.”</p>
+            <h3>The four people</h3>
+            <ul>
+                <li><strong>Avery</strong> owns the turkey. Only Avery has used this oven. If Avery starts a fountain, the bird dies.</li>
+                <li><strong>Sam</strong> has the car and already bought sides. Sam is also the 1 a.m. fairy. Sam still has to finish sides, not vanish into a fountain.</li>
+                <li><strong>Jordan</strong> is 21. Drinks and ice cannot move without Jordan.</li>
+                <li><strong>Riley</strong> owns plates, chairs, and a 30-minute clean before guests. No Riley, people eat off textbooks.</li>
+            </ul>
+            <h3>Rules</h3>
+            <ul>
+                <li>Four This-Sunday cards. Four different owners.</li>
+                <li>The fountain is extra. It does not steal Sam’s sides card or Avery’s oven.</li>
+                <li>New ideas go to a later list. Do not start them in a DM.</li>
+                <li>Write the “not this Sunday” note on the card, where everyone can see it.</li>
+            </ul>
+            <h3>Your board is done when</h3>
+            <p>Turkey, sides, drinks, and clean each have a name and a Sunday due date. The fountain and the seating chart sit on a later list with no Sunday due date. One polite comment parks the extra. Sam’s sides card is still a real job.</p>
+            <p><strong>Trello:</strong> Board <code>Friendsgiving</code>. Four This-Sunday cards with four different members. At least two later-list cards that used to be DMs. One polite park comment.</p>
+        </article>
+
+        <h2>Exit Tickets</h2>
+        <p>As a group, finish these two sentences. Write them on the recorder’s notes.</p>
+        <div class="exit-ticket">
+            <p>1. We put one name on each card so that ________________________________.</p>
+        </div>
+        <div class="exit-ticket">
+            <p>2. A new wish that is not tonight’s work should go ________________________________.</p>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
