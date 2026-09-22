@@ -312,6 +312,32 @@
             </tbody>
         </table>
 
+        <h2 id="critical-thinking">Critical Thinking Exercises</h2>
+        <p>These are in-class group activities. They are not Canvas uploads. Do them after the matching lab, same class period.</p>
+        <p id="cte-status" class="status-message" role="status" aria-live="polite">Loading critical thinking exercises from GitHub...</p>
+
+        <table>
+            <caption>In-class critical thinking exercises for MAD 157</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Exercise</th>
+                    <th scope="col">File</th>
+                    <th scope="col">GitHub</th>
+                </tr>
+            </thead>
+            <tbody id="cte-list">
+                <noscript>
+                    <tr>
+                        <th scope="row">
+                            <a href="./CriticalThinking/chapter0_figma_critical_thinking.html">Chapter 0 In-Class: Figma UI Challenges</a>
+                        </th>
+                        <td>CriticalThinking/chapter0_figma_critical_thinking.html</td>
+                        <td>Enable JavaScript to load links from GitHub.</td>
+                    </tr>
+                </noscript>
+            </tbody>
+        </table>
+
         <h2>Before You Start</h2>
         <p>You need a Mac with Xcode 15 or later installed. Download Xcode free from the Mac App Store. Review the matching course chapter before each lab. A paid Apple Developer account is not required for these exercises.</p>
 
@@ -323,6 +349,7 @@
     <script>
         (function () {
             var LAB_PATTERN = /lab\.html$/i;
+            var CTE_PATTERN = /^CriticalThinking\/[^/]+\.html$/i;
             var REMOVED_CHAPTER_PATTERN = /chapter(10|11)[_/]/i;
 
             function isRemovedChapter(path) {
@@ -364,6 +391,34 @@
                 }
 
                 return detectRepoFromHost();
+            }
+
+            function formatCteTitle(path) {
+                var titles = {
+                    'CriticalThinking/chapter0_figma_critical_thinking.html': 'Chapter 0 In-Class: Figma UI Challenges'
+                };
+
+                if (titles[path]) {
+                    return titles[path];
+                }
+
+                var fileName = path.split('/').pop().replace(/\.html$/i, '');
+                var chapterMatch = fileName.match(/chapter\s*(\d+)/i);
+                var remainder = fileName
+                    .replace(/chapter\d+[_-]?/i, '')
+                    .replace(/[_-]*critical[_-]*thinking$/i, '')
+                    .replace(/[_-]+/g, ' ')
+                    .trim();
+
+                if (chapterMatch) {
+                    if (remainder) {
+                        return 'Chapter ' + chapterMatch[1] + ' In-Class: ' + titleCase(remainder);
+                    }
+
+                    return 'Chapter ' + chapterMatch[1] + ' In-Class Exercise';
+                }
+
+                return titleCase(fileName.replace(/[_-]+/g, ' '));
             }
 
             function formatLabTitle(path) {
@@ -500,6 +555,116 @@
                 setStatus('Found ' + labs.length + ' lab file' + (labs.length === 1 ? '' : 's') + '.', false);
             }
 
+            function setCteStatus(message, isError) {
+                var status = document.getElementById('cte-status');
+                if (!status) {
+                    return;
+                }
+                status.textContent = message;
+                status.className = 'status-message' + (isError ? ' error' : '');
+            }
+
+            function renderCtes(ctes, repoConfig) {
+                var tbody = document.getElementById('cte-list');
+                tbody.innerHTML = '';
+
+                ctes.sort(function (a, b) {
+                    return a.path.localeCompare(b.path, undefined, { numeric: true, sensitivity: 'base' });
+                });
+
+                ctes.forEach(function (cte) {
+                    var row = document.createElement('tr');
+                    var titleCell = document.createElement('th');
+                    var fileCell = document.createElement('td');
+                    var githubCell = document.createElement('td');
+                    var pageLink = document.createElement('a');
+                    var githubLink = document.createElement('a');
+                    var title = formatCteTitle(cte.path);
+
+                    titleCell.setAttribute('scope', 'row');
+                    pageLink.href = buildPageLink(cte.path, repoConfig);
+                    pageLink.textContent = title;
+                    titleCell.appendChild(pageLink);
+
+                    fileCell.textContent = cte.path;
+
+                    githubLink.href = buildGitHubLink(repoConfig.owner, repoConfig.repo, repoConfig.branch, cte.path);
+                    githubLink.textContent = 'View on GitHub';
+                    githubLink.setAttribute('rel', 'noopener noreferrer');
+                    githubLink.setAttribute('aria-label', 'View ' + title + ' on GitHub (opens in new tab)');
+                    githubCell.appendChild(githubLink);
+
+                    row.appendChild(titleCell);
+                    row.appendChild(fileCell);
+                    row.appendChild(githubCell);
+                    tbody.appendChild(row);
+                });
+
+                setCteStatus(
+                    'Found ' + ctes.length + ' critical thinking exercise' + (ctes.length === 1 ? '' : 's') + '.',
+                    false
+                );
+            }
+
+            function fetchCtes(repoConfig) {
+                var apiUrl = 'https://api.github.com/repos/' + repoConfig.owner + '/' + repoConfig.repo + '/git/trees/' + repoConfig.branch + '?recursive=1';
+
+                return fetch(apiUrl)
+                    .then(function (response) {
+                        if (!response.ok) {
+                            throw new Error('GitHub API returned status ' + response.status);
+                        }
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        if (!data.tree) {
+                            throw new Error('No file tree returned from GitHub.');
+                        }
+
+                        return data.tree
+                            .filter(function (item) {
+                                return item.type === 'blob' && CTE_PATTERN.test(item.path) && !isRemovedChapter(item.path);
+                            })
+                            .map(function (item) {
+                                return { path: item.path };
+                            });
+                    });
+            }
+
+            function renderFallbackCtes(repoConfig) {
+                var tbody = document.getElementById('cte-list');
+                tbody.innerHTML = '';
+
+                var fallbackCtes = [
+                    {
+                        title: 'Chapter 0 In-Class: Figma UI Challenges',
+                        path: 'CriticalThinking/chapter0_figma_critical_thinking.html'
+                    }
+                ];
+
+                fallbackCtes.forEach(function (cte) {
+                    var row = document.createElement('tr');
+                    var titleCell = document.createElement('th');
+                    var fileCell = document.createElement('td');
+                    var githubCell = document.createElement('td');
+                    var pageLink = document.createElement('a');
+
+                    titleCell.setAttribute('scope', 'row');
+                    pageLink.href = buildPageLink(cte.path, repoConfig);
+                    pageLink.textContent = cte.title;
+                    titleCell.appendChild(pageLink);
+                    fileCell.textContent = cte.path;
+                    githubCell.textContent = repoConfig
+                        ? 'Showing local fallback link.'
+                        : 'Set meta github-repo to load from GitHub.';
+
+                    row.appendChild(titleCell);
+                    row.appendChild(fileCell);
+                    row.appendChild(githubCell);
+                    tbody.appendChild(row);
+                });
+            }
+
             function fetchLabs(repoConfig) {
                 var apiUrl = 'https://api.github.com/repos/' + repoConfig.owner + '/' + repoConfig.repo + '/git/trees/' + repoConfig.branch + '?recursive=1';
 
@@ -621,9 +786,26 @@
 
             if (!repoConfig) {
                 renderFallbackLabs(null);
+                renderFallbackCtes(null);
                 setStatus('Could not detect a GitHub repo. Add content to the github-repo meta tag, for example owner/repo-name.', true);
+                setCteStatus('Could not detect a GitHub repo. Showing local fallback links.', true);
                 return;
             }
+
+            fetchCtes(repoConfig)
+                .then(function (ctes) {
+                    if (ctes.length === 0) {
+                        renderFallbackCtes(repoConfig);
+                        setCteStatus('No CriticalThinking pages were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.', true);
+                        return;
+                    }
+
+                    renderCtes(ctes, repoConfig);
+                })
+                .catch(function (error) {
+                    renderFallbackCtes(repoConfig);
+                    setCteStatus('Unable to load critical thinking exercises from GitHub (' + error.message + '). Showing local fallback links.', true);
+                });
 
             fetchLabs(repoConfig)
                 .then(function (labs) {
