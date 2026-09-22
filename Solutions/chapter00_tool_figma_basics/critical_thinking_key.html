@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chapter 0 Instructor Key: Figma Decisions</title>
+    <title>Chapter 0 Figma UI Challenges: Instructor Key</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif; font-size: 16px; line-height: 1.6; color: #333; background: #fff; max-width: 1200px; margin: 0 auto; padding: 1rem; }
@@ -30,8 +30,8 @@
         caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; color: #2a2a2a; }
         th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; vertical-align: top; }
         th { background-color: #f0f0f0; }
-        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } table { font-size: 0.9em; } }
-        @media (prefers-contrast: high) { body, h1, h2, h3 { color: #000; } pre, th, td { border: 2px solid #000; } }
+        @media (max-width: 768px) { body { padding: 0.5rem; } h1 { font-size: 1.75rem; } }
+        @media (prefers-contrast: high) { body, h1, h2, h3 { color: #000; } th, td { border: 2px solid #000; } }
         @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
         @media print { .skip-link, .home-nav { display: none; } }
     </style>
@@ -41,113 +41,139 @@
 
     <nav class="home-nav" aria-label="Site navigation">
         <a class="home-button" href="../../index.html">Home</a>
-        <a href="../index.html">Instructor index</a>
-        <a href="./solution.html">Figma solution</a>
+        <a href="../index.html">All solutions</a>
+        <a href="./solution.html">Figma lab solution</a>
     </nav>
 
     <main id="main-content">
-        <h1>Chapter 0 Instructor Key: Figma Decisions</h1>
-        <p>Use this page while groups work. Do not print it with the student cards. The student page is <a href="../../Labs/chapter0_figma_critical_thinking.html">Chapter 0 In-Class: Figma Decisions</a>.</p>
+        <h1>Chapter 0 Figma UI Challenges: Instructor Key</h1>
+        <p>Do not share this page with students. It is the answer key for <a href="../../CriticalThinking/chapter0_figma_critical_thinking.html">Chapter 0 In-Class: Figma UI Challenges</a>.</p>
+        <p>Groups of four. About 20 to 25 minutes. Each group picks one challenge and sketches one iPhone frame plus one component.</p>
 
-        <h2>Desired Results</h2>
-        <p>Students should leave able to say these five ideas in plain language:</p>
+        <h2>Desired results</h2>
+        <ul>
+            <li>Students treat the screen as a poster, not a website with a hamburger menu.</li>
+            <li>They reuse one component for repeating cards or states.</li>
+            <li>They keep typing off the glass. Icons, chips, and stamps beat text fields.</li>
+            <li>They can say, in one sentence, who the screen is for in the first three seconds.</li>
+        </ul>
+
+        <h2>If-lost analogy</h2>
+        <div class="analogy-box">
+            <p>The Figma lab was a floor plan for one welcome screen. These challenges are still floor plans. The “house” is a fridge door, a speaker remote, or a washer. If a group is lost, ask: “What does Avery see in eight seconds?” Do not ask them to add more screens.</p>
+        </div>
+
+        <h2>Challenge 1: Stolen Yogurt Court</h2>
+        <h3>Elegant screen</h3>
         <ol>
-            <li>A frame is a phone screen with a size. A group is only a bundle of layers. Drawing on the empty canvas is not an app screen.</li>
-            <li>Auto layout stacks and spaces items. Hand-nudging falls apart when one piece moves.</li>
-            <li>A component is the master stamp. Instances stay linked. Copy-paste does not.</li>
-            <li>A prototype is a tap path. Clicking in Design view does not play the flow. They need the blue arrow, then Present.</li>
-            <li>Export the outer <code>Welcome Screen</code> frame. An inner text layer makes a cropped or blank PNG.</li>
+            <li>Four fat name chips on top: Jordan, Sam, Riley, Avery. Tap who you are. No password. Avery taps <strong>Guest</strong>.</li>
+            <li>Auto layout stacks 3–4 <code>FoodCard</code> instances. Huge food name. Small owner. A color stripe is the rule: green Fair game, yellow Ask first, red Hands off, purple Sam asked.</li>
+            <li>Tap a card. One giant bottom button changes: <strong>Ask to eat</strong>, <strong>This is mine</strong>, or <strong>I ate it — IOU</strong>. The IOU stamps the card. New leftover = six food icons, not a keyboard.</li>
         </ol>
-        <p>If a group still says “just copy the button” for every card, they have not split a component from a paste. Stay with Cards C and F until that clicks.</p>
-
-        <h2>Answer Key</h2>
         <table>
-            <caption>Correct move, why it works, and what to listen for</caption>
+            <caption>Stolen Yogurt Court: listen for</caption>
             <thead>
                 <tr>
-                    <th scope="col">Card</th>
-                    <th scope="col">Correct move</th>
-                    <th scope="col">Why</th>
-                    <th scope="col">Wrong move</th>
-                    <th scope="col">Listen for</th>
+                    <th scope="col">Clumsy</th>
+                    <th scope="col">Why it fails</th>
+                    <th scope="col">What to praise</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row">A</th>
-                    <td>Create an iPhone frame and put the layers inside</td>
-                    <td>A frame is the phone boundary. Title and button belong inside that screen, not on open canvas.</td>
-                    <td>Keep drawing on the blank canvas, or wrap it in a group. A group has no device size.</td>
-                    <td>Phone screen versus loose sketch</td>
-                </tr>
-                <tr>
-                    <th scope="row">B</th>
-                    <td>Apply Auto layout</td>
-                    <td>Auto layout stacks like a <code>VStack</code>. Spacing stays even when one item moves.</td>
-                    <td>Keep nudging pixels. The stack breaks again on the next edit.</td>
-                    <td>Let Figma hold the stack</td>
-                </tr>
-                <tr>
-                    <th scope="row">C</th>
-                    <td>Create a component, then use instances</td>
-                    <td>The master is the stamp. Instances update when the master changes.</td>
-                    <td>Copy-paste more buttons. Color changes stay only on the one they edited.</td>
-                    <td>Linked copies, not clones</td>
-                </tr>
-                <tr>
-                    <th scope="row">D</th>
-                    <td>Duplicate the frame</td>
-                    <td>Option-drag copies the iPhone screen. Size and layout stay matched.</td>
-                    <td>Draw a tiny new rectangle. The second “screen” will not match the phone.</td>
-                    <td>Copy the whole phone, not a scrap</td>
-                </tr>
-                <tr>
-                    <th scope="row">E</th>
-                    <td>Connect a prototype, then Present</td>
-                    <td>The blue arrow is the tap. Present plays it. Design view only edits.</td>
-                    <td>Keep clicking Get Started on the Design canvas. Nothing will play.</td>
-                    <td>Prototype tab, then the play icon</td>
-                </tr>
-                <tr>
-                    <th scope="row">F</th>
-                    <td>Select the outer frame, then export</td>
-                    <td>Export follows the selected layer. The outer <code>Welcome Screen</code> frame is the full PNG.</td>
-                    <td>Export the selected text or auto layout group. The image is cropped or empty.</td>
-                    <td>Outer frame in the layers panel</td>
+                    <th scope="row">Grocery list, hamburger menu, create account</th>
+                    <td>Avery slams the door. Wet hands cannot type.</td>
+                    <td>Stripe you can read from the hallway. One action, not a toolbar.</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>Exit Tickets</h2>
-        <h3>They got it</h3>
-        <ul>
-            <li>A frame is a phone screen. A group is just a bundle of layers with no screen size.</li>
-            <li>I use a component so that when I change the button, every instance updates.</li>
-        </ul>
-        <h3>Not there yet</h3>
-        <ul>
-            <li>A frame and a group are the same.</li>
-            <li>Copy-paste is how you reuse a button.</li>
-            <li>Present is the same as looking at the Design canvas.</li>
-        </ul>
-
-        <h2>Debrief Script</h2>
-        <p>Ask the whole class. Do not start a new Figma file. Do not open Xcode.</p>
+        <h2>Challenge 2: Aux Cord Treaty</h2>
+        <h3>Elegant screen</h3>
         <ol>
-            <li>After Card A, is a group a phone screen? No. Only a frame has a device size.</li>
-            <li>After Card C, if they recolor the master, which copies change? Only instances, not pasted clones.</li>
-            <li>After Card F, why was the PNG tiny? They exported an inner layer, not the outer frame.</li>
+            <li>Top half is now playing. Song title, then whose turn in even bigger type (“DJ’s song”).</li>
+            <li>One fat <strong>Skip (1 left)</strong> that goes gray at <strong>Skip (0 left)</strong>.</li>
+            <li>Four <code>SongCard</code> instances. Roommate name is line one. Song is line two. Screen order is turn order.</li>
+            <li>Full-width bar at the bottom, always visible: <strong>RA in the hall — quiet</strong>.</li>
+        </ol>
+        <table>
+            <caption>Aux Cord Treaty: listen for</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Clumsy</th>
+                    <th scope="col">Why it fails</th>
+                    <th scope="col">What to praise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Mini Spotify with a search box and tiny skip</th>
+                    <td>The fight is already happening. Search kills the vibe. The late roommate is lost.</td>
+                    <td>Whose turn is the biggest type. Skip budget on the button. Quiet hours never hides.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Challenge 3: Laundry Hostage</h2>
+        <h3>Elegant screen</h3>
+        <ol>
+            <li>Top half is one huge state: <strong>RUNNING</strong>, <strong>DONE</strong>, or <strong>ABANDONED</strong>. Abandoned reads <strong>Sitting 3 hours</strong>.</li>
+            <li>Under it: <code>xX_Kyle_Xx</code> and the timer. The fake name still counts.</li>
+            <li>Abandoned: two half-screen buttons, <strong>Move to Dryer 3</strong> and <strong>I’ll wait</strong>. After a move, stamp <strong>Clothes → Dryer 3 · Sam · 9:14 p.m.</strong></li>
+            <li>Running is only a countdown. Free is name chips plus <strong>Start my load</strong>.</li>
+        </ol>
+        <table>
+            <caption>Laundry Hostage: listen for</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Clumsy</th>
+                    <th scope="col">Why it fails</th>
+                    <th scope="col">What to praise</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Campus laundry map and a 12-step account form</th>
+                    <td>Hands are full. They need this washer, not the building.</td>
+                    <td>Status you can read from the doorway. The move button already names the dryer.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Exit tickets</h2>
+        <table>
+            <caption>Good vs not-there-yet</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Sentence</th>
+                    <th scope="col">Good</th>
+                    <th scope="col">Not there yet</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">We used a component so that when the same block appears more than once…</th>
+                    <td>…we can change the master and every card or state updates.</td>
+                    <td>…it looks nicer / Figma wanted one.</td>
+                </tr>
+                <tr>
+                    <th scope="row">A screen someone has to get in a few seconds should not…</th>
+                    <td>…hide the next step in a menu, ask for an account, or make people type.</td>
+                    <td>…be ugly / use too many colors.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Debrief script (about 4 minutes)</h2>
+        <ol>
+            <li>Ask one fridge group: “How does Avery know in eight seconds?” Push them to point at a stripe or a huge label, not a paragraph.</li>
+            <li>Ask one aux group: “Where is skip fairness?” The number should be on the button.</li>
+            <li>Ask one laundry group: “If Kyle comes back, how do they find the clothes?” Look for a stamp, not a map.</li>
+            <li>Close: shared college stuff is a social contract. Hierarchy and states beat more screens.</li>
         </ol>
 
-        <h2>If a Group Is Lost</h2>
-        <div class="analogy-box">
-            <p>Use one analogy only. Floor plan. The frame is the house walls. Auto layout is rooms that keep even spacing. A component is a stamp for the front door. An instance is every copy of that stamp. Prototype is walking from the porch to the next room. Export is a photo of the whole house, not one door handle.</p>
-        </div>
-        <p>If they finish early, have them rename one junk layer. Change <code>Rectangle 12</code> or <code>Frame 2</code> into a lab-style name such as <code>Welcome Screen</code> or <code>PrimaryButton</code>.</p>
-
-        <h2>Lab Solutions</h2>
-        <p>Instructor only. These pages are not on the student lab hub.</p>
-        <p>Open the <a href="./solution.html">Figma Basics solution</a> for this lab. See <a href="../index.html#lab-solutions">all lab solutions</a>.</p>
+        <h2>Early finisher</h2>
+        <p>Duplicate the frame and show one other state. Fridge: a card after an IOU. Speaker: skip at zero. Washer: after the move to Dryer 3. Same component. Do not start a second product.</p>
 
         <div class="copyright">
             <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>

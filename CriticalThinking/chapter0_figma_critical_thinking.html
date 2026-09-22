@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Chapter 0 In-Class: Figma UI Challenges</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a {
+            color: #005fcc;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .challenge-card {
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+            page-break-inside: avoid;
+        }
+
+        .challenge-card h2 {
+            margin-top: 0;
+        }
+
+        .exit-ticket {
+            background-color: #f8f9fa;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+            border: 1px solid #ddd;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .home-nav a:not(.home-button) {
+            margin-left: 1rem;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3 {
+                color: #000;
+            }
+
+            .challenge-card,
+            .exit-ticket {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link,
+            .home-nav {
+                display: none;
+            }
+
+            .challenge-card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+        <a href="../Labs/chapter0_tool_figma_basics_lab.html">Figma lab</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 In-Class: Figma UI Challenges</h1>
+        <p>You already sketched a welcome screen in Figma. This is not more clicking through menus. Your group designs one simple screen for a messy college problem.</p>
+
+        <h2>Setup</h2>
+        <p>Work in groups of four for about 20 to 25 minutes. Pick one recorder. That person writes the group’s answers and names the Figma file.</p>
+        <ul>
+            <li>Pick <strong>one</strong> of the three challenges. Do not do all three.</li>
+            <li>Start a <strong>new</strong> Figma file. Do not reuse Campus Welcome Wireframe.</li>
+            <li>Build <strong>one iPhone frame</strong> and <strong>one component</strong> with a few instances.</li>
+            <li>No typing-heavy forms. No extra app. No Xcode.</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>A frame is one screen.</strong> Auto layout stacks items like a SwiftUI <code>VStack</code>. A component is a stamp. Instances are copies still linked to that stamp.</p>
+            <p><strong>Elegant here means obvious.</strong> Someone who did not hear the argument should still get the screen in a few seconds.</p>
+        </div>
+
+        <h2>How to Play</h2>
+        <ol>
+            <li>Read all three challenges out loud. Vote. Pick one.</li>
+            <li>Assign the four named people in that challenge to the four of you.</li>
+            <li>Argue for about five minutes. What would a clumsy app do? What would a clear screen do?</li>
+            <li>Sketch the screen in Figma. Name the frame. Name the component.</li>
+            <li>Be ready to show the frame for about 60 seconds.</li>
+        </ol>
+
+        <article class="challenge-card" id="yogurt-court">
+            <h2>Challenge 1: Stolen Yogurt Court</h2>
+            <p>Four MCC roommates share one fridge. Last night someone ate Jordan’s dumplings and left the empty box. The group chat exploded. The landlord stuck a cheap touchscreen on the fridge door “to promote peace.” Nobody reads manuals. Nobody wants another app.</p>
+            <h3>The four people</h3>
+            <ul>
+                <li><strong>Jordan</strong> — the victim. Wants justice.</li>
+                <li><strong>Sam</strong> — the likely thief. Wants plausible deniability.</li>
+                <li><strong>Riley</strong> — the diplomat. Just wants dinner.</li>
+                <li><strong>Avery</strong> — never in the group chat. Opens the fridge at 1 a.m. with wet hands.</li>
+            </ul>
+            <h3>Rules</h3>
+            <ul>
+                <li>One iPhone-sized frame stuck to the door. That is the whole product.</li>
+                <li>The door is interesting for about 8 seconds. If it looks like Settings, they slam it.</li>
+                <li>No typing. Hands are greasy, wet, or holding a plate.</li>
+                <li>Avery will never log in. The screen still has to work for a nameless 1 a.m. raid.</li>
+                <li>No cameras. No locks. No “shame tweet” button. This is a UI, not a police state.</li>
+            </ul>
+            <h3>Your screen is done when</h3>
+            <p>Avery can tell, at a glance: whose food is this, can I eat it, and what happens if I do. Jordan can mark a new leftover in two taps. Sam can ask to eat something that is not theirs. Riley can log an IOU without writing an essay.</p>
+            <p><strong>Figma:</strong> Frame <code>Fridge Door</code>. One component named <code>FoodCard</code> with a few instances.</p>
+        </article>
+
+        <article class="challenge-card" id="aux-treaty">
+            <h2>Challenge 2: Aux Cord Treaty</h2>
+            <p>Four roommates. One cheap Bluetooth speaker. It is already playing a 19-minute rain-sounds track because someone “needed to study.” A party starts in 10 minutes. Everyone is holding a phone. Nobody wants to pass the speaker around. The group chat is already 40 messages of “who has aux.”</p>
+            <h3>The four people</h3>
+            <ul>
+                <li><strong>DJ</strong> — queued the rain sounds. Claims they are “warming up.”</li>
+                <li><strong>Party starter</strong> — wants a banger now.</li>
+                <li><strong>Neighbor-worrier</strong> — the RA is in the hall. Quiet hours in 20 minutes.</li>
+                <li><strong>Late roommate</strong> — just walked in. Missed the fight. Still wants a song.</li>
+            </ul>
+            <h3>Rules</h3>
+            <ul>
+                <li>One phone frame. This is the speaker remote. That is the whole product.</li>
+                <li>No typing a search. The fight is already happening.</li>
+                <li>Show now playing, whose song is next, and a fair way to skip.</li>
+                <li>Each person gets a small skip budget. After that, skip is dead for them.</li>
+                <li>The late roommate has to understand the screen in about 3 seconds.</li>
+            </ul>
+            <h3>Your screen is done when</h3>
+            <p>You can tell whose turn it is without asking. You can skip once, fairly. You can see the next song. The worrier can hit one obvious quiet-hours control. It is not buried in settings.</p>
+            <p><strong>Figma:</strong> Frame <code>Speaker Remote</code>. One component named <code>SongCard</code> with a few instances.</p>
+        </article>
+
+        <article class="challenge-card" id="laundry-hostage">
+            <h2>Challenge 3: Laundry Hostage</h2>
+            <p>Dorm basement. Washer 2 is done. Someone’s wet clothes have been sitting for an hour. Four students are standing there with baskets. The machine has a tiny screen. The last user typed the name <code>xX_Kyle_Xx</code> and the note “back in 5.” That was three hours ago. You need this washer tonight.</p>
+            <h3>The four people</h3>
+            <ul>
+                <li><strong>Basket-holder</strong> — needs the machine now.</li>
+                <li><strong>Kyle-or-not</strong> — might be the owner. Might not.</li>
+                <li><strong>Softie</strong> — does not want to touch someone else’s clothes.</li>
+                <li><strong>Time-crunched</strong> — has class in 40 minutes and still has to dry.</li>
+            </ul>
+            <h3>Rules</h3>
+            <ul>
+                <li>One washer-door frame. Phone-sized is fine. No extra app.</li>
+                <li>No typing. Hands are full of detergent and wet socks.</li>
+                <li>In one glance: is this machine free, running, or abandoned?</li>
+                <li>If it is abandoned, one honest next step: move the load, or wait.</li>
+                <li>Do not design a campus-wide laundry map. Just this one machine.</li>
+            </ul>
+            <h3>Your screen is done when</h3>
+            <p>The screen says whose load it is (even if the name is fake), how long it has been sitting, and the next step in huge type. The softie can move the load without feeling like a villain. If Kyle comes back, they can still find the clothes.</p>
+            <p><strong>Figma:</strong> Frame <code>Washer 2</code>. One component named <code>MachineStatus</code> with a few states.</p>
+        </article>
+
+        <h2>Exit Tickets</h2>
+        <p>As a group, finish these two sentences. Write them on the recorder’s notes.</p>
+        <div class="exit-ticket">
+            <p>1. We used a component so that when the same block appears more than once, ________________________________.</p>
+        </div>
+        <div class="exit-ticket">
+            <p>2. A screen someone has to get in a few seconds should not ________________________________.</p>
+        </div>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
