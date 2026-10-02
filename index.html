@@ -312,6 +312,50 @@
             </tbody>
         </table>
 
+        <h2 id="architecture-labs">Architecture Labs</h2>
+        <p>Do these after Figma Basics and your project proposal. Each team uses its own app. One lab is about 40 minutes in class.</p>
+        <p>Do them in order. Lab 1 starts the Figma file. Each later lab adds one frame. Lab 7 lines the frames up into one presentation.</p>
+
+        <table>
+            <caption>Architecture labs for MAD 157</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Lab</th>
+                    <th scope="col">File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_01_face_lab.html">Architecture 1: The Face (~40 min)</a></th>
+                    <td>Labs/architecture_01_face_lab.html</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_02_brain_lab.html">Architecture 2: The Brain (~40 min)</a></th>
+                    <td>Labs/architecture_02_brain_lab.html</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_03_memory_lab.html">Architecture 3: The Memory (~40 min)</a></th>
+                    <td>Labs/architecture_03_memory_lab.html</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_04_access_security_lab.html">Architecture 4: Access and Security (~40 min)</a></th>
+                    <td>Labs/architecture_04_access_security_lab.html</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_05_build_delivery_lab.html">Architecture 5: Build and Delivery (~40 min)</a></th>
+                    <td>Labs/architecture_05_build_delivery_lab.html</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_06_infrastructure_monitoring_lab.html">Architecture 6: Infrastructure and Monitoring (~40 min)</a></th>
+                    <td>Labs/architecture_06_infrastructure_monitoring_lab.html</td>
+                </tr>
+                <tr>
+                    <th scope="row"><a href="./Labs/architecture_07_quality_team_lab.html">Architecture 7: Quality and Team (~40 min)</a></th>
+                    <td>Labs/architecture_07_quality_team_lab.html</td>
+                </tr>
+            </tbody>
+        </table>
+
         <h2 id="critical-thinking">Critical Thinking Exercises</h2>
         <p>These are in-class group activities. They are not Canvas uploads. Do them after the matching lab, same class period.</p>
         <p id="cte-status" class="status-message" role="status" aria-live="polite">Loading critical thinking exercises from GitHub...</p>
@@ -361,6 +405,10 @@
 
             function isRemovedChapter(path) {
                 return REMOVED_CHAPTER_PATTERN.test(path);
+            }
+
+            function isArchitectureLab(path) {
+                return /^Labs\/architecture_\d+_/.test(path);
             }
 
             function getMetaContent(name) {
@@ -694,7 +742,7 @@
 
                         return data.tree
                             .filter(function (item) {
-                                return item.type === 'blob' && LAB_PATTERN.test(item.path) && !isRemovedChapter(item.path);
+                                return item.type === 'blob' && LAB_PATTERN.test(item.path) && !isRemovedChapter(item.path) && !isArchitectureLab(item.path);
                             })
                             .map(function (item) {
                                 return { path: item.path };

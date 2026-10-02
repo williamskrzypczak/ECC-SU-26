@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Architecture Lab 6: Infrastructure and Monitoring</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        code { background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 0.9em; }
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .home-nav a:not(.home-button) { margin-left: 1rem; }
+        table { width: 100%; max-width: 50rem; border-collapse: collapse; margin-bottom: 1.5rem; }
+        caption { text-align: left; font-weight: bold; margin-bottom: 0.5rem; color: #2a2a2a; }
+        th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: left; vertical-align: top; }
+        th { background-color: #f0f0f0; }
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.25rem; }
+            main { padding: 1rem 0.5rem; }
+        }
+        @media (prefers-contrast: high) {
+            body, h1, h2, h3 { color: #000; background-color: #fff; }
+            th, td, .analogy-box { border-color: #000; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+        @media print { .skip-link, .home-nav { display: none; } }
+    
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+        <a href="./architecture_05_build_delivery_lab.html">Lab 5: Build and Delivery</a>
+        <a href="./architecture_07_quality_team_lab.html">Lab 7: Quality and Team</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Architecture Lab 6: Infrastructure and Monitoring</h1>
+        <p>This is step 6 of 7. Plan on about 40 minutes with your team.</p>
+
+        <h2>Introduction</h2>
+        <p>A change can ship and still go quiet overnight. This lab is about the ground under your app.</p>
+        <p>You will draw a small health board in the same Figma file. You do not need a brand name.</p>
+        <p>Work with your team for about 40 minutes. Then each person turns in their own zip.</p>
+        <p>Use the same Figma link as the earlier labs. Your reflection must be your own words.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After this lab, you will be able to:</p>
+        <ul>
+            <li>Say where saved information lives when the phone is in a pocket</li>
+            <li>Name three signs the app is healthy</li>
+            <li>Separate one alarm from one problem that can wait</li>
+            <li>Say what users lose if the ground is down for an hour</li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>Infrastructure is the building under the shop.</strong> Monitoring is the smoke alarm. The phone is only the front door.</p>
+            <p>When the phone is in a pocket, the saved information still has to live somewhere. You need a way to know the building is healthy in the morning.</p>
+        </div>
+
+        <h2>Prerequisites</h2>
+        <p>Finish <a href="./chapter0_tool_figma_basics_lab.html">Figma Basics</a>. Your team needs a project you can describe in one sentence.</p>
+        <p>You need a free Figma account. Create one at <a href="https://www.figma.com/signup" rel="noopener noreferrer" aria-label="Create a Figma account (opens in new tab)">figma.com/signup</a> if you do not have one yet.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Talk through the questions</h3>
+        <p>Read these out loud. Answer them for your app, not for a sample app. Give this about 8 minutes.</p>
+        <ol>
+            <li>When the phone is in a pocket, where does the saved information live?</li>
+            <li>What are three signs the app is healthy in the morning?</li>
+            <li>What is one problem worth an alarm, and one that can wait?</li>
+            <li>What do users lose if that ground is down for an hour?</li>
+        </ol>
+
+        <h3>Part 2: Build the frame</h3>
+        <p>Give this about 25 minutes. A classmate should understand the frame in 60 seconds.</p>
+        <ol>
+            <li>Open the same team file. Do not start a new file.</li>
+            <li>Add a frame. Name it <code>6 Infrastructure and Monitoring</code>.</li>
+            <li>Draw three lights. Label them <code>Up</code>, <code>Slow</code>, and <code>Errors</code>.</li>
+            <li>Next to each light, write what it means for your app.</li>
+            <li>Add one sentence: where the app runs when the phone is in a pocket. “A computer in the cloud” is enough.</li>
+            <li>Add two short notes. One is the alarm. One is the problem that can wait.</li>
+        </ol>
+        <p>Your frame is done when it has all of these:</p>
+        <ul>
+            <li>Three lights: Up, Slow, and Errors</li>
+            <li>A plain meaning for each light in your app</li>
+            <li>One sentence about where the app runs</li>
+            <li>One alarm worth acting on, and one problem that can wait</li>
+        </ul>
+
+        <h3>Part 3: Share and export</h3>
+        <ol>
+            <li>Click <strong>Share</strong> in the top right.</li>
+            <li>Set access to <strong>Anyone with the link can view</strong>.</li>
+            <li>Copy the link. You will paste it in <code>links.txt</code>.</li>
+            <li>Select the frame named <code>6 Infrastructure and Monitoring</code>.</li>
+            <li>In the properties panel, scroll to <strong>Export</strong>. Click <strong>+</strong>. Choose <strong>PNG</strong> at <strong>1x</strong>.</li>
+            <li>Export the frame. Save it as <code>architecture-6-infrastructure.png</code>.</li>
+        </ol>
+        <p>Put that PNG in a folder named <code>screenshots</code>. The file name must match exactly.</p>
+
+        <h2>Reflection Questions</h2>
+        <p>Answer in your own words. Write at least two sentences for each question. Do not copy a teammate.</p>
+        <ol>
+            <li>Where does your app’s saved information live when the phone is in a pocket?</li>
+            <li>What problem is worth an alarm, and what can wait?</li>
+            <li>What do users lose if the app is down for an hour?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <p>Submit one zip file named <code>architecture6-infrastructure-lastname-firstname.zip</code>. The team may share one Figma link. Each student still writes their own reflection.</p>
+        <ul>
+            <li><code>links.txt</code> with one line: <code>Figma:</code> and your view link</li>
+            <li><code>reflections.txt</code> with <code>Q1:</code>, <code>Q2:</code>, and <code>Q3:</code></li>
+            <li><code>screenshots/architecture-6-infrastructure.png</code></li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">The frame is about your own project</th>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <th scope="row">The frame includes the done-when pieces for Infrastructure and Monitoring</th>
+                    <td>25</td>
+                </tr>
+                <tr>
+                    <th scope="row">Three reflections in your own words</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">View link and the named screenshot</th>
+                    <td>15</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+        <h3>Share link asks people to log in</h3>
+        <p>Click Share. Set access to Anyone with the link can view. Copy that link into links.txt.</p>
+        <h3>The export is blank or cropped</h3>
+        <p>Select the outer frame named 6 Infrastructure and Monitoring. Do not select a text box inside it.</p>
+        <h3>The board only says “server”</h3>
+        <p>Say what Up, Slow, and Errors mean for your app. A word with no meaning is not a check.</p>
+        <h3>You named a product you have not used</h3>
+        <p>You do not need a brand. Say where the information lives in plain words.</p>
+
+        <h2>How to Submit on Canvas</h2>
+        <p>Package your work as one zip file. Use the exact names in the <a href="../canvas-submission-instructions.html#lab-architecture-6">Architecture Lab 6 submission guide</a>.</p>
+        <h3>Create your zip on a Mac</h3>
+        <ol>
+            <li>Create a folder named <code>architecture6-infrastructure-lastname-firstname</code>.</li>
+            <li>Put <code>links.txt</code>, <code>reflections.txt</code>, and the <code>screenshots</code> folder inside it.</li>
+            <li>Right-click the folder and choose <strong>Compress</strong>.</li>
+            <li>Rename the zip if needed, then upload it to this Canvas assignment.</li>
+        </ol>
+        <p>Compress the folder, not the loose files. See the <a href="../canvas-submission-instructions.html#zip-on-mac">Mac zip steps</a> if you get stuck.</p>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
