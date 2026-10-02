@@ -356,6 +356,24 @@
             </tbody>
         </table>
 
+        <h2 id="in-class-labs">In-class labs</h2>
+        <p>These are played in class. They are not Canvas uploads.</p>
+        <table>
+            <caption>In-class labs for MAD 157</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Lab</th>
+                    <th scope="col">File</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row"><a href="./Labs/prompt_engineering_lab.html">Prompt Engineering (~30 min)</a></th>
+                    <td>Labs/prompt_engineering_lab.html</td>
+                </tr>
+            </tbody>
+        </table>
+
         <h2 id="critical-thinking">Critical Thinking Exercises</h2>
         <p>These are in-class group activities. They are not Canvas uploads. Do them after the matching lab, same class period.</p>
         <p id="cte-status" class="status-message" role="status" aria-live="polite">Loading critical thinking exercises from GitHub...</p>
@@ -409,6 +427,10 @@
 
             function isArchitectureLab(path) {
                 return /^Labs\/architecture_\d+_/.test(path);
+            }
+
+            function isInClassLab(path) {
+                return path === 'Labs/prompt_engineering_lab.html';
             }
 
             function getMetaContent(name) {
@@ -742,7 +764,7 @@
 
                         return data.tree
                             .filter(function (item) {
-                                return item.type === 'blob' && LAB_PATTERN.test(item.path) && !isRemovedChapter(item.path) && !isArchitectureLab(item.path);
+                                return item.type === 'blob' && LAB_PATTERN.test(item.path) && !isRemovedChapter(item.path) && !isArchitectureLab(item.path) && !isInClassLab(item.path);
                             })
                             .map(function (item) {
                                 return { path: item.path };

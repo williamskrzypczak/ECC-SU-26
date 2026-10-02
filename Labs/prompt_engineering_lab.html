@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>In-Class Lab: Prompt Engineering</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .poster {
+            margin: 0 0 1.5rem;
+            max-width: 28rem;
+        }
+        .poster img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+        .poster figcaption {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.25rem; }
+            main { padding: 1rem 0.5rem; }
+        }
+        @media (prefers-contrast: high) {
+            body, h1, h2, h3 { color: #000; background-color: #fff; }
+            .analogy-box, .poster img { border-color: #000; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+        @media print { .skip-link, .home-nav { display: none; } }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>In-Class Lab: Prompt Engineering</h1>
+        <p>This is a team contest. It takes about 30 minutes. There is no Canvas upload.</p>
+
+        <h2>The poster</h2>
+        <p>Your job is to make a picture as close to this poster as you can. The words you type are the only thing the tool knows.</p>
+        <figure class="poster">
+            <img src="./images/ai-movie-poster.jpg" alt="Movie poster, AI: 2027 Takeoff" width="1100" height="1639">
+            <figcaption>The poster to recreate. Look at it. Do not hand it to the tool.</figcaption>
+        </figure>
+
+        <h2>Key idea</h2>
+        <div class="analogy-box">
+            <p><strong>A prompt is a takeout order.</strong> “Something good” gets you a surprise. The cook only knows the words you wrote.</p>
+            <p>A closer picture usually comes from a clearer order, not from a longer one.</p>
+        </div>
+
+        <h2>How to play</h2>
+        <p>Work in teams of about four. Several teams play at once. The team whose picture is closest to the poster wins.</p>
+        <ol>
+            <li>Look at the poster. Do not upload it into the AI. Recreating from a picture skips the point.</li>
+            <li>Pick any image tool your team already has.</li>
+            <li>Write one prompt together. Run it.</li>
+            <li>You get five tries. Change one thing at a time. Keep the prompt that got closest.</li>
+            <li>Put the final picture and the final prompt on one slide, or hold them up.</li>
+            <li>The class looks. Closest to the poster wins. The instructor breaks a tie.</li>
+        </ol>
+
+        <h2>What to put in the prompt</h2>
+        <p>Say these four things in your own words. The poster is the spec. This page will not describe it for you.</p>
+        <ul>
+            <li>What kind of picture it is. A vertical movie poster, illustrated, not a photo.</li>
+            <li>The exact words that must appear, spelled the way you see them.</li>
+            <li>What sits in front, in the middle, and in the back.</li>
+            <li>What to leave out.</li>
+        </ul>
+
+        <h2>After the vote</h2>
+        <p>Take about five minutes. Answer these out loud. There is no single right answer.</p>
+        <ol>
+            <li>Which words did the tool get right, and which did it invent?</li>
+            <li>What happened to the tiny credit block at the bottom?</li>
+            <li>Did a longer prompt help, or did it muddy the picture?</li>
+        </ol>
+
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
