@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Working Backwards 5: Technology and Engineering</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+        .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; text-decoration: none; z-index: 100; }
+        .skip-link:focus { top: 0; outline: 2px solid #fff; }
+        a { color: #005fcc; }
+        a:focus { outline: 2px solid #005fcc; outline-offset: 2px; }
+        main { padding: 2rem 1rem; }
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .home-button:hover { background-color: #004799; }
+        .home-button:focus { outline: 2px solid #005fcc; outline-offset: 2px; color: #fff; }
+        .home-nav a:not(.home-button) { margin-left: 1rem; }
+        .diagram { margin: 0 0 1.5rem; max-width: 50rem; }
+        .diagram img { display: block; width: 100%; height: auto; border: 1px solid #ccc; }
+        .diagram figcaption { margin-top: 0.5rem; }
+        .copyright { margin-top: 3rem; padding-top: 2rem; border-top: 2px solid #ddd; font-size: 0.9rem; color: #666; }
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.25rem; }
+            main { padding: 1rem 0.5rem; }
+        }
+        @media (prefers-contrast: high) {
+            body, h1, h2 { color: #000; background-color: #fff; }
+            .analogy-box, .diagram img { border-color: #000; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+        @media print { .skip-link, .home-nav { display: none; } }
+
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+        <a href="./working_backwards_04_requirements.html">Step 4: Functional Requirements</a>
+    </nav>
+    <main id="main-content">
+        <h1>Working Backwards 5: Technology and Engineering</h1>
+        <p>This is step 5 of 5. Plan on about 15 minutes with your team. There is no Canvas upload.</p>
+        <p>This is the last step. The technology serves the jobs you already named. It does not lead them.</p>
+        <figure class="diagram">
+            <img src="./images/working-backwards.jpg" alt="Working backwards chart: customer experience, customer benefits, interface and interaction, functional requirements, then technology and engineering." width="1800" height="1344">
+            <figcaption>You are on step 5: Technology and Engineering.</figcaption>
+        </figure>
+        <h2>Key idea</h2>
+        <div class="analogy-box">
+            <p><strong>Start with the customer’s moment.</strong> Technology comes last.</p>
+            <p>The engine is under the floor. Guests should feel the ride. They should not have to tour the engine room first.</p>
+        </div>
+        <h2>Questions</h2>
+        <p>Answer these for your app. Read them out loud.</p>
+        <ol>
+            <li>What has to exist behind the screen?</li>
+            <li>What can you borrow instead of building?</li>
+            <li>Where did the team try to start with a tool?</li>
+            <li>How does each piece of tech serve a job from step 4?</li>
+        </ol>
+        <h2>You can say this in one minute</h2>
+        <p>The tech list serves steps 1 through 4. You can point to one idea you refused because it started with the tool.</p>
+        <p>The orange box on the chart is the wrong path. Do not sit down with the engineers, invent a clever tool, and then hunt for a customer.</p>
+        <div class="copyright">
+            <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
