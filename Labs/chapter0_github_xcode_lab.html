@@ -148,6 +148,21 @@
             max-width: 50rem;
         }
 
+        .diagram {
+            margin: 0 0 1.5rem;
+        }
+
+        .diagram img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .diagram figcaption {
+            margin-top: 0.5rem;
+        }
+
         .chapter-map {
             font-size: 0.9rem;
             color: #555;
@@ -228,7 +243,7 @@
                 color: #000;
             }
 
-            pre, th, td {
+            pre, th, td, .diagram img {
                 border: 2px solid #000;
             }
         }
@@ -257,6 +272,10 @@
 
     <main id="main-content">
         <h1>Chapter 0 Lab: GitHub and Xcode Source Control</h1>
+        <figure class="diagram">
+            <img src="../Github_Workflow.jpeg" alt="Poster titled Using Git and GitHub for iOS Development in Xcode. A four-person team clones, branches, commits, pushes, opens a pull request, and merges into main." width="2752" height="1536">
+            <figcaption>Git and GitHub workflow for a four-person iOS team.</figcaption>
+        </figure>
 
         <h2>Introduction</h2>
         <p>You will learn how to save, share, and sync your code using GitHub and Xcode. Git keeps a history of every change you make. GitHub stores a copy online so you never lose your work.</p>
