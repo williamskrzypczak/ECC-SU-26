@@ -100,6 +100,21 @@
             max-width: 50rem;
         }
 
+        .diagram {
+            margin: 0 0 1.5rem;
+        }
+
+        .diagram img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .diagram figcaption {
+            margin-top: 0.5rem;
+        }
+
         .home-nav {
             margin-bottom: 1.5rem;
             max-width: 50rem;
@@ -187,7 +202,8 @@
             }
 
             .decision-card,
-            .exit-ticket {
+            .exit-ticket,
+            .diagram img {
                 border: 2px solid #000;
             }
         }
@@ -222,6 +238,10 @@
 
     <main id="main-content">
         <h1>Chapter 0 In-Class: Git Decisions</h1>
+        <figure class="diagram">
+            <img src="../Github_Workflow.jpeg" alt="Poster titled Using Git and GitHub for iOS Development in Xcode. A four-person team clones, branches, commits, pushes, opens a pull request, and merges into main." width="2752" height="1536">
+            <figcaption>Git and GitHub workflow for a four-person iOS team.</figcaption>
+        </figure>
         <p>You already used Git in Xcode. This is not more clicking. It is “what would you do next, and why?”</p>
 
         <h2>Setup</h2>
