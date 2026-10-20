@@ -148,6 +148,21 @@
             max-width: 50rem;
         }
 
+        .diagram {
+            margin: 0 0 1.5rem;
+        }
+
+        .diagram img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+
+        .diagram figcaption {
+            margin-top: 0.5rem;
+        }
+
         .chapter-map {
             font-size: 0.9rem;
             color: #555;
@@ -228,7 +243,7 @@
                 color: #000;
             }
 
-            pre, th, td {
+            pre, th, td, .diagram img {
                 border: 2px solid #000;
             }
         }
@@ -257,6 +272,10 @@
 
     <main id="main-content">
         <h1>Chapter 0 Lab: Trello Basics</h1>
+        <figure class="diagram">
+            <img src="../Trello_Workflow.jpeg" alt="Poster titled Using Trello to Manage iOS Development in Xcode. A four-person team moves cards from Backlog to To Do, In Progress, Review and QA, and Done." width="2752" height="1536">
+            <figcaption>Trello board workflow for a four-person iOS team.</figcaption>
+        </figure>
 
         <h2>Introduction</h2>
         <p>You will learn how to plan and track project tasks using Trello. Trello organizes work on a board with columns and cards you can drag between stages.</p>
