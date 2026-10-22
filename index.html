@@ -116,6 +116,69 @@
             max-width: 50rem;
         }
 
+        .section-heading {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+        }
+
+        .section-toggle {
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #fff;
+            background-color: #005fcc;
+            border: 2px solid #005fcc;
+            border-radius: 6px;
+            padding: 0.35rem 0.75rem;
+            cursor: pointer;
+        }
+
+        .section-toggle:hover {
+            background-color: #004799;
+        }
+
+        .section-toggle:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        .gate-form {
+            max-width: 50rem;
+            margin-bottom: 1rem;
+        }
+
+        .gate-form label {
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .gate-form input {
+            font: inherit;
+            padding: 0.4rem 0.5rem;
+            border: 1px solid #333;
+            border-radius: 4px;
+            margin-right: 0.5rem;
+        }
+
+        .gate-form input:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        .gate-error {
+            color: #b00020;
+            margin-top: 0.5rem;
+        }
+
         .copyright {
             margin-top: 3rem;
             padding-top: 2rem;
@@ -157,6 +220,14 @@
             }
 
             th, td {
+                border: 2px solid #000;
+            }
+
+            .section-toggle {
+                border-color: #000;
+            }
+
+            .gate-form input {
                 border: 2px solid #000;
             }
         }
@@ -448,27 +519,43 @@
             </tbody>
         </table>
 
-        <h2 id="advanced-ai">Advanced AI Engineering</h2>
-        <p>These slides are in order. Open the set, or jump to one slide.</p>
-        <table>
-            <caption>Advanced AI engineering slides, in order</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Slide</th>
-                    <th scope="col">File</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><a href="./Labs/advanced_ai_engineering.html#slide-1">1. PTO: Persona, Task, Output</a></th>
-                    <td>Labs/advanced_ai_engineering.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/advanced_ai_engineering.html#slide-2">2. Context Engineering</a></th>
-                    <td>Labs/advanced_ai_engineering.html</td>
-                </tr>
-            </tbody>
-        </table>
+        <section id="advanced-ai-section" aria-label="Advanced AI Engineering">
+            <div id="advanced-ai-body">
+                <div class="section-heading">
+                    <h2 id="advanced-ai">Advanced AI Engineering</h2>
+                    <button type="button" class="section-toggle" id="advanced-ai-hide">Hide</button>
+                </div>
+                <p>These slides are in order. Open the set, or jump to one slide.</p>
+                <table>
+                    <caption>Advanced AI engineering slides, in order</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Slide</th>
+                            <th scope="col">File</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><a href="./Labs/advanced_ai_engineering.html#slide-1">1. PTO: Persona, Task, Output</a></th>
+                            <td>Labs/advanced_ai_engineering.html</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><a href="./Labs/advanced_ai_engineering.html#slide-2">2. Context Engineering</a></th>
+                            <td>Labs/advanced_ai_engineering.html</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p id="advanced-ai-show-wrap" hidden>
+                <button type="button" class="section-toggle" id="advanced-ai-show">Show Advanced AI Engineering</button>
+            </p>
+            <form id="advanced-ai-gate" class="gate-form" hidden>
+                <label for="advanced-ai-password">Password</label>
+                <input type="password" id="advanced-ai-password" autocomplete="off">
+                <button type="submit" class="section-toggle">Continue</button>
+                <p id="advanced-ai-gate-error" class="gate-error" role="alert" hidden>That password did not match.</p>
+            </form>
+        </section>
 
         <h2>Before You Start</h2>
         <p>You need a Mac with Xcode 15 or later installed. Download Xcode free from the Mac App Store. Review the matching course chapter before each lab. A paid Apple Developer account is not required for these exercises.</p>
@@ -966,6 +1053,80 @@
                     renderFallbackLabs(repoConfig);
                     setStatus('Unable to load labs from GitHub (' + error.message + '). Showing local fallback links.', true);
                 });
+        })();
+    </script>
+    <script>
+        (function () {
+            var STORAGE_KEY = 'mad157-hide-advanced-ai';
+            var PASSWORD = 'bill';
+            var body = document.getElementById('advanced-ai-body');
+            var showWrap = document.getElementById('advanced-ai-show-wrap');
+            var hideButton = document.getElementById('advanced-ai-hide');
+            var showButton = document.getElementById('advanced-ai-show');
+            var form = document.getElementById('advanced-ai-gate');
+            var input = document.getElementById('advanced-ai-password');
+            var error = document.getElementById('advanced-ai-gate-error');
+            var pending = 'hide';
+
+            if (!body || !showWrap || !hideButton || !showButton || !form || !input || !error) {
+                return;
+            }
+
+            function setHidden(hidden) {
+                body.hidden = hidden;
+                showWrap.hidden = !hidden;
+                try {
+                    if (hidden) {
+                        localStorage.setItem(STORAGE_KEY, '1');
+                    } else {
+                        localStorage.removeItem(STORAGE_KEY);
+                    }
+                } catch (storageError) {
+                    return;
+                }
+            }
+
+            function openGate(action) {
+                pending = action;
+                error.hidden = true;
+                input.value = '';
+                form.hidden = false;
+                input.focus();
+            }
+
+            function closeGate() {
+                form.hidden = true;
+                error.hidden = true;
+                input.value = '';
+            }
+
+            hideButton.addEventListener('click', function () {
+                openGate('hide');
+            });
+
+            showButton.addEventListener('click', function () {
+                openGate('show');
+            });
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                if (input.value.trim() !== PASSWORD) {
+                    error.hidden = false;
+                    input.focus();
+                    return;
+                }
+                setHidden(pending === 'hide');
+                closeGate();
+            });
+
+            try {
+                if (localStorage.getItem(STORAGE_KEY) === '1') {
+                    setHidden(true);
+                }
+            } catch (storageError) {
+                body.hidden = false;
+                showWrap.hidden = true;
+            }
         })();
     </script>
 </body>
