@@ -520,7 +520,7 @@
         </table>
 
         <section id="advanced-ai-section" aria-label="Advanced AI Engineering">
-            <div id="advanced-ai-body">
+            <div id="advanced-ai-body" hidden>
                 <div class="section-heading">
                     <h2 id="advanced-ai">Advanced AI Engineering</h2>
                     <button type="button" class="section-toggle" id="advanced-ai-hide">Hide</button>
@@ -546,7 +546,7 @@
                     </tbody>
                 </table>
             </div>
-            <p id="advanced-ai-show-wrap" hidden>
+            <p id="advanced-ai-show-wrap">
                 <button type="button" class="section-toggle" id="advanced-ai-show">Show Advanced AI Engineering</button>
             </p>
             <form id="advanced-ai-gate" class="gate-form" hidden>
@@ -1079,7 +1079,7 @@
                     if (hidden) {
                         localStorage.setItem(STORAGE_KEY, '1');
                     } else {
-                        localStorage.removeItem(STORAGE_KEY);
+                        localStorage.setItem(STORAGE_KEY, 'shown');
                     }
                 } catch (storageError) {
                     return;
@@ -1120,12 +1120,12 @@
             });
 
             try {
-                if (localStorage.getItem(STORAGE_KEY) === '1') {
-                    setHidden(true);
+                if (localStorage.getItem(STORAGE_KEY) === 'shown') {
+                    setHidden(false);
                 }
             } catch (storageError) {
-                body.hidden = false;
-                showWrap.hidden = true;
+                body.hidden = true;
+                showWrap.hidden = false;
             }
         })();
     </script>
