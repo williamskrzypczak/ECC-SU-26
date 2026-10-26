@@ -1242,11 +1242,12 @@
                 var button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'collapse-toggle';
-                button.setAttribute('aria-expanded', 'true');
+                button.setAttribute('aria-expanded', 'false');
                 button.setAttribute('aria-controls', panel.id);
-                button.setAttribute('aria-label', 'Collapse ' + label);
+                button.setAttribute('aria-label', 'Expand ' + label);
                 button.innerHTML = '<span class="collapse-icon" aria-hidden="true"></span>';
                 headingRow.appendChild(button);
+                panel.hidden = true;
 
                 button.addEventListener('click', function () {
                     var open = button.getAttribute('aria-expanded') === 'true';
