@@ -151,6 +151,42 @@
             outline-offset: 2px;
         }
 
+        .collapse-toggle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            padding: 0;
+            color: #005fcc;
+            background-color: #fff;
+            border: 2px solid #005fcc;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .collapse-toggle:hover {
+            background-color: #e8f1fc;
+        }
+
+        .collapse-toggle:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        .collapse-icon {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            border-right: 2px solid currentColor;
+            border-bottom: 2px solid currentColor;
+            transform: rotate(45deg) translate(-1px, -1px);
+        }
+
+        .collapse-toggle[aria-expanded="false"] .collapse-icon {
+            transform: rotate(-45deg) translate(-1px, 1px);
+        }
+
         .gate-form {
             max-width: 50rem;
             margin-bottom: 1rem;
@@ -223,7 +259,8 @@
                 border: 2px solid #000;
             }
 
-            .section-toggle {
+            .section-toggle,
+            .collapse-toggle {
                 border-color: #000;
             }
 
@@ -1157,6 +1194,69 @@
                 body.hidden = true;
                 showWrap.hidden = false;
             }
+        })();
+    </script>
+    <script>
+        (function () {
+            function collectAfter(start) {
+                var nodes = [];
+                var sibling = start.nextElementSibling;
+                while (sibling && sibling.tagName !== 'H2' && sibling.id !== 'advanced-ai-section' && !sibling.classList.contains('copyright')) {
+                    nodes.push(sibling);
+                    sibling = sibling.nextElementSibling;
+                }
+                return nodes;
+            }
+
+            var panelCount = 0;
+
+            function addCollapse(heading) {
+                if (heading.dataset.collapseReady === 'true') {
+                    return;
+                }
+                heading.dataset.collapseReady = 'true';
+                panelCount += 1;
+
+                var headingRow = heading.parentElement;
+                if (!headingRow || !headingRow.classList.contains('section-heading')) {
+                    headingRow = document.createElement('div');
+                    headingRow.className = 'section-heading';
+                    heading.parentNode.insertBefore(headingRow, heading);
+                    headingRow.appendChild(heading);
+                }
+
+                var nodes = collectAfter(headingRow);
+                var panel = document.createElement('div');
+                panel.className = 'section-panel';
+                panel.id = (heading.id || 'section') + '-panel-' + panelCount;
+                if (nodes.length) {
+                    nodes[0].parentNode.insertBefore(panel, nodes[0]);
+                    nodes.forEach(function (node) {
+                        panel.appendChild(node);
+                    });
+                } else {
+                    headingRow.parentNode.insertBefore(panel, headingRow.nextSibling);
+                }
+
+                var label = heading.textContent.replace(/\s+/g, ' ').trim();
+                var button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'collapse-toggle';
+                button.setAttribute('aria-expanded', 'true');
+                button.setAttribute('aria-controls', panel.id);
+                button.setAttribute('aria-label', 'Collapse ' + label);
+                button.innerHTML = '<span class="collapse-icon" aria-hidden="true"></span>';
+                headingRow.appendChild(button);
+
+                button.addEventListener('click', function () {
+                    var open = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', open ? 'false' : 'true');
+                    button.setAttribute('aria-label', (open ? 'Expand ' : 'Collapse ') + label);
+                    panel.hidden = open;
+                });
+            }
+
+            Array.prototype.forEach.call(document.querySelectorAll('main h2'), addCollapse);
         })();
     </script>
 </body>
