@@ -87,6 +87,20 @@
             outline-offset: 2px;
         }
 
+        .site-link a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+
+        .site-link img {
+            width: 2rem;
+            height: 2rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
         main {
             padding: 2rem 1rem;
         }
@@ -302,6 +316,10 @@
             }
 
             .gate-form input {
+                border: 2px solid #000;
+            }
+
+            .site-link img {
                 border: 2px solid #000;
             }
         }
@@ -664,6 +682,13 @@
                 </tr>
             </tbody>
         </table>
+        <p class="site-link">
+            <a href="https://mobbin.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./Labs/images/mobbin-thumbnail.png" alt="" width="32" height="32">
+                Mobbin
+                <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+        </p>
 
         <h2>Before You Start</h2>
         <p>You need a Mac with Xcode 15 or later installed. Download Xcode free from the Mac App Store. Review the matching course chapter before each lab. A paid Apple Developer account is not required for these exercises.</p>
