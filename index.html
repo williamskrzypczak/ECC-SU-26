@@ -41,6 +41,43 @@
             outline: 2px solid #fff;
         }
 
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
         a {
             color: #005fcc;
         }
@@ -280,6 +317,10 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="https://classroom.google.com/w/ODY3OTM5NzkxOTEw/t/all" target="_blank" rel="noopener noreferrer">Home<span class="visually-hidden"> (opens Google Classroom in a new tab)</span></a>
+    </nav>
 
     <main id="main-content">
         <h1>MAD 157 Lab Exercises</h1>
