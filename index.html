@@ -1293,15 +1293,16 @@
                 }
 
                 var label = heading.textContent.replace(/\s+/g, ' ').trim();
+                var startOpen = heading.id === 'cursor';
                 var button = document.createElement('button');
                 button.type = 'button';
                 button.className = 'collapse-toggle';
-                button.setAttribute('aria-expanded', 'false');
+                button.setAttribute('aria-expanded', startOpen ? 'true' : 'false');
                 button.setAttribute('aria-controls', panel.id);
-                button.setAttribute('aria-label', 'Expand ' + label);
+                button.setAttribute('aria-label', (startOpen ? 'Collapse ' : 'Expand ') + label);
                 button.innerHTML = '<span class="collapse-icon" aria-hidden="true"></span>';
                 headingRow.appendChild(button);
-                panel.hidden = true;
+                panel.hidden = !startOpen;
 
                 button.addEventListener('click', function () {
                     var open = button.getAttribute('aria-expanded') === 'true';
