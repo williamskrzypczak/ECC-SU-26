@@ -167,6 +167,28 @@
             max-width: 50rem;
         }
 
+        .jump-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .jump-nav a {
+            margin-right: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #2a2a2a;
+        }
+
+        tr.in-class th {
+            padding-left: 2rem;
+            font-weight: 400;
+            background-color: #fff;
+        }
+
         .section-heading {
             display: flex;
             flex-wrap: wrap;
@@ -342,278 +364,169 @@
 
     <main id="main-content">
         <h1>MAD 157 Lab Exercises</h1>
+        <nav class="jump-nav" aria-label="On this page">
+            <a href="#build">Build the app</a>
+            <a href="#design">Design the product</a>
+            <a href="#ai">Work with AI</a>
+        </nav>
 
-        <p>Welcome to the lab hub for MAD 157. This page links to hands-on SwiftUI exercises for each course chapter. Each lab reinforces key concepts through guided practice in Xcode.</p>
-        <p>Start with the Chapter 0 labs before the SwiftUI labs. Complete the Chapter 0 labs in order: GitHub, then Figma, then Trello, then Slack, then Firebase.</p>
-        <p>Select a lab below to open the full instructions.</p>
+        <h2 id="before-you-start">Before you start</h2>
+        <p>You need a Mac with Xcode 15 or later. Download Xcode free from the Mac App Store. A paid Apple Developer account is not required.</p>
+        <p>Build the app is turned in on Canvas. Design the product and Work with AI are in class only.</p>
 
-        <h2>Available Labs</h2>
+        <h2 id="build">Build the app</h2>
+        <p>Turn these in on Canvas. Do them in this order.</p>
         <p>Times next to each lab name are approximate.</p>
         <p id="lab-status" class="status-message" role="status" aria-live="polite">Loading labs from GitHub...</p>
         <p id="repo-info" class="repo-info" hidden></p>
 
+        <h3>Tools</h3>
         <table>
-            <caption>SwiftUI lab exercises for MAD 157</caption>
+            <caption>Chapter 0 tool labs, in order</caption>
             <thead>
                 <tr>
                     <th scope="col">Lab</th>
-                    <th scope="col">File</th>
-                    <th scope="col">GitHub</th>
                 </tr>
             </thead>
-            <tbody id="lab-list">
+            <tbody id="tool-list">
                 <noscript>
                     <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter0_github_xcode_lab.html">Chapter 0: GitHub and Xcode Source Control (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter0_github_xcode_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
+                        <th scope="row"><a href="./Labs/chapter0_github_xcode_lab.html">Chapter 0: GitHub and Xcode Source Control (~15 min)</a></th>
+                    </tr>
+                    <tr class="in-class">
+                        <th scope="row"><a href="./Labs/chapter0_github_critical_thinking.html">In class: Git Decisions</a></th>
                     </tr>
                     <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter0_tool_figma_basics_lab.html">Chapter 0: Figma Basics (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter0_tool_figma_basics_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
+                        <th scope="row"><a href="./Labs/chapter0_tool_figma_basics_lab.html">Chapter 0: Figma Basics (~15 min)</a></th>
+                    </tr>
+                    <tr class="in-class">
+                        <th scope="row"><a href="./CriticalThinking/chapter0_figma_critical_thinking.html">In class: Figma UI Challenges</a></th>
                     </tr>
                     <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter0_tool_trello_basics_lab.html">Chapter 0: Trello Basics (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter0_tool_trello_basics_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
+                        <th scope="row"><a href="./Labs/chapter0_tool_trello_basics_lab.html">Chapter 0: Trello Basics (~15 min)</a></th>
+                    </tr>
+                    <tr class="in-class">
+                        <th scope="row"><a href="./CriticalThinking/chapter0_trello_critical_thinking.html">In class: Trello Agile Challenges</a></th>
                     </tr>
                     <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter0_tool_slack_basics_lab.html">Chapter 0: Slack Basics (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter0_tool_slack_basics_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
+                        <th scope="row"><a href="./Labs/chapter0_tool_slack_basics_lab.html">Chapter 0: Slack Basics (~15 min)</a></th>
                     </tr>
                     <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter0_tool_firebase_basics_lab.html">Chapter 0: Firebase Basics (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter0_tool_firebase_basics_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter1_swiftui_environment_lab.html">Chapter 1: SwiftUI Development Environment (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter1_swiftui_environment_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter2_swiftui_layouts_lab.html">Chapter 2: Basic UI Elements and Layouts (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter2_swiftui_layouts_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter3_swiftui_interactivity_lab.html">Chapter 3: Adding Interactivity to a SwiftUI View (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter3_swiftui_interactivity_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter4_swiftui_scrollable_views_lab.html">Chapter 4: Scrollable Views and Lists (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter4_swiftui_scrollable_views_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter5_swiftui_grids_lab.html">Chapter 5: The Art of Displaying Grids (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter5_swiftui_grids_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter6_swiftui_tabs_modals_lab.html">Chapter 6: Tab Bars and Modal View Presentation (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter6_swiftui_tabs_modals_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter7_swiftui_navigation_lab.html">Chapter 7: All About Navigation (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter7_swiftui_navigation_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter14_swiftui_swiftdata_lab.html">Chapter 14: An Introduction to SwiftData (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter14_swiftui_swiftdata_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/chapter15_swiftui_rest_services_lab.html">Chapter 15: Consuming REST Services in SwiftUI (~15 min)</a>
-                        </th>
-                        <td>Labs/chapter15_swiftui_rest_services_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/project_proposal_lab.html">Project Proposal Assignment (~2 hours)</a>
-                        </th>
-                        <td>Labs/project_proposal_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./Labs/sprint1_review_lab.html">Sprint 1: Trello Boards and Sprint Review (~45 min setup + 7 min review)</a>
-                        </th>
-                        <td>Labs/sprint1_review_lab.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
+                        <th scope="row"><a href="./Labs/chapter0_tool_firebase_basics_lab.html">Chapter 0: Firebase Basics (~15 min)</a></th>
                     </tr>
                 </noscript>
             </tbody>
         </table>
 
-        <h2 id="working-backwards">Working Backwards</h2>
-        <p>Start with Lab 0, the agenda. Then do the five steps in order. Start with the customer. Technology comes last. These are in-class exercises. They are not Canvas uploads.</p>
-
+        <h3>SwiftUI</h3>
         <table>
-            <caption>Working backwards exercises for MAD 157</caption>
+            <caption>SwiftUI labs, in order</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Lab</th>
+                </tr>
+            </thead>
+            <tbody id="swift-list">
+                <noscript>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter1_swiftui_environment_lab.html">Chapter 1: SwiftUI Development Environment (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter2_swiftui_layouts_lab.html">Chapter 2: Basic UI Elements and Layouts (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter3_swiftui_interactivity_lab.html">Chapter 3: Adding Interactivity to a SwiftUI View (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter4_swiftui_scrollable_views_lab.html">Chapter 4: Scrollable Views and Lists (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter5_swiftui_grids_lab.html">Chapter 5: The Art of Displaying Grids (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter6_swiftui_tabs_modals_lab.html">Chapter 6: Tab Bars and Modal View Presentation (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter7_swiftui_navigation_lab.html">Chapter 7: All About Navigation (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter14_swiftui_swiftdata_lab.html">Chapter 14: An Introduction to SwiftData (~15 min)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/chapter15_swiftui_rest_services_lab.html">Chapter 15: Consuming REST Services in SwiftUI (~15 min)</a></th>
+                    </tr>
+                </noscript>
+            </tbody>
+        </table>
+
+        <h3>The project</h3>
+        <table>
+            <caption>Project labs, in order</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Lab</th>
+                </tr>
+            </thead>
+            <tbody id="project-list">
+                <noscript>
+                    <tr>
+                        <th scope="row"><a href="./Labs/project_proposal_lab.html">Project Proposal Assignment (~2 hours)</a></th>
+                    </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/sprint1_review_lab.html">Sprint 1: Trello Boards and Sprint Review (~45 min setup + 7 min review)</a></th>
+                    </tr>
+                </noscript>
+            </tbody>
+        </table>
+
+        <h2 id="design">Design the product</h2>
+        <p>In class. There is no Canvas upload.</p>
+
+        <h3>Working Backwards</h3>
+        <p>Start with the agenda. Then do the five steps in order. Start with the customer. Technology comes last.</p>
+        <table>
+            <caption>Working backwards exercises, in order</caption>
             <thead>
                 <tr>
                     <th scope="col">Exercise</th>
-                    <th scope="col">File</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <th scope="row"><a href="./Labs/architecture_00_agenda_lab.html">Lab 0: Agenda (~90 min)</a></th>
-                    <td>Labs/architecture_00_agenda_lab.html</td>
+                    <th scope="row"><a href="./Labs/architecture_00_agenda_lab.html">Agenda (~90 min)</a></th>
                 </tr>
                 <tr>
                     <th scope="row"><a href="./Labs/working_backwards_01_experience.html">1: The Customer Experience (~15 min)</a></th>
-                    <td>Labs/working_backwards_01_experience.html</td>
                 </tr>
                 <tr>
                     <th scope="row"><a href="./Labs/working_backwards_02_benefits.html">2: Customer Benefits (~15 min)</a></th>
-                    <td>Labs/working_backwards_02_benefits.html</td>
                 </tr>
                 <tr>
                     <th scope="row"><a href="./Labs/working_backwards_03_interface.html">3: Interface and Interaction (~15 min)</a></th>
-                    <td>Labs/working_backwards_03_interface.html</td>
                 </tr>
                 <tr>
                     <th scope="row"><a href="./Labs/working_backwards_04_requirements.html">4: Functional Requirements (~15 min)</a></th>
-                    <td>Labs/working_backwards_04_requirements.html</td>
                 </tr>
                 <tr>
                     <th scope="row"><a href="./Labs/working_backwards_05_technology.html">5: Technology and Engineering (~15 min)</a></th>
-                    <td>Labs/working_backwards_05_technology.html</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2 id="critical-thinking">Critical Thinking Exercises</h2>
-        <p>These are in-class group activities. They are not Canvas uploads. Do them after the matching lab, same class period.</p>
-        <p id="cte-status" class="status-message" role="status" aria-live="polite">Loading critical thinking exercises from GitHub...</p>
+        <h3>The Crucible of Effort</h3>
+        <p><a href="./Labs/crucible_of_effort.html">Open the Crucible of Effort deck</a></p>
+        <p class="site-link">
+            <a href="https://mobbin.com/" target="_blank" rel="noopener noreferrer">
+                <img src="./Labs/images/mobbin-thumbnail.png" alt="" width="32" height="32">
+                Mobbin
+                <span class="visually-hidden"> (opens in a new tab)</span>
+            </a>
+        </p>
 
-        <table>
-            <caption>In-class critical thinking exercises for MAD 157</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Exercise</th>
-                    <th scope="col">File</th>
-                    <th scope="col">GitHub</th>
-                </tr>
-            </thead>
-            <tbody id="cte-list">
-                <noscript>
-                    <tr>
-                        <th scope="row">
-                            <a href="./CriticalThinking/chapter0_figma_critical_thinking.html">Chapter 0 In-Class: Figma UI Challenges</a>
-                        </th>
-                        <td>CriticalThinking/chapter0_figma_critical_thinking.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <a href="./CriticalThinking/chapter0_trello_critical_thinking.html">Chapter 0 In-Class: Trello Agile Challenges</a>
-                        </th>
-                        <td>CriticalThinking/chapter0_trello_critical_thinking.html</td>
-                        <td>Enable JavaScript to load links from GitHub.</td>
-                    </tr>
-                </noscript>
-            </tbody>
-        </table>
-
-        <h2 id="intro-ai">Intro To Artificial Intelligence for Software Development</h2>
-        <p>These slides are in order. Open the set, or jump to one slide.</p>
-        <table>
-            <caption>Intro to artificial intelligence slides, in order</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Slide</th>
-                    <th scope="col">File</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-1">1. The Birth of AI</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-2">2. The Hierarchy of Human Expertise</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-3">3. Flip the Pyramid of Work</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-4">4. Use AI to Make You Better</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-5">5. How Do They Work?</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-6">6. How They Think</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-7">7. Machine Learning Statistical Methods</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/intro_ai_software_development.html#slide-8">8. How a Transformer Reads a Sentence</a></th>
-                    <td>Labs/intro_ai_software_development.html</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h2 id="ai-labs">AI labs</h2>
-        <p>These are played in class. They are not Canvas uploads.</p>
-        <table>
-            <caption>AI labs for MAD 157</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Lab</th>
-                    <th scope="col">File</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><a href="./Labs/prompt_engineering_lab.html">Prompt Engineering (~30 min)</a></th>
-                    <td>Labs/prompt_engineering_lab.html</td>
-                </tr>
-            </tbody>
-        </table>
+        <h2 id="ai">Work with AI</h2>
+        <p>In class. There is no Canvas upload.</p>
+        <p><a href="./Labs/intro_ai_software_development.html">Intro to Artificial Intelligence for Software Development</a></p>
+        <p><a href="./Labs/prompt_engineering_lab.html">Prompt Engineering (~30 min)</a></p>
 
         <section id="advanced-ai-section" aria-label="Advanced AI Engineering">
             <div id="advanced-ai-body" hidden>
@@ -627,17 +540,14 @@
                     <thead>
                         <tr>
                             <th scope="col">Slide</th>
-                            <th scope="col">File</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row"><a href="./Labs/advanced_ai_engineering.html#slide-1">1. PTO: Persona, Task, Output</a></th>
-                            <td>Labs/advanced_ai_engineering.html</td>
                         </tr>
                         <tr>
                             <th scope="row"><a href="./Labs/advanced_ai_engineering.html#slide-2">2. Context Engineering</a></th>
-                            <td>Labs/advanced_ai_engineering.html</td>
                         </tr>
                     </tbody>
                 </table>
@@ -652,46 +562,6 @@
                 <p id="advanced-ai-gate-error" class="gate-error" role="alert" hidden>That password did not match.</p>
             </form>
         </section>
-
-        <h2 id="crucible">The Crucible Of Effort</h2>
-        <p>These slides are in order. Open the set, or jump to one slide.</p>
-        <table>
-            <caption>The Crucible Of Effort slides, in order</caption>
-            <thead>
-                <tr>
-                    <th scope="col">Slide</th>
-                    <th scope="col">File</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row"><a href="./Labs/crucible_of_effort.html#slide-1">1. Bloom's 2 Sigma Problem</a></th>
-                    <td>Labs/crucible_of_effort.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/crucible_of_effort.html#slide-2">2. The Crucible of Effort</a></th>
-                    <td>Labs/crucible_of_effort.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/crucible_of_effort.html#slide-3">3. The 7-Step Workflow</a></th>
-                    <td>Labs/crucible_of_effort.html</td>
-                </tr>
-                <tr>
-                    <th scope="row"><a href="./Labs/crucible_of_effort.html#slide-4">4. Plan, Design, Build, Test</a></th>
-                    <td>Labs/crucible_of_effort.html</td>
-                </tr>
-            </tbody>
-        </table>
-        <p class="site-link">
-            <a href="https://mobbin.com/" target="_blank" rel="noopener noreferrer">
-                <img src="./Labs/images/mobbin-thumbnail.png" alt="" width="32" height="32">
-                Mobbin
-                <span class="visually-hidden"> (opens in a new tab)</span>
-            </a>
-        </p>
-
-        <h2>Before You Start</h2>
-        <p>You need a Mac with Xcode 15 or later installed. Download Xcode free from the Mac App Store. Review the matching course chapter before each lab. A paid Apple Developer account is not required for these exercises.</p>
 
         <div class="copyright">
             <p>© 2024 Bulldog Ventures Inc. All rights reserved.</p>
@@ -874,55 +744,151 @@
                 status.className = 'status-message' + (isError ? ' error' : '');
             }
 
-            function renderLabs(labs, repoConfig) {
-                var tbody = document.getElementById('lab-list');
-                var repoInfo = document.getElementById('repo-info');
+            var TOOL_ORDER = [
+                'Labs/chapter0_github_xcode_lab.html',
+                'Labs/chapter0_tool_figma_basics_lab.html',
+                'Labs/chapter0_tool_trello_basics_lab.html',
+                'Labs/chapter0_tool_slack_basics_lab.html',
+                'Labs/chapter0_tool_firebase_basics_lab.html'
+            ];
 
-                tbody.innerHTML = '';
+            var IN_CLASS_BY_LAB = {
+                'Labs/chapter0_github_xcode_lab.html': {
+                    path: 'Labs/chapter0_github_critical_thinking.html',
+                    title: 'In class: Git Decisions'
+                },
+                'Labs/chapter0_tool_figma_basics_lab.html': {
+                    path: 'CriticalThinking/chapter0_figma_critical_thinking.html',
+                    title: 'In class: Figma UI Challenges'
+                },
+                'Labs/chapter0_tool_trello_basics_lab.html': {
+                    path: 'CriticalThinking/chapter0_trello_critical_thinking.html',
+                    title: 'In class: Trello Agile Challenges'
+                }
+            };
 
-                labs.sort(function (a, b) {
-                    return a.path.localeCompare(b.path, undefined, { numeric: true, sensitivity: 'base' });
+            function labGroup(path) {
+                if (/chapter0/i.test(path)) {
+                    return 'tools';
+                }
+                if (/project_proposal|sprint/i.test(path)) {
+                    return 'project';
+                }
+                if (/chapter\d+/i.test(path)) {
+                    return 'swift';
+                }
+                return 'project';
+            }
+
+            function chapterNumber(path) {
+                var match = path.match(/chapter(\d+)/i);
+                return match ? parseInt(match[1], 10) : 999;
+            }
+
+            function appendLink(tbody, href, text, inClass) {
+                var row = document.createElement('tr');
+                var cell = document.createElement('th');
+                var link = document.createElement('a');
+
+                if (inClass) {
+                    row.className = 'in-class';
+                }
+                cell.setAttribute('scope', 'row');
+                link.href = href;
+                link.textContent = text;
+                cell.appendChild(link);
+                row.appendChild(cell);
+                tbody.appendChild(row);
+            }
+
+            function sortGroup(list, group) {
+                if (group === 'tools') {
+                    list.sort(function (a, b) {
+                        var ai = TOOL_ORDER.indexOf(a.path);
+                        var bi = TOOL_ORDER.indexOf(b.path);
+                        if (ai < 0) {
+                            ai = 100;
+                        }
+                        if (bi < 0) {
+                            bi = 100;
+                        }
+                        if (ai !== bi) {
+                            return ai - bi;
+                        }
+                        return a.path.localeCompare(b.path);
+                    });
+                    return;
+                }
+
+                if (group === 'swift') {
+                    list.sort(function (a, b) {
+                        var diff = chapterNumber(a.path) - chapterNumber(b.path);
+                        if (diff !== 0) {
+                            return diff;
+                        }
+                        return a.path.localeCompare(b.path);
+                    });
+                    return;
+                }
+
+                list.sort(function (a, b) {
+                    function rank(path) {
+                        if (path.indexOf('project_proposal') !== -1) {
+                            return 0;
+                        }
+                        if (path.indexOf('sprint') !== -1) {
+                            return 1;
+                        }
+                        return 50;
+                    }
+                    var diff = rank(a.path) - rank(b.path);
+                    if (diff !== 0) {
+                        return diff;
+                    }
+                    return a.path.localeCompare(b.path);
+                });
+            }
+
+            function renderLabs(labs, repoConfig, ctes) {
+                var lists = {
+                    tools: document.getElementById('tool-list'),
+                    swift: document.getElementById('swift-list'),
+                    project: document.getElementById('project-list')
+                };
+                var groups = { tools: [], swift: [], project: [] };
+                var used = {};
+
+                ctes = ctes || [];
+                Object.keys(lists).forEach(function (key) {
+                    if (lists[key]) {
+                        lists[key].innerHTML = '';
+                    }
                 });
 
                 labs.forEach(function (lab) {
-                    var row = document.createElement('tr');
-                    var titleCell = document.createElement('th');
-                    var fileCell = document.createElement('td');
-                    var githubCell = document.createElement('td');
-                    var pageLink = document.createElement('a');
-                    var githubLink = document.createElement('a');
-
-                    titleCell.setAttribute('scope', 'row');
-                    pageLink.href = buildPageLink(lab.path, repoConfig);
-                    pageLink.textContent = formatLabHeading(lab.path);
-                    titleCell.appendChild(pageLink);
-
-                    fileCell.textContent = lab.path;
-
-                    githubLink.href = buildGitHubLink(repoConfig.owner, repoConfig.repo, repoConfig.branch, lab.path);
-                    githubLink.textContent = 'View on GitHub';
-                    githubLink.setAttribute('rel', 'noopener noreferrer');
-                    githubLink.setAttribute('aria-label', 'View ' + formatLabHeading(lab.path) + ' on GitHub (opens in new tab)');
-                    githubCell.appendChild(githubLink);
-
-                    row.appendChild(titleCell);
-                    row.appendChild(fileCell);
-                    row.appendChild(githubCell);
-                    tbody.appendChild(row);
+                    groups[labGroup(lab.path)].push(lab);
                 });
 
-                repoInfo.hidden = false;
-                repoInfo.textContent = 'Labs loaded from github.com/' + repoConfig.owner + '/' + repoConfig.repo + ' (' + repoConfig.branch + ' branch).';
-                setStatus('Found ' + labs.length + ' lab file' + (labs.length === 1 ? '' : 's') + '.', false);
-            }
+                Object.keys(groups).forEach(function (group) {
+                    sortGroup(groups[group], group);
+                    groups[group].forEach(function (lab) {
+                        var extra = IN_CLASS_BY_LAB[lab.path];
+                        appendLink(lists[group], buildPageLink(lab.path, repoConfig), formatLabHeading(lab.path), false);
+                        if (extra) {
+                            appendLink(lists[group], buildPageLink(extra.path, repoConfig), extra.title, true);
+                            used[extra.path] = true;
+                        }
+                    });
+                });
 
-            function setCteStatus(message, isError) {
-                var status = document.getElementById('cte-status');
-                if (!status) {
-                    return;
-                }
-                status.textContent = message;
-                status.className = 'status-message' + (isError ? ' error' : '');
+                ctes.forEach(function (cte) {
+                    if (used[cte.path]) {
+                        return;
+                    }
+                    appendLink(lists.tools, buildPageLink(cte.path, repoConfig), formatCteTitle(cte.path), true);
+                });
+
+                setStatus('Found ' + labs.length + ' lab file' + (labs.length === 1 ? '' : 's') + '.', false);
             }
 
             function renderCtes(ctes, repoConfig) {
@@ -1055,10 +1021,7 @@
                     });
             }
 
-            function renderFallbackLabs(repoConfig) {
-                var tbody = document.getElementById('lab-list');
-                tbody.innerHTML = '';
-
+            function renderFallbackLabs(repoConfig, ctes) {
                 var fallbackLabs = [
                     {
                         title: 'Chapter 0: GitHub and Xcode Source Control',
@@ -1126,66 +1089,36 @@
                     }
                 ];
 
-                fallbackLabs.forEach(function (lab) {
-                    var row = document.createElement('tr');
-                    var titleCell = document.createElement('th');
-                    var fileCell = document.createElement('td');
-                    var githubCell = document.createElement('td');
-                    var pageLink = document.createElement('a');
-
-                    titleCell.setAttribute('scope', 'row');
-                    pageLink.href = buildPageLink(lab.path, repoConfig);
-                    pageLink.textContent = lab.title + ' (' + getLabTime(lab.path) + ')';
-                    titleCell.appendChild(pageLink);
-                    fileCell.textContent = lab.path;
-                    githubCell.textContent = 'Set meta github-repo to load from GitHub.';
-
-                    row.appendChild(titleCell);
-                    row.appendChild(fileCell);
-                    row.appendChild(githubCell);
-                    tbody.appendChild(row);
-                });
+                renderLabs(fallbackLabs, repoConfig, ctes || []);
             }
 
             var repoConfig = getRepoConfig();
 
             if (!repoConfig) {
-                renderFallbackLabs(null);
-                renderFallbackCtes(null);
+                renderFallbackLabs(null, []);
                 setStatus('Could not detect a GitHub repo. Add content to the github-repo meta tag, for example owner/repo-name.', true);
-                setCteStatus('Could not detect a GitHub repo. Showing local fallback links.', true);
                 return;
             }
 
-            fetchCtes(repoConfig)
-                .then(function (ctes) {
-                    if (ctes.length === 0) {
-                        renderFallbackCtes(repoConfig);
-                        setCteStatus('No CriticalThinking pages were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.', true);
-                        return;
-                    }
-
-                    renderCtes(ctes, repoConfig);
+            Promise.all([
+                fetchLabs(repoConfig).catch(function () {
+                    return null;
+                }),
+                fetchCtes(repoConfig).catch(function () {
+                    return [];
                 })
-                .catch(function (error) {
-                    renderFallbackCtes(repoConfig);
-                    setCteStatus('Unable to load critical thinking exercises from GitHub (' + error.message + '). Showing local fallback links.', true);
-                });
+            ]).then(function (results) {
+                var labs = results[0];
+                var ctes = results[1] || [];
 
-            fetchLabs(repoConfig)
-                .then(function (labs) {
-                    if (labs.length === 0) {
-                        renderFallbackLabs(repoConfig);
-                        setStatus('No lab.html files were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.', true);
-                        return;
-                    }
+                if (!labs || labs.length === 0) {
+                    renderFallbackLabs(repoConfig, ctes);
+                    setStatus('No lab.html files were found in github.com/' + repoConfig.owner + '/' + repoConfig.repo + '. Showing local fallback links.', true);
+                    return;
+                }
 
-                    renderLabs(labs, repoConfig);
-                })
-                .catch(function (error) {
-                    renderFallbackLabs(repoConfig);
-                    setStatus('Unable to load labs from GitHub (' + error.message + '). Showing local fallback links.', true);
-                });
+                renderLabs(labs, repoConfig, ctes);
+            });
         })();
     </script>
     <script>
