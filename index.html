@@ -503,6 +503,9 @@
                     <tr>
                         <th scope="row"><a href="./Labs/sprint1_review_lab.html">Sprint 1: Trello Boards and Sprint Review (~45 min setup + 7 min review)</a></th>
                     </tr>
+                    <tr>
+                        <th scope="row"><a href="./Labs/project_testflight_lab.html">TestFlight Basics (~60–90 min)</a></th>
+                    </tr>
                 </noscript>
             </tbody>
         </table>
@@ -754,6 +757,16 @@
             }
 
             function formatLabTitle(path) {
+                var titles = {
+                    'Labs/project_proposal_lab.html': 'Project Proposal Assignment',
+                    'Labs/sprint1_review_lab.html': 'Sprint 1: Trello Boards and Sprint Review',
+                    'Labs/project_testflight_lab.html': 'TestFlight Basics'
+                };
+
+                if (titles[path]) {
+                    return titles[path];
+                }
+
                 var fileName = path.split('/').pop().replace(/\.html$/i, '');
                 var chapterMatch = fileName.match(/chapter\s*(\d+)/i);
 
@@ -777,7 +790,8 @@
             function getLabTime(path) {
                 var times = {
                     'Labs/project_proposal_lab.html': '~2 hours',
-                    'Labs/sprint1_review_lab.html': '~45 min setup + 7 min review'
+                    'Labs/sprint1_review_lab.html': '~45 min setup + 7 min review',
+                    'Labs/project_testflight_lab.html': '~60–90 min'
                 };
 
                 return times[path] || '~15 min';
@@ -872,7 +886,7 @@
                 if (/chapter0/i.test(path)) {
                     return 'tools';
                 }
-                if (/project_proposal|sprint/i.test(path)) {
+                if (/project_proposal|sprint|testflight/i.test(path)) {
                     return 'project';
                 }
                 if (/chapter\d+/i.test(path)) {
@@ -1187,6 +1201,10 @@
                     {
                         title: 'Sprint 1: Trello Boards and Sprint Review',
                         path: 'Labs/sprint1_review_lab.html'
+                    },
+                    {
+                        title: 'TestFlight Basics',
+                        path: 'Labs/project_testflight_lab.html'
                     }
                 ];
 

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>TestFlight Basics — MAD 157</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main { padding: 2rem 1rem; }
+
+        h1 { font-size: 2rem; margin-bottom: 1rem; color: #1a1a1a; }
+        h2 { font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #2a2a2a; }
+        h3 { font-size: 1.25rem; margin-top: 1.5rem; margin-bottom: 0.75rem; color: #3a3a3a; }
+
+        p, ul, ol { margin-bottom: 1rem; max-width: 50rem; }
+        ul, ol { margin-left: 2rem; }
+        li { margin-bottom: 0.5rem; }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th { background-color: #f0f0f0; }
+
+        .analogy-box,
+        .notice {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .warning {
+            background-color: #fff8e5;
+            border-left: 4px solid #c47b00;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .home-nav { margin-bottom: 1.5rem; max-width: 50rem; }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover { background-color: #004799; }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            h1 { font-size: 1.75rem; }
+            main { padding: 1rem 0.5rem; }
+            table { font-size: 0.9em; }
+        }
+
+        @media (prefers-contrast: high) {
+            body, h1, h2, h3 { color: #000; }
+            th, td { border: 2px solid #000; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>TestFlight Basics</h1>
+
+        <h2>Introduction</h2>
+        <p>This lab walks you through distributing an iOS app with TestFlight. You will create an App Store Connect record, archive a build in Xcode, upload it, and install it on a physical device.</p>
+
+        <div class="analogy-box">
+            <p><strong>TestFlight is a private dress rehearsal.</strong> The App Store is opening night. Testers install your build before Apple reviews it for the public store.</p>
+        </div>
+
+        <div class="warning">
+            <p><strong>Paid Apple Developer Program required.</strong> A free Apple ID can use the simulator. TestFlight needs an active paid membership. Enroll at <a href="https://developer.apple.com/programs/" target="_blank" rel="noopener noreferrer">developer.apple.com/programs<span class="visually-hidden"> (opens in a new tab)</span></a> before you start.</p>
+        </div>
+
+        <h2>Learning Objectives</h2>
+        <p>After this lab, you will be able to:</p>
+        <ul>
+            <li>Create an app record in App Store Connect</li>
+            <li>Archive an iOS build in Xcode and upload it</li>
+            <li>Prepare a build for TestFlight testing</li>
+            <li>Install your build on a physical device with the TestFlight app</li>
+        </ul>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>A Mac with Xcode 15 or later</li>
+            <li>An active paid Apple Developer Program membership</li>
+            <li>A physical iPhone or iPad signed in with your Apple ID</li>
+            <li>Your semester project app, or another complete iOS app that runs without crash on a device</li>
+        </ul>
+        <p>If your project is not archive-ready yet, use a small working app with a clear bundle ID. Do not submit a broken build.</p>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Confirm membership and open App Store Connect</h3>
+        <ol>
+            <li>Sign in at <a href="https://developer.apple.com/account" target="_blank" rel="noopener noreferrer">developer.apple.com/account<span class="visually-hidden"> (opens in a new tab)</span></a>.</li>
+            <li>Confirm your membership status shows as active.</li>
+            <li>Open <a href="https://appstoreconnect.apple.com" target="_blank" rel="noopener noreferrer">appstoreconnect.apple.com<span class="visually-hidden"> (opens in a new tab)</span></a> and sign in with the same Apple ID.</li>
+            <li>In Xcode, go to <strong>Xcode → Settings → Accounts</strong>. Add this Apple ID if it is missing.</li>
+        </ol>
+
+        <h3>Part 2: Create or open the app record</h3>
+        <ol>
+            <li>In App Store Connect, open <strong>My Apps</strong>.</li>
+            <li>Click the plus button and choose <strong>New App</strong>, or open an existing app that matches your project.</li>
+            <li>Choose iOS. Enter an app name, primary language, and bundle ID that matches your Xcode target.</li>
+            <li>Save the record. Take a screenshot of the Apps list or the app information page showing your app name and bundle ID. Save it as <code>app-store-connect-app-record.png</code>.</li>
+        </ol>
+
+        <h3>Part 3: Archive and upload from Xcode</h3>
+        <ol>
+            <li>Open your project in Xcode. Select your app target.</li>
+            <li>Under <strong>Signing &amp; Capabilities</strong>, turn on <strong>Automatically manage signing</strong>. Choose your paid team.</li>
+            <li>Set the scheme destination to <strong>Any iOS Device (arm64)</strong>. You cannot archive for a simulator.</li>
+            <li>Choose <strong>Product → Archive</strong>. Wait for the Organizer window.</li>
+            <li>Select the new archive. Click <strong>Distribute App</strong>.</li>
+            <li>Choose <strong>App Store Connect</strong>, then upload. Keep the default options unless your instructor says otherwise.</li>
+            <li>Take a screenshot of the Organizer showing your archive. Save it as <code>xcode-organizer-archive.png</code>.</li>
+        </ol>
+
+        <h3>Part 4: Prepare the build in TestFlight</h3>
+        <ol>
+            <li>Return to App Store Connect. Open your app.</li>
+            <li>Open the <strong>TestFlight</strong> tab. Wait until the build status is <strong>Processing</strong> or <strong>Valid</strong>.</li>
+            <li>Complete any <strong>Export Compliance</strong> questions if Apple asks. Most classroom apps that use only standard HTTPS answer No for non-exempt encryption.</li>
+            <li>Enter short <strong>What to Test</strong> notes and a feedback email.</li>
+            <li>Take a screenshot of TestFlight or Activity showing this build and its status. Save it as <code>testflight-build.png</code>.</li>
+        </ol>
+
+        <h3>Part 5: Install on a device</h3>
+        <ol>
+            <li>On your iPhone or iPad, install the free <strong>TestFlight</strong> app from the App Store.</li>
+            <li>In App Store Connect, add yourself as an <strong>internal tester</strong> for this build if you are not already listed.</li>
+            <li>Accept the invite on the device. Install your app from TestFlight.</li>
+            <li>Open the app once to confirm it launches.</li>
+            <li>Take a screenshot of the TestFlight app showing your build, or of your app running after a TestFlight install. Save it as <code>testflight-on-device.png</code>.</li>
+        </ol>
+
+        <h2>Reflection Questions</h2>
+        <p>Answer each question in one or two complete sentences in <code>reflections.txt</code>.</p>
+        <ol>
+            <li>What is the difference between <strong>Run</strong> on a simulator and <strong>Archive</strong> for TestFlight?</li>
+            <li>What is the difference between an internal tester and an external tester?</li>
+            <li>Why use TestFlight before you submit the app for App Store review?</li>
+            <li>What do the build statuses <strong>Processing</strong> and <strong>Valid</strong> mean?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <ul>
+            <li>Screenshot 1: App Store Connect app record</li>
+            <li>Screenshot 2: Xcode Organizer archive</li>
+            <li>Screenshot 3: TestFlight build with Processing or Valid status</li>
+            <li>Screenshot 4: TestFlight install on a physical device</li>
+            <li>Written answers for the four reflection questions</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">App Store Connect app record created</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Xcode archive and upload completed</th>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">TestFlight build ready and installed on a device</th>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <th scope="row">Reflection answers</th>
+                    <td>15</td>
+                </tr>
+                <tr>
+                    <th scope="row">Screenshots and zip format</th>
+                    <td>5</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Archive is grayed out</h3>
+        <p>Select <strong>Any iOS Device (arm64)</strong> as the run destination. Simulator destinations cannot create an App Store archive.</p>
+
+        <h3>Signing errors</h3>
+        <p>Confirm your paid team is selected under Signing &amp; Capabilities. The bundle ID must match the App Store Connect record.</p>
+
+        <h3>Build stuck on Processing</h3>
+        <p>Wait 10 to 30 minutes. Check the email on your Apple ID for validation errors. Refresh the TestFlight tab.</p>
+
+        <h3>Missing Export Compliance</h3>
+        <p>Open the build in TestFlight and answer the encryption questions. Until you finish them, the build cannot go to testers.</p>
+
+        <h3>Invite never arrives</h3>
+        <p>Confirm the device Apple ID matches the tester email. Open the TestFlight app and pull to refresh. Check spam for the App Store Connect message.</p>
+
+        <h2>How to Submit on Canvas</h2>
+        <p>Package your work as one zip file. Use the exact folder structure, screenshot names, and reflection format in the <a href="../canvas-submission-instructions.html#lab-testflight">TestFlight submission guide</a>.</p>
+        <h3>Create your zip on a Mac</h3>
+        <ol>
+            <li>Create a folder on your Desktop with every required file from the submission guide inside.</li>
+            <li>Right-click the folder in Finder and choose <strong>Compress "folder name"</strong>.</li>
+            <li>Rename the zip file if needed (example: <code>testflight-smith-jane.zip</code>).</li>
+            <li>Upload the zip to this Canvas assignment.</li>
+        </ol>
+        <p>See the full <a href="../canvas-submission-instructions.html#zip-on-mac">Mac zip instructions</a> if you get stuck.</p>
+
+        <div class="copyright">
+            <p>© 2026 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
