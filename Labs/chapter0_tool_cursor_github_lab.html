@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="course-base-url" content="https://williamskrzypczak.github.io/ECC-SU-26">
+    <script src="../course-links.js" defer></script>
+    <title>Chapter 0 Lab: Cursor and GitHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: #000;
+            color: #fff;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+        }
+
+        .skip-link:focus {
+            top: 0;
+            outline: 2px solid #fff;
+        }
+
+        a:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+        }
+
+        main {
+            padding: 2rem 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1a1a1a;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #2a2a2a;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #3a3a3a;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        ul, ol {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+            max-width: 50rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            max-width: 50rem;
+            border-collapse: collapse;
+            margin-bottom: 1.5rem;
+        }
+
+        caption {
+            text-align: left;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #2a2a2a;
+        }
+
+        th, td {
+            border: 1px solid #ccc;
+            padding: 0.75rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        .analogy-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid #005fcc;
+            padding: 1rem 1.25rem;
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .chapter-map {
+            font-size: 0.9rem;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-nav {
+            margin-bottom: 1.5rem;
+            max-width: 50rem;
+        }
+
+        .home-button {
+            display: inline-block;
+            background-color: #005fcc;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .home-button:hover {
+            background-color: #004799;
+        }
+
+        .home-button:focus {
+            outline: 2px solid #005fcc;
+            outline-offset: 2px;
+            color: #fff;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+            }
+
+            h2 {
+                font-size: 1.25rem;
+            }
+
+            main {
+                padding: 1rem 0.5rem;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (prefers-contrast: high) {
+            body {
+                color: #000;
+                background-color: #fff;
+            }
+
+            h1, h2, h3 {
+                color: #000;
+            }
+
+            th, td {
+                border: 2px solid #000;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media print {
+            .skip-link {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <nav class="home-nav" aria-label="Site navigation">
+        <a class="home-button" href="../index.html">Home</a>
+    </nav>
+
+    <main id="main-content">
+        <h1>Chapter 0 Lab: Cursor and GitHub</h1>
+
+        <h2>Introduction</h2>
+        <p>You already used GitHub with Xcode. Now you will do the same jobs inside Cursor. Clone, commit, branch, push, pull, and merge without opening Terminal.</p>
+        <p>Cursor’s Source Control panel is a remote control for GitHub. You can finish this lab in about 15 to 20 minutes.</p>
+        <p>Use Cursor menus and the Source Control sidebar only. Do not use Terminal. Do not ask the AI Agent to run Git for you in this lab.</p>
+
+        <h2>Learning Objectives</h2>
+        <p>After completing this lab, you will be able to:</p>
+        <ul>
+            <li>Sign in to GitHub from Cursor</li>
+            <li>Clone a GitHub repo and open it in Cursor</li>
+            <li>Stage, commit, push, and pull changes from Source Control</li>
+            <li>Create a branch, make a change, and merge it back to <code>main</code></li>
+        </ul>
+
+        <h2>Key Ideas</h2>
+        <div class="analogy-box">
+            <p><strong>Cursor’s Source Control panel is a remote control for GitHub.</strong> Clone downloads a copy of the project. A branch is a side road where you try an idea. Merge brings that idea back to the main road.</p>
+            <p><strong>Push sends your work up.</strong> Pull brings new work down. Same ideas as the Xcode GitHub lab. New buttons live in Cursor.</p>
+        </div>
+
+        <table>
+            <caption>Git actions inside Cursor</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Action</th>
+                    <th scope="col">What it does</th>
+                    <th scope="col">Where to look</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Clone</th>
+                    <td>Download a GitHub repo to your Mac</td>
+                    <td>Command Palette → Git: Clone</td>
+                </tr>
+                <tr>
+                    <th scope="row">Commit</th>
+                    <td>Save a snapshot with a short message</td>
+                    <td>Source Control message box</td>
+                </tr>
+                <tr>
+                    <th scope="row">Push</th>
+                    <td>Upload your commits to GitHub</td>
+                    <td>Source Control or status bar Sync</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pull</th>
+                    <td>Download commits from GitHub</td>
+                    <td>Source Control or status bar Sync</td>
+                </tr>
+                <tr>
+                    <th scope="row">Branch</th>
+                    <td>Start a side road for a new idea</td>
+                    <td>Status bar branch name</td>
+                </tr>
+                <tr>
+                    <th scope="row">Merge</th>
+                    <td>Bring the side road back into <code>main</code></td>
+                    <td>Command Palette → Git: Merge Branch</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>Cursor installed on your Mac</li>
+            <li>A free GitHub account</li>
+            <li>Finish <a href="./chapter0_github_xcode_lab.html">Chapter 0: GitHub and Xcode Source Control</a> first</li>
+            <li>Your public <code>GitPractice</code> repo from that lab (or another small public practice repo)</li>
+        </ul>
+
+        <h2>Lab Instructions</h2>
+
+        <h3>Part 1: Sign in to GitHub in Cursor</h3>
+        <p class="chapter-map">Topics: Cursor account and GitHub access.</p>
+        <ol>
+            <li>Open Cursor.</li>
+            <li>Open the Command Palette with <strong>Cmd+Shift+P</strong>.</li>
+            <li>Type <code>Sign in to GitHub</code> and choose the sign-in command that appears.</li>
+            <li>Finish the browser login. Return to Cursor when it says you are signed in.</li>
+            <li>Click the <strong>Source Control</strong> icon in the left sidebar (it looks like a branch).</li>
+        </ol>
+        <p>Take a screenshot that shows you are signed in to GitHub in Cursor (Settings / Accounts, or a Source Control view that shows your GitHub account). Save it later as <code>cursor-github-signed-in.png</code>.</p>
+
+        <h3>Part 2: Clone your repo and open it</h3>
+        <p class="chapter-map">Topics: Clone and open a folder.</p>
+        <ol>
+            <li>On GitHub.com, open your <code>GitPractice</code> repo. Click the green <strong>Code</strong> button. Copy the HTTPS URL.</li>
+            <li>In Cursor, press <strong>Cmd+Shift+P</strong>. Type <code>Git: Clone</code> and choose it.</li>
+            <li>Paste the repo URL. Choose a folder on your Mac (Desktop is fine).</li>
+            <li>When Cursor asks, choose <strong>Open</strong> so the cloned folder becomes your workspace.</li>
+            <li>Confirm you can see project files in the Explorer sidebar.</li>
+        </ol>
+        <p>Take a screenshot of Cursor with the cloned project open. Save it later as <code>cursor-clone-open.png</code>.</p>
+        <p>Write your public repo URL in <code>links.txt</code> (one line), for example <code>https://github.com/your-username/GitPractice</code>.</p>
+
+        <h3>Part 3: Make a small edit and commit</h3>
+        <p class="chapter-map">Topics: Stage and commit.</p>
+        <ol>
+            <li>Open <code>README.md</code>. If it is missing, create a new file named <code>README.md</code> in the project root.</li>
+            <li>Add one short line, such as: <code>Edited in Cursor for MAD 157.</code></li>
+            <li>Save the file (<strong>Cmd+S</strong>).</li>
+            <li>Open <strong>Source Control</strong> in the left sidebar.</li>
+            <li>Under Changes, click the <strong>+</strong> next to the file to stage it (or stage all changes).</li>
+            <li>Type this commit message: <code>Add Cursor lab note to README</code>.</li>
+            <li>Click <strong>Commit</strong>.</li>
+        </ol>
+        <p>Write every commit message you use in this lab into <code>commit-messages.txt</code>, one message per line.</p>
+
+        <h3>Part 4: Push to GitHub</h3>
+        <p class="chapter-map">Topics: Push local commits online.</p>
+        <ol>
+            <li>In Source Control, open the <strong>…</strong> menu (or use the status bar Sync / Publish controls).</li>
+            <li>Choose <strong>Push</strong>. If Cursor offers Sync, that is fine too when it includes Push.</li>
+            <li>Open your repo on GitHub.com. Confirm the new commit message appears.</li>
+        </ol>
+        <p>Take a screenshot of Source Control (or GitHub.com) showing your new commit. Save it later as <code>cursor-commit.png</code>.</p>
+
+        <h3>Part 5: Create a branch and commit on it</h3>
+        <p class="chapter-map">Topics: Branch as a side road.</p>
+        <ol>
+            <li>Click the branch name in the lower-left status bar (it often says <code>main</code>).</li>
+            <li>Choose <strong>Create new branch…</strong>.</li>
+            <li>Name the branch <code>add-note</code>. Press Return.</li>
+            <li>Confirm the status bar now shows <code>add-note</code>.</li>
+            <li>Edit <code>README.md</code> again. Add a second line, such as: <code>Branch practice note.</code></li>
+            <li>Save, stage, and commit with the message: <code>Add note on add-note branch</code>.</li>
+        </ol>
+        <p>Take a screenshot that shows the <code>add-note</code> branch name and your new text. Save it later as <code>cursor-branch-commit.png</code>.</p>
+
+        <h3>Part 6: Merge back to main and push</h3>
+        <p class="chapter-map">Topics: Merge and push.</p>
+        <ol>
+            <li>Click the branch name in the status bar. Switch back to <code>main</code>.</li>
+            <li>Press <strong>Cmd+Shift+P</strong>. Type <code>Git: Merge Branch</code> and choose it.</li>
+            <li>Select <code>add-note</code>. Confirm the merge.</li>
+            <li>Open <code>README.md</code>. Confirm both of your new lines are on <code>main</code>.</li>
+            <li>Push to GitHub.</li>
+            <li>On GitHub.com, confirm <code>main</code> shows the merged text.</li>
+        </ol>
+        <p>Take a screenshot of the merged <code>README.md</code> on <code>main</code> in Cursor or on GitHub.com. Save it later as <code>cursor-merged-main.png</code>.</p>
+
+        <h3>Part 7: Pull a change from GitHub</h3>
+        <p class="chapter-map">Topics: Pull downloads remote edits.</p>
+        <ol>
+            <li>On GitHub.com, open <code>README.md</code> and click the pencil to edit.</li>
+            <li>Add one more line, such as: <code>Pulled into Cursor.</code></li>
+            <li>Commit the change on GitHub.com.</li>
+            <li>Return to Cursor. In Source Control, choose <strong>Pull</strong> (or Sync).</li>
+            <li>Confirm the new line appears in your local <code>README.md</code>.</li>
+        </ol>
+
+        <h2>Reflection Questions</h2>
+        <p>Answer each question in one or two complete sentences in <code>reflections.txt</code>.</p>
+        <ol>
+            <li>What does Clone do?</li>
+            <li>Why make a branch before trying a change?</li>
+            <li>What is the difference between Push and Pull in Cursor?</li>
+        </ol>
+
+        <h2>Deliverables</h2>
+        <ul>
+            <li>Your public GitHub repo URL in <code>links.txt</code></li>
+            <li>Screenshot 1: GitHub signed in inside Cursor</li>
+            <li>Screenshot 2: Cloned project open in Cursor</li>
+            <li>Screenshot 3: Commit from Cursor</li>
+            <li>Screenshot 4: Work on the <code>add-note</code> branch</li>
+            <li>Screenshot 5: Merged <code>main</code> after the branch merge</li>
+            <li>Your three reflection answers</li>
+            <li>Every commit message you used during the lab</li>
+        </ul>
+
+        <h2>Grading Rubric</h2>
+        <table>
+            <caption>Lab grading criteria (100 points total)</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Criterion</th>
+                    <th scope="col">Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">GitHub signed in and repo cloned/opened in Cursor</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Commit, branch, merge, and push/pull workflow</th>
+                    <td>40</td>
+                </tr>
+                <tr>
+                    <th scope="row">Reflection answers</th>
+                    <td>20</td>
+                </tr>
+                <tr>
+                    <th scope="row">Screenshots, links, commit messages, and zip format</th>
+                    <td>20</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Troubleshooting</h2>
+
+        <h3>Sign in keeps failing</h3>
+        <p>Use the Command Palette sign-in again. Finish the browser page fully. Then reopen Source Control.</p>
+
+        <h3>Clone asks for a password</h3>
+        <p>Use HTTPS and sign in with GitHub in the browser when Cursor prompts. Do not invent a Terminal password for this lab.</p>
+
+        <h3>Commit button is gray</h3>
+        <p>Save the file first. Stage the change with the <strong>+</strong> icon. Type a commit message, then click Commit.</p>
+
+        <h3>Wrong branch selected</h3>
+        <p>Look at the lower-left status bar. Click the branch name to switch. Merge only after you are on <code>main</code>.</p>
+
+        <h3>Push rejected</h3>
+        <p>Pull first, then push again. If Cursor shows a conflict, stop and ask your instructor.</p>
+
+        <h2>How to Submit on Canvas</h2>
+        <p>Package your work as one zip file. Use the exact folder structure, screenshot names, and reflection format in the <a href="../canvas-submission-instructions.html#lab-ch0-cursor-github">Chapter 0 Cursor and GitHub submission guide</a>.</p>
+        <h3>Create your zip on a Mac</h3>
+        <ol>
+            <li>Create a folder on your Desktop with every required file from the submission guide inside.</li>
+            <li>Right-click the folder in Finder and choose <strong>Compress "folder name"</strong>.</li>
+            <li>Rename the zip file if needed (example: <code>chapter0-cursor-github-smith-jane.zip</code>).</li>
+            <li>Upload the zip to this Canvas assignment.</li>
+        </ol>
+        <p>See the full <a href="../canvas-submission-instructions.html#zip-on-mac">Mac zip instructions</a> if you get stuck.</p>
+
+        <div class="copyright">
+            <p>© 2026 Bulldog Ventures Inc. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>
